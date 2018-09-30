@@ -1,7 +1,22 @@
-$primary-color:#444;
 
 
+@import './header-section';
+@import './section-services';
+@import './section-services';
 
-body{
-    background:$primary-color;
+
+.section-blogs{
+    @include createGrid(3);
+
+    .small{
+        font-size:20px;
+    }
+
+    .big{
+        font-size:25px;
+    }
+    .large{
+        font-size:44px;
+    }
 }
+

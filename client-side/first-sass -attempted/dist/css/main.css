@@ -1,2 +1,46 @@
-body {
-  background: #444; }
+.header-section {
+  text-align: center;
+  color: white; }
+  .header-section h1 {
+    color: green;
+    word-spacing: 9px;
+    letter-spacing: 9px;
+    font-size: 30px;
+    text-shadow: 2px 0px 0px black; }
+  .header-section h2 {
+    color: green;
+    word-spacing: 9px;
+    letter-spacing: 9px;
+    font-size: 35px;
+    text-shadow: 2px 0px 0px black; }
+
+.section-services {
+  background: #4664;
+  text-align: center; }
+  .section-services button {
+    background: blue; }
+    .section-services button:hover {
+      color: red; }
+  .section-services .paragraph {
+    font-size: 30px; }
+
+.section-services {
+  background: #4664;
+  text-align: center; }
+  .section-services button {
+    background: blue; }
+    .section-services button:hover {
+      color: red; }
+  .section-services .paragraph {
+    font-size: 30px; }
+
+.section-blogs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  text-align: center; }
+  .section-blogs .small {
+    font-size: 20px; }
+  .section-blogs .big {
+    font-size: 25px; }
+  .section-blogs .large {
+    font-size: 44px; }

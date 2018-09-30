@@ -1,0 +1,16 @@
+@import './mixins.scss';
+
+.header-section {
+    text-align: center;
+    color:white;
+
+    h1 {
+     @include giveStyling(30px);
+   
+    }
+
+    h2{
+        @include giveStyling(35px);
+
+    }
+}

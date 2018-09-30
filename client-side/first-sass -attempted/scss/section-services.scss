@@ -1,0 +1,19 @@
+@import './mixins.scss';
+
+
+.section-services{
+    background:blue;
+    text-align: center;
+
+    button{
+        background:blue;
+
+        &:hover{
+            color:red;
+        }
+    }
+    
+    .paragraph{
+        font-size:30px;
+    }
+}
