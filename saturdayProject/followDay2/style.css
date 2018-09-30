@@ -1,0 +1,41 @@
+body{
+    display: grid;
+    justify-content: center;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 25px;
+}
+
+
+form{
+    margin-top : 30px;
+    display: grid;
+    justify-content: center;
+    grid-gap:1rem;
+    background:green;
+    width: 550px;
+    height: 400px;
+    padding:20px;        
+}
+
+#checkbox{
+    background-color:blue;
+    width:20px;
+}
+
+label{
+    weight: 400px;
+
+
+}
+
+input[type="checkbox"] {
+    box-sizing: border-box;
+
+    width: 2em;
+  }
+
+h1{
+    font-size:30px;
+    text-shadow: 3px 0px 1px 0px rgba(34, 0, 1, 0.8);
+
+}

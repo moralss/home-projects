@@ -1,0 +1,23 @@
+{
+  "name": "schoolapp",
+  "version": "1.0.0",
+  "description": "miassaround with sifo",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Moral",
+  "license": "ISC",
+  "dependencies": {
+    "@sendgrid/mail": "^6.3.1",
+    "async": "^2.6.1",
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "nodemon": "^1.18.3",
+    "pg": "^7.4.3",
+    "pg-hstore": "^2.3.2",
+    "sendgrid": "^5.2.3",
+    "sequelize": "^4.38.0"
+  }
+}

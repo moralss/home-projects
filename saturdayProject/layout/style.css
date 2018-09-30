@@ -1,0 +1,92 @@
+body{
+    background-color:grey;
+
+}
+.container {
+    display: grid;
+    grid-gap: 5px;
+    grid-template-columns: repeat(auto-fill, minmax(290px , 1fr));
+
+}
+
+h1{
+    color:white;
+    text-align: center;
+}
+
+.container .project{
+    display: grid;
+    padding:10px;
+    margin:3px;
+    /* box-shadow: 1px 1px 0px 0px rgba(103 ,204 , 204 , 0.4); */
+}
+
+
+.project .github{
+    border:0;
+    padding:0;
+    text-align: center;
+    background: #d2e5f5;
+    padding:5px; 
+    color:black;
+    font-size:18px;
+    margin-top:22px;
+}
+
+.project .codepen  , .github{
+    display: block;   
+    text-decoration: none;
+    margin-left:16px;
+    margin-right:10px;
+    margin-top:4px;
+    margin-bottom:4px;
+    padding:5px; 
+    border-radius: 4px;
+    color:white;
+    font-size:18px;
+
+}
+
+
+.project .codepen:hover{
+    transition: all 0.4;
+    opacity: 0.3;
+    color:yellow; 
+}
+
+
+.project .github:hover{
+    transition: all 0.4;
+    opacity: 0.3; 
+}
+
+
+
+.project .codepen{
+  
+     /* border:0; */
+     text-align: center;
+     background: #1f6d6d;
+     border-radius:1px solid green;
+       
+ }
+ 
+
+
+.container img{
+    width: 280px;
+    height: 200px;
+    margin:auto;
+    border-radius:1px solid green;
+    border:3px solid snow;
+}
+
+.container img:hover{
+    transition: all 0.3;
+    opacity: 0.3;
+    border:3px solid yellow;    
+}
+
+
+
+

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Document</title>
+
+</head>
+
+<body>
+
+    <h1 style="text-align: center;"> fill in your profile info </h1>
+
+    <form>
+        <input placeholder="Name" id="inputName" />
+        <input placeholder="Surname" id="inputSurname"/>
+        <input placeholder="email" type="email" name="position" id="email">
+
+        <select name="age" id="select">
+            <option value="17">select age group</option>
+            <option value="17"> 17</option>
+            <option value="18">18</option>
+            <option value="19">19</option>
+        </select>
+
+
+        <div>
+            <label for=""> striker </label>
+            <input value="striker" type="radio" name="position" id="striker">
+            
+            <label for=""> middlefield </label>
+            <input type="radio" name="position" id="middlefield" />
+            <label for=""> defender </label>
+            <input type="radio" name="position" id="defender" />
+
+        </div>
+
+        <input type="number" max="23"
+         placeholder="jersey-number" id="jersey-number" />
+        <input type="submit" onclick="sumbitPlayInfo(event)" />
+
+    </form>
+
+        <script src="cdnjs/axios.min.js"> </script>
+
+    <script src="playInfo.js"> </script>
+</body>
+
+</html>

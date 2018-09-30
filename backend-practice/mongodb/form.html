@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <script src="cdnjs/axios.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+
+
+    <label for=""> register form </label>
+    <div>
+        <label for="">create username </label>
+        <input type="text" id="username" value="hoiihe" type="text" />
+        <label for="" value="mjMoral"> create password </label>
+        <input type="text" id="password" value="bobydfdf" type="text" />
+        <button onclick="registerUser()">register User </button>
+    </div>
+
+
+    <a blank="" href="/home/moral/Documents/my-projects/backendpractice/mongodb/login.html"> login</a>
+
+</body>
+
+<script>
+
+    async function registerUser() {
+        let username = document.getElementById('username').value;
+        let password = document.getElementById('password').value;
+        console.log("(username", username.value);
+        console.log("password", password.value);
+
+        await axios.post('http://localhost:3000/register', {
+            username,
+            password
+        }).then(response => {
+            localStorage.setItem('token', response.data.token)
+            console.log(response.data.token);
+
+        }).catch(err => console.log(err));
+    }
+
+
+</script>
+
+</html>

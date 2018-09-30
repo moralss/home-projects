@@ -1,0 +1,45 @@
+<html>
+
+<head>
+    <script src="cdnjs/axios.min.js"></script>
+</head>
+
+<body>
+
+    <p>creating a api </p>
+
+
+    <form>
+        <lable>Name:</lable>
+        <input type="text" id="playerName" placeholder="name" />
+
+        <lable>Postion:</lable>
+        <input type="text" id="goals" placeholder="position" />
+
+        <button onclick="onFormSubmit(event);">submit </button>
+    </form>
+
+
+    <div id="list">
+
+    </div>
+
+
+    <div style="position: absolute;left:700px;top:30px;">
+        <lable> Search for Player</lable>
+        <input id="search" type="text" />
+        <button onclick="sumbitSearch();"> Search</button>
+        <div id="searchlist">
+    
+        </div>
+    </div>
+
+
+
+
+
+</body>
+
+<script src="main.js"></script>
+
+</html>

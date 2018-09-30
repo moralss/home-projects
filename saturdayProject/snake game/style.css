@@ -1,0 +1,39 @@
+#map {
+    width:600px;
+    height: 600px;
+    display: grid;
+    background-color:green;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(1 , 1fr);
+    
+
+}
+
+#World {
+    display: grid;
+    justify-content: center;    
+
+}
+
+#box{
+    display: grid;
+    justify-content: center;
+     width:97px;
+    height: 97px; 
+    background-color:white;
+    border: 1px solid purple;
+    /* position: relative; */
+
+}
+
+#button {
+    width:97px;
+    height: 97px; 
+    background-color: orangered;
+    position: absolute;
+    background-position: 507px 69px;
+  
+}
+
+
+

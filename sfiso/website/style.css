@@ -1,0 +1,160 @@
+
+nav {
+    background: rgba(189, 198, 209);
+    
+    padding-bottom: 20px;
+    position: fixed;
+   
+    z-index: 1;
+    width: 100%;    
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+a{
+   
+
+}
+
+ul {
+    display: grid; background-color: rgba(189, 198, 209, 0.568);
+    grid-gap: 1rem;
+    grid-template-columns: repeat(4, 1fr);
+    list-style: none;
+    text-decoration: none;
+    padding-top: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+
+li {
+    text-align: center;
+     
+    border : 1px rgb(156, 180, 171) solid;
+    
+}
+
+header {
+    display: grid;
+    grid-template-areas: 
+    "h1 h1"
+    "p2  p2"
+    "button button";
+    justify-content: center;
+    padding-top: 4rem;
+    background-color: rgba(0, 0, 0, 0.747);
+}
+
+
+#title{
+    grid-area:h1;
+    display:grid;
+    justify-content: center;
+    color: rgb(247, 247, 247);
+}
+
+
+#p{
+    grid:grid;
+    grid-area:p2;
+    text-align:center;
+    justify-content: center;
+    line-height: 20px;
+    padding-top:20px;
+    padding-left:50px;
+    padding-right: 50px;
+    color: rgb(247, 247, 247);
+}
+
+#button {
+    grid-area:button;
+    display: grid;
+    justify-content: center;
+}
+
+button{
+    font-size:1rem;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#products{
+    display:grid;
+    grid-template-columns: repeat(3 , 1fr);
+    grid-gap:10px;
+    justify-content: center;
+}
+
+img{
+    width:198px;
+    height:198px;
+}
+
+h1{
+    margin:20px;
+    text-align:center;
+}
+
+#h1{
+    margin:20px;
+    text-align:center;
+}
+
+.imgContent{
+ display: grid;
+ justify-content: center;
+
+justify-items: center;
+text-align: center;
+margin: 20px;
+}
+
+
+#news{
+    display: grid;
+    grid-gap:30px;
+    color: rgb(247, 247, 247);
+     background-color: rgb(190, 55, 1);
+    grid-template-areas: 
+    "title title  form" ;
+    
+}
+
+#message{
+    grid-area: title;
+    padding-left:36px;
+}
+
+#form{
+    grid-area:form;
+    padding-top:37px;
+    margin: 35px;
+}
+
+label{
+    font-size:20px;
+}
+
+input{
+    font-size: 20px;
+    height: 100%;
+  
+}
+
+#form , button{
+    font-size: 20px;
+}
+
+
+
+
+
+
+
+
+
+
