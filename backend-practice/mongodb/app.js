@@ -2,12 +2,19 @@ const mongoose = require('mongoose');
 const Article = require('./articles');
 const User = require('./users');
 const jwt = require('jwt-simple');
+
 const secret = '35ffdf46hh'
+
+
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
+
+
 const bodyparser = require('body-parser');
+
 const LocalStrategy = require('passport-local').Strategy;
 const cors = require('cors');
+
 let express = require('express');
 
 require('./passport')(passport);
@@ -16,6 +23,7 @@ require('./Auth')(passport);
 let app = express();
 
 mongoose.connect('mongodb://localhost/test', { useNewUrlParser: true });
+
 let db = mongoose.connection;
 
 db.once('open', function () {
@@ -36,6 +44,8 @@ app.use(passport.session());
 
 function tokenForUser(user) {
     const timestamp = new Date().getTime();
+
+    
     return jwt.encode({ sub: user.id, lat: timestamp }, secret);
 }
 
