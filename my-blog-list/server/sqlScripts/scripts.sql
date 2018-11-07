@@ -38,7 +38,7 @@ select * from authors inner join blogs on author_id = authors.id;
 
 CREATE TABLE IF NOT EXISTS users(
     id serial PRIMARY KEY,
-    name varchar(255) NOT NULL,
+    email varchar(255) NOT NULL,
     hashed_password varchar(255) NOT NULL UNIQUE,
     created_at timestamp NOT NULL DEFAULT NOW() NOT NULL,
     updated_at timestamp NOT NULL DEFAULT NOW() NOT NULL

@@ -1,26 +1,30 @@
 import React, { Component } from "react";
 import "../App.css";
 import { reduxForm, Field } from "redux-form";
-import {connect} from "react-redux"
+import { connect } from "react-redux";
 import * as thunks from "../action/thunk";
 
 class FormRegister extends Component {
+  constructor() {
+    super();
 
-  handleSubmit = (data) => {
-    // console.log(data);
-    //  this.props.submitToServer(data);
-     this.props.submitToServer(data);
-    
+    this.state = {
+      isSuccess: false
+    };
+  }
+
+  handleSubmit = async data => {
+    await this.props.signInAction(data, this.props.history);
   };
 
   render() {
     const { handleSubmit } = this.props;
+    console.log(this.state.isSuccess);
 
     return (
       <div className="Form">
         <h1> Register Form </h1>
-
-        <form onSubmit={handleSubmit(this.props.submitToServer)}>
+        <form onSubmit={handleSubmit(this.handleSubmit)}>
           <label> email </label>
           <Field type="text" name="email" component="input" />
 
@@ -37,11 +41,10 @@ class FormRegister extends Component {
   }
 }
 
-
-
 function mapDispatchToProps(dispatch) {
   return {
-    submitToServer: data => dispatch(thunks.submitToServer(data))
+    signInAction: (data, history) =>
+      dispatch(thunks.signInAction(data, history))
   };
 }
 
@@ -51,5 +54,5 @@ const registerUser = reduxForm({
 
 export default connect(
   null,
-  mapDispatchToProps,
+  mapDispatchToProps
 )(registerUser);

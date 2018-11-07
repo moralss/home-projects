@@ -1,20 +1,44 @@
 import React, { Component } from "react";
 import "./App.css";
-import RegisterForm from './Compenents/FormRegister';
-import Form from "./Compenents/Form";
-import AddBlog from "./Compenents/AddBlog";
-import ViewBlog from "./Compenents/ViewBlogs";
+import AddBlog from "./container/AddBlog";
+import ViewBlogs from "./container/ViewBlogs";
+import FormRegister from "./container/FormRegister";
+import LoginForm from "./container/LoginForm";
+
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        {/* <Form /> */}
-        {/* <AddBlog/> */}
-        <RegisterForm/>
+      <div>
+        <Router>
+          <div className="App">
+            <Route
+              exact
+              path="/addblog"
+              component={props => <AddBlog {...props} />}
+            />
 
-        {/* <ViewBlog/> */}
+             <Route
+              exact
+              path="/formregister"
+              component={props => <FormRegister {...props} />}
+            />
 
+            <Route
+              exact
+              path="/loginform"
+              component={props => <LoginForm {...props} />}
+            />
+
+            <Route
+              exact
+              path="/viewblogs"
+              component={props => <ViewBlogs {...props} />}
+            />
+            
+          </div>
+        </Router>
       </div>
     );
   }

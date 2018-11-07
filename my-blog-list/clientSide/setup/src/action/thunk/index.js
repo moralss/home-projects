@@ -1,33 +1,24 @@
-import axios from 'axios';
-const URL = "http://localhost:3001/user"; 
+import axios from "axios";
+const URL = "http://localhost:3001";
 
+export const AUTHENTICATED = "AUTHENTICATED";
+export const AUTHENTICATION_ERROR = "AUTHENTICATION_ERROR";
 
-export const submitToServer = credentials => {
-    return async dispatch => {
-      dispatch({ type: "LOADING_TRUE" });
-      await axios.post(URL, { credentials });
-      dispatch({ type: "LOADING_FALSE" });
-    };
+export function signInAction(credentials, history) {
+
+  return async dispatch => {
+    try {
+      const res = await axios.post(`${URL}/signin`, credentials);
+
+      dispatch({ type: AUTHENTICATED });
+      localStorage.setItem("user", res.data.token);
+
+      history.push("/Addblog");
+    } catch (error) {
+      dispatch({
+        type: AUTHENTICATION_ERROR,
+        payload: "Invalid email or password"
+      });
+    }
   };
-  
-
-// export function submitToServer({ email, password , author }) {
-//     return async (dispatch) => {
-//       try {
-//         const res = await axios.post(`${URL}/user`, { email, password , author });
-  
-//          dispatch({ type: "AUTHENTICATED" });
-//         // localStorage.setItem('user', res.data.token);
-//         // history.push('/secret');
-//       } catch(error) {
-//         dispatch({
-//           type:" AUTHENTICATION_ERROR",
-//           payload: 'Invalid email or password'
-//         });
-//             console.log(error);
-//       }
-//     };
-//   }
-
-
-  
+}
