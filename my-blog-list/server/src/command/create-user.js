@@ -14,14 +14,13 @@ const createUser = async user => {
     let user = await client.query(userStatement, userParameters);
 
     const id = user.rows[0].id;
-    let authorParameters = [author, id];
-
+    let authorParameters = [author, id];    
     creatAuthor(authorParameters);
   } catch (e) {
     console.log(e);
   }
 
-  await client.end();
+  await client.release();
 };
 
 module.exports = {

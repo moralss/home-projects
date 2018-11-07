@@ -9,7 +9,7 @@ const creatAuthor = async details => {
     console.log(e);
   }
 
-  await client.end();
+  await client.release();
 };
 
 module.exports = {

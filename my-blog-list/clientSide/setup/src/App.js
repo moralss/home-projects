@@ -3,9 +3,18 @@ import "./App.css";
 import AddBlog from "./container/AddBlog";
 import ViewBlogs from "./container/ViewBlogs";
 import FormRegister from "./container/FormRegister";
+import RequireAuth from "./container/higerOrder.j/RequireAuth";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import { AUTHENTICATED } from "./action/thunk";
+import store from "./config/store";
+import Navbar from "./container/Navbar";
 import LoginForm from "./container/LoginForm";
 
-import { BrowserRouter as Router, Route } from "react-router-dom";
+const user = localStorage.getItem("user");
+
+if (user) {
+  store.dispatch({ type: AUTHENTICATED });
+}
 
 class App extends Component {
   render() {
@@ -13,21 +22,19 @@ class App extends Component {
       <div>
         <Router>
           <div className="App">
+            <Navbar />
+            <Route exact path="/addblog" 
+            component={RequireAuth(AddBlog)} />
+
             <Route
               exact
-              path="/addblog"
-              component={props => <AddBlog {...props} />}
-            />
-
-             <Route
-              exact
-              path="/formregister"
+              path="/signin"
               component={props => <FormRegister {...props} />}
             />
 
             <Route
               exact
-              path="/loginform"
+              path="/login"
               component={props => <LoginForm {...props} />}
             />
 
@@ -36,7 +43,6 @@ class App extends Component {
               path="/viewblogs"
               component={props => <ViewBlogs {...props} />}
             />
-            
           </div>
         </Router>
       </div>

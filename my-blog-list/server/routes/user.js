@@ -1,39 +1,34 @@
 const { createUser } = require("../src/command/create-user");
 const passport = require("passport");
-const jwt = require("jwt-simple");
-let secret = "dbnnf45d";
-const {getUser} = require("../src/queries/user");
+const { getUser } = require("../src/queries/user");
+const { createToken } = require("../src/auth/createToken");
 
-function tokenForUser(user) {
-  console.log("issue token for " , user);
-  const timestamp = new Date().getTime();  
-  return jwt.encode({ sub: 1, lat: timestamp }, secret);
-}
+let middeware = passport.authenticate("local");
 
 const UserRoutes = app => {
-  app.post(
-    "/login",
-    passport.authenticate("local", {
-      successRedirect: "/",
-      failureRedirect: "/"
-    })
-  );
+  app.post("/login", middeware, async (req, res) => {
+    let { email } = req.body;
+    try {
+      const user = await getUser(email);
+      console.log(user);
+      let token = createToken(user.id);
+      res.send({ token }).end();
+    } catch (e) {
+      res.send(400).end();
+    }
+  });
 
   app.post("/signin", async (req, res) => {
     const userDetails = req.body;
     try {
       await createUser(userDetails);
-      let user = await getUser(userDetails.email);       
-      const timestamp = new Date().getTime();        
-      token = jwt.encode({ sub: user.id, lat: timestamp }, secret)
-      res.send({ "token" : token}).end();
-
+      let user = await getUser(userDetails.email);
+      let token = createToken(user.id);
+      res.send({ token }).end();
     } catch (e) {
       res.send(401).end();
       console.log(e);
     }
-
-
   });
 };
 
