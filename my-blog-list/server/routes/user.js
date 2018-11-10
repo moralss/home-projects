@@ -1,13 +1,16 @@
+
 const { createUser } = require("../src/command/create-user");
 const passport = require("passport");
 const { getUser } = require("../src/queries/user");
 const { createToken } = require("../src/auth/createToken");
+const jwt = require("jwt-simple");
 
 let middeware = passport.authenticate("local");
 
 const UserRoutes = app => {
   app.post("/login", middeware, async (req, res) => {
     let { email } = req.body;
+
     try {
       const user = await getUser(email);
       console.log(user);
@@ -30,6 +33,13 @@ const UserRoutes = app => {
       console.log(e);
     }
   });
+
+  // let secret = "dbnnf45d";
+  // const jsonWebToken = jwt.decode(token, secret);
+
+
 };
+
+
 
 module.exports = { UserRoutes };

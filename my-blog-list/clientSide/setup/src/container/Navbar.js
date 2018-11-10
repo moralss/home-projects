@@ -6,36 +6,36 @@ import { Link } from "react-router-dom";
 class Navbar extends Component {
   navbarLinks() {
     if (!this.props.authenticated) {
-      return (
-        this.createVisitorNav() 
-      );
+      return this.createVisitorNav();
     } else {
-      return (
-       this.createPrivateNav() 
-      );
+      return this.createPrivateNav();
     }
   }
 
-  createPrivateNav(){
-      return (
-        <ul>
-          <li key="secret">
-            <Link to="/signin">sign in </Link>
-          </li>
-          <li key="signout">
-            <Link to="/login">login </Link>
-          </li>
-        </ul>)
+  createPrivateNav() {
+    return (
+      <ul>
+        <li>
+          <Link to="/signout">sign out </Link>
+        </li>
+        <li>
+          <Link to="/viewblogs">view blogs </Link>
+        </li>
+        <li>
+          <Link to="/addblog">add blogs </Link>
+        </li>
+      </ul>
+    );
   }
 
   createVisitorNav() {
     return (
       <ul>
         <li>
-          <Link to="/addblogs">add blogs</Link>
+          <Link to="/signin">sign in</Link>
         </li>
         <li>
-          <Link to="/signin">view blogs</Link>
+          <Link to="/login">login in </Link>
         </li>
       </ul>
     );

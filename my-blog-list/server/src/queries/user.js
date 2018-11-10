@@ -5,10 +5,10 @@ const getUser = async email => {
   let statement = `SELECT * FROM users WHERE  email = $1`;
   const res = await client.query(statement, [email]);
   try {
-    await client.end();
+    await client.release();
     return res.rows[0];
   } catch (e) {
-    await client.end();
+    await client.release();
     return { message: "user not found!" };
   }
 };
@@ -18,10 +18,10 @@ const getUserById = async (id) => {
   let statement = `SELECT * FROM users WHERE  id = $1`;
   const res = await client.query(statement, [id]);
   try {
-    await client.end();
+    await client.release();
     return res.rows[0];
   } catch (e) {
-    await client.end();
+    await client.release();
     return { message: "user not found!" };
   }
 
@@ -33,11 +33,11 @@ const getUsers = async () => {
   let statement = `SELECT id , hashed_password , name from users`;
   const res = await client.query(statement, [email]);
   try {
-    await client.end();
+    await client.release();
     return res.rows;
 
   } catch (e) {
-    await cliuserent.end();
+    await cliuserent.release();
     return { message: "user not found!" };
   }
 };

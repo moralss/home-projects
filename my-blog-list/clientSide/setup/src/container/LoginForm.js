@@ -36,14 +36,6 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-// function mapDispatchToProps(dispatch) {
-//   return {
-//     signInAction: (data, history) =>
-//       dispatch(thunks.signInAction(data, history))
-//   };
-// }
-
-
 
 let loginConfig = reduxForm({
   form: "loginForm"

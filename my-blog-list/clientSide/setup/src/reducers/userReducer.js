@@ -1,14 +1,13 @@
+import { RECIEVED_PROFILE } from "../action/thunk";
+
 const initalState = {
-  auth: false,
-  
+  profile: []
 };
 
-const userReducer = (state = initalState, action) => {
+export const userReducer = (state = initalState, action) => {
   switch (action.type) {
-    case "AUTH_TRUE":
-      return { ...state, auth: true };
-    case "AUTH_FALSE":
-      return { ...state, auth: false };
+    case RECIEVED_PROFILE:
+      return { ...state, profile: [action.payload] };
 
     default:
       return state;

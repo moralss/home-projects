@@ -5,12 +5,13 @@ const passport = require("passport");
 const blog = require("./routes/blogs");
 const user = require("./routes/user");
 require("./src/auth/passport")(passport);
-const app = express();
+const profile = require("./routes/profile");
 
-const middleware = passport.authenticate("jwt", { session: false });
+const app = express();
+const { getUser } = require("./src/queries/user");
+
 
 // { "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsYXQiOjE1NDEyNTgwMDEwMjh9.S8WjKDmOK0Cox6UK3yRx54tJn_H2bfTjaunedYWy-xg"
-
 
 require("./src/auth/Auth")(passport);
 app.use(cors());
@@ -18,14 +19,23 @@ app.use(bodyParser.json());
 app.use(passport.initialize());
 app.use(passport.session());
 
+profile.profileRoutes(app);
 blog.blogRoute(app);
 user.UserRoutes(app);
 
+const jwtDecript = passport.authenticate("jwt", { session: false });
 
-app.get("/", passport.authenticate("jwt", { session: false }), (req, res) => {
-  
-  res.send("working").end();
+app.get("/home", jwtDecript, async (req, res) => {
+  try {
+    const user = await getUser(req.user.email);
+    res.send(user).end();
+  } catch (e) {
+    res.send(400).end();
+  }
+});
 
+app.get("/", jwtDecript, (req, res) => {
+  res.send(req.user).end();
 });
 
 let port = 3001;

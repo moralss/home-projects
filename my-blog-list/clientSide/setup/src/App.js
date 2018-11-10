@@ -23,26 +23,18 @@ class App extends Component {
         <Router>
           <div className="App">
             <Navbar />
-            <Route exact path="/addblog" 
-            component={RequireAuth(AddBlog)} />
-
+            <Route exact path="/addblog" component={RequireAuth(AddBlog)} />
             <Route
               exact
               path="/signin"
               component={props => <FormRegister {...props} />}
             />
-
             <Route
               exact
               path="/login"
               component={props => <LoginForm {...props} />}
             />
-
-            <Route
-              exact
-              path="/viewblogs"
-              component={props => <ViewBlogs {...props} />}
-            />
+            <Route exact path="/viewblogs" component={RequireAuth(ViewBlogs)} />
           </div>
         </Router>
       </div>

@@ -3,7 +3,6 @@ const { bcryptPassword } = require("../auth/bcryptPassword");
 const { creatAuthor } = require("./create-author");
 const createUser = async user => {
   let { email, password, author } = user;
-  console.log(user);
 
   const client = await getClient();
   let userStatement = `INSERT INTO users(email ,  hashed_password)  VALUES($1 , $2 )  RETURNING id `;
