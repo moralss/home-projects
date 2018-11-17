@@ -23,19 +23,19 @@ class FormRegister extends Component {
 
     return (
       <div className="Form">
-        <h1> Register Form </h1>
-        <form onSubmit={handleSubmit(this.handleSubmit)}>
-          <label> email </label>
-          <Field type="text" name="email" component="input" />
+          <h1> Register Form </h1>
+          <form onSubmit={handleSubmit(this.handleSubmit)}>
+            <label> email </label>
+            <Field type="text" name="email" component="input" />
 
-          <label> password </label>
-          <Field type="password" name="password" component="input" />
+            <label> password </label>
+            <Field type="password" name="password" component="input" />
 
-          <label> author </label>
-          <Field type="author" name="author" component="input" />
+            <label> author </label>
+            <Field type="author" name="author" component="input" />
 
-          <input type="submit" />
-        </form>
+            <input type="submit" />
+          </form>
       </div>
     );
   }

@@ -5,7 +5,7 @@ import * as actions from "../action/thunk";
 import { connect } from "react-redux";
 
 class Profile extends Component {
-  componentWillMount() {
+  componentDidMount() {
     this.props.fetchUserProfile();
   }
 

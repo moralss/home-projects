@@ -34,8 +34,6 @@ INSERT INTO users ( name , hashed_password )
 select * from authors inner join blogs on author_id = authors.id;  
 
 
-
-
 CREATE TABLE IF NOT EXISTS users(
     id serial PRIMARY KEY,
     email varchar(255) NOT NULL,
@@ -45,9 +43,6 @@ CREATE TABLE IF NOT EXISTS users(
 );                                                                                                                                                                                                                                                                                                                                                                                                                
 
 
-
-
-
 CREATE TABLE IF NOT EXISTS authors (
     id serial PRIMARY KEY,
     name varchar(255) NOT NULL,
@@ -55,7 +50,6 @@ CREATE TABLE IF NOT EXISTS authors (
     created_at timestamp NOT NULL DEFAULT NOW() NOT NULL,
     updated_at timestamp NOT NULL DEFAULT NOW() NOT NULL
 );
-
 
 
 CREATE TABLE IF NOT EXISTS blogs (

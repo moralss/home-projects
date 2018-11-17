@@ -23,18 +23,8 @@ profile.profileRoutes(app);
 blog.blogRoute(app);
 user.UserRoutes(app);
 
-const jwtDecript = passport.authenticate("jwt", { session: false });
 
-app.get("/home", jwtDecript, async (req, res) => {
-  try {
-    const user = await getUser(req.user.email);
-    res.send(user).end();
-  } catch (e) {
-    res.send(400).end();
-  }
-});
-
-app.get("/", jwtDecript, (req, res) => {
+app.get("/",  (req, res) => {
   res.send(req.user).end();
 });
 

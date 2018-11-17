@@ -13,7 +13,6 @@ const UserRoutes = app => {
 
     try {
       const user = await getUser(email);
-      console.log(user);
       let token = createToken(user.id);
       res.send({ token }).end();
     } catch (e) {
