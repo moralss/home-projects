@@ -4,6 +4,9 @@ const bodyParser = require("body-parser");
 const passport = require("passport");
 const blog = require("./routes/blogs");
 const user = require("./routes/user");
+const blogModify = require("./routes/blogmodify");
+
+
 require("./src/auth/passport")(passport);
 const profile = require("./routes/profile");
 
@@ -22,6 +25,7 @@ app.use(passport.session());
 profile.profileRoutes(app);
 blog.blogRoute(app);
 user.UserRoutes(app);
+blogModify.blogModify(app);
 
 
 app.get("/",  (req, res) => {

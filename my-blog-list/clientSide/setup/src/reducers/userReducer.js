@@ -1,13 +1,15 @@
 import {
   RECIEVED_EDIT_BLOG,
   RECIEVED_LATEST_BLOG,
-  RECIEVED_PROFILE
+  RECIEVED_PROFILE,
+  RECIEVED_All_BLOG
 } from "../action/thunk";
 
 const initalState = {
   profile: [],
   latestBlog: [],
-  editBlog: { text: "", id: "" }
+  editBlog: { text: "", id: "" },
+  allBlogs: []
 };
 
 export const userReducer = (state = initalState, action) => {
@@ -21,6 +23,8 @@ export const userReducer = (state = initalState, action) => {
 
     case RECIEVED_LATEST_BLOG:
       return { ...state, latestBlog: [...action.payload] };
+    case RECIEVED_All_BLOG:
+      return { ...state, allBlogs: [...action.payload] };
     default:
       return state;
   }

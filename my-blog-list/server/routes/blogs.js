@@ -1,8 +1,7 @@
-const { getProfile } = require("../src/queries/profile");
+const { getProfile} = require("../src/queries/profile");
 const { jwtCheck } = require("../src/auth/jwtCheck");
-const { createBlog  , updateBlog,} = require("../src/command/blog");
-const { editBlogPost, deleteBlog } = require("../src/queries/blog");
-const { getLatestBlog } = require("../src/queries/blog");
+const { createBlog} = require("../src/command/blog");
+const { getLatestBlog , showAllBlogs } = require("../src/queries/blog");
 
 const passport = require("passport");
 
@@ -30,36 +29,13 @@ const blogRoute = app => {
     }
   });
 
-  app.delete("/blog", async (req, res) => {
-    let blogId = req.body.id;
+  app.get("/allblogs", async (req, res) => {
     try {
-      const profile = await deleteBlog(blogId);
-      res.send(201).end();
+      const allBlogs = await showAllBlogs();
+      res.json(allBlogs).end();
     } catch (e) {
       console.log(e);
       res.send(500).end();
-    }
-  });
-
-  app.get("/editblog/:id", jwtCheck, async (req, res) => {
-    const editBlog = Number(req.params.id);
-    try {
-      const blog = await editBlogPost(editBlog);
-      console.log(editBlog);
-      res.send(blog).end();
-    } catch (e) {
-      console.log(e);
-    }
-  });
-
-  app.put("/editblog", jwtCheck , async (req, res) => {
-    const updatedBlog = req.body;
-    try {
-      await updateBlog(updatedBlog);
-      res.send(201).end();
-    } catch (e) {
-      console.log(e);
-      res.send(500);
     }
   });
 };

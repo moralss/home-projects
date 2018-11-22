@@ -3,6 +3,8 @@ const URL = "http://localhost:3001";
 
 let userToken = localStorage.getItem("user");
 axios.defaults.headers.common["authorization"] = userToken;
+
+export const RECIEVED_All_BLOG = "RECIEVED_All_BLOG";
 export const AUTHENTICATED = "AUTHENTICATED";
 export const AUTHENTICATION_ERROR = "AUTHENTICATION_ERROR";
 export const USER_INFO = "GET_USER_INFO";
@@ -20,8 +22,9 @@ export const signInAction = (credentials, history) => {
         localStorage.setItem("user", res.data.token);
       }, 3000);
       dispatch({ type: AUTHENTICATED });
-    } catch (error) {
       history.push("/addblog");
+
+    } catch (error) {
       dispatch({
         type: AUTHENTICATION_ERROR,
         payload: "Invalid email or password"
@@ -106,6 +109,18 @@ export const getEditBlog = blogId => {
   };
 };
 
+export const getAllBlogs = () => {
+  return async dispatch => {
+    try {
+      const res = await axios.get(`${URL}/allblogs`);
+      dispatch({ type: RECIEVED_All_BLOG, payload: res.data });
+    } catch (e) {
+      console.log(e);
+    }
+  };
+};
+
+
 export const deleteBlog = blogId => {
   return async dispatch => {
     try {
@@ -137,4 +152,10 @@ export const updateBlog = (blogInfo, history) => {
   };
 };
 
+
+
+
 export const getSingleBlog = id => {};
+
+
+

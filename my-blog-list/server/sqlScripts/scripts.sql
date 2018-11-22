@@ -31,7 +31,8 @@ VALUES ( 'boreme ,,dfdlfkd k bkls fd kfkjbjlj dfdsf' ,  1 );
 
 INSERT INTO users ( name , hashed_password ) 
 
-select * from authors inner join blogs on author_id = authors.id;  
+select authors.name , blogs.text , blogs.updated_at  from
+ authors inner join blogs on author_id = authors.id;  
 
 
 CREATE TABLE IF NOT EXISTS users(

@@ -12,11 +12,15 @@ class Navbar extends Component {
     }
   }
 
+  signOutUser(){
+    localStorage.clear('user');
+  }
+
   createPrivateNav() {
     return (
       <ul>
         <li>
-          <Link to="/signout">sign out </Link>
+          <button onClick={() => this.signOutUser()}>sign out </button>
         </li>
         <li>
           <Link to="/viewblogs">view blogs </Link>
