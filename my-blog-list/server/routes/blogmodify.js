@@ -1,4 +1,5 @@
 const { jwtCheck } = require("../src/auth/jwtCheck");
+const { updateBlog } = require("../src/command/blog");
 const { editBlogPost, deleteBlog } = require("../src/queries/blog");
 
 const blogModify = app => {
@@ -25,7 +26,7 @@ const blogModify = app => {
     }
   });
 
-  app.put("/editblog", jwtCheck , async (req, res) => {
+  app.put("/editblog", jwtCheck, async (req, res) => {
     const updatedBlog = req.body;
     try {
       await updateBlog(updatedBlog);

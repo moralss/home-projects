@@ -27,7 +27,7 @@ export const signInAction = (credentials, history) => {
     } catch (error) {
       dispatch({
         type: AUTHENTICATION_ERROR,
-        payload: "Invalid email or password"
+        payload: error
       });
     }
   };
@@ -58,7 +58,7 @@ function setAxiosHeader() {
 export const fetchUserProfile = () => {
   return async dispatch => {
     try {
-      const res = await axios.get(`${URL}/profile`,setAxiosHeader);
+      const res = await axios.get(`${URL}/profile`, setAxiosHeader);
       console.log("response", res);
       dispatch({ type: RECIEVED_PROFILE, payload: res.data });
     } catch (e) {
@@ -155,7 +155,7 @@ export const updateBlog = (blogInfo, history) => {
 
 
 
-export const getSingleBlog = id => {};
+export const getSingleBlog = id => { };
 
 
 

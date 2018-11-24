@@ -37,7 +37,7 @@ select authors.name , blogs.text , blogs.updated_at  from
 
 CREATE TABLE IF NOT EXISTS users(
     id serial PRIMARY KEY,
-    email varchar(255) NOT NULL,
+    email varchar(255) NOT NULL UNIQUE,
     hashed_password varchar(255) NOT NULL UNIQUE,
     created_at timestamp NOT NULL DEFAULT NOW() NOT NULL,
     updated_at timestamp NOT NULL DEFAULT NOW() NOT NULL
@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS users(
 
 CREATE TABLE IF NOT EXISTS authors (
     id serial PRIMARY KEY,
-    name varchar(255) NOT NULL,
+    name varchar(255) NOT NULL UNIQUE,
     user_id INT REFERENCES users(id) NOT NULL,
     created_at timestamp NOT NULL DEFAULT NOW() NOT NULL,
     updated_at timestamp NOT NULL DEFAULT NOW() NOT NULL

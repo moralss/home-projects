@@ -9,7 +9,7 @@ const getUser = async email => {
     return res.rows[0];
   } catch (e) {
     await client.release();
-    return { message: "user not found!" };
+    return 
   }
 };
 

@@ -3,8 +3,6 @@ const { jwtCheck } = require("../src/auth/jwtCheck");
 const { createBlog} = require("../src/command/blog");
 const { getLatestBlog , showAllBlogs } = require("../src/queries/blog");
 
-const passport = require("passport");
-
 const blogRoute = app => {
   app.post("/blog", jwtCheck, async (req, res) => {
     try {
