@@ -15,27 +15,42 @@ class FormRegister extends Component {
 
   handleSubmit = async data => {
     await this.props.signInAction(data, this.props.history);
+
   };
 
+  renderField = ({
+    input,
+    label,
+    type,
+    meta: { touched, error }
+  }) => {
+    return (
+      <div>
+        <label> {label}</label>
+        <div>
+          <input {...input} type={type} placeholder={label} />
+          {touched && error && <span>{this.props.errors.email}</span>}
+        </div>
+      </div>
+    )
+  }
+
   render() {
-    const { handleSubmit } = this.props;
-    console.log(this.state.isSuccess);
+    const { handleSubmit, submitting } = this.props;
+    const { email, author, password } = this.props.errors;
 
     return (
       <div className="Form">
-          <h1> Register Form </h1>
-          <form onSubmit={handleSubmit(this.handleSubmit)}>
-            <label> email </label>
-            <Field type="text" name="email" component="input" />
-
-            <label> password </label>
-            <Field type="password" name="password" component="input" />
-
-            <label> author </label>
-            <Field type="author" name="author" component="input" />
-
-            <input type="submit" />
-          </form>
+        <h1> Register Form </h1>
+        <form onSubmit={handleSubmit(this.handleSubmit)}>
+          <Field type="text" label="Email" name="email" component={this.renderField} />
+          <span style={{ color: "red" }} > {email} </span>
+          <Field type="password" label="Password" name="password" component={this.renderField} />
+          <span style={{ color: "red" }}> {password}</span>
+          <Field type="author" label="Author" name="author" component={this.renderField} />
+          <span style={{ color: "red" }}> {author}</span>
+          <input type="submit" disabled={submitting} />
+        </form>
       </div>
     );
   }
@@ -44,15 +59,22 @@ class FormRegister extends Component {
 function mapDispatchToProps(dispatch) {
   return {
     signInAction: (data, history) =>
-      dispatch(thunks.signInAction(data, history))
+      dispatch(thunks.signInAction(data, history)),
   };
 }
+
+function mapStateToProps(state) {
+  return { errors: state.errors.errors }
+}
+
+
+
 
 const registerUser = reduxForm({
   form: "registerUser"
 })(FormRegister);
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(registerUser);

@@ -27,7 +27,7 @@ export const signInAction = (credentials, history) => {
     } catch (error) {
       dispatch({
         type: AUTHENTICATION_ERROR,
-        payload: error
+        payload: error.response.data
       });
     }
   };

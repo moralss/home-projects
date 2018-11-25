@@ -2,7 +2,7 @@ import { AUTHENTICATED, AUTHENTICATION_ERROR } from "../action/thunk";
 
 let initialState = {
   authenticated: false,
-  error: []
+  errors: { email: "", password: "", author: "" }
 };
 
 export const authReducer = (state = initialState, action) => {
@@ -10,7 +10,9 @@ export const authReducer = (state = initialState, action) => {
     case AUTHENTICATED:
       return { ...state, authenticated: true };
     case AUTHENTICATION_ERROR:
-      return { ...state, error: action.payload };
+      const errors = { ...action.payload.error };
+      
+      return { ...state, errors:  {...errors}  };
 
     default:
       return state;
