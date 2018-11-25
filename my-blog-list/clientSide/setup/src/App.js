@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
-import { AUTHENTICATED } from "./action/thunk";
+import { AUTHENTICATED } from "./actionTypes";
 import store from "./config/store";
 import { mainRoute } from "./routes";
 

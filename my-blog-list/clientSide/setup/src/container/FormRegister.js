@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "../App.css";
 import { reduxForm, Field } from "redux-form";
 import { connect } from "react-redux";
-import * as thunks from "../action/thunk";
+import * as thunks from "../action/thunk/auth";
 
 class FormRegister extends Component {
   constructor() {

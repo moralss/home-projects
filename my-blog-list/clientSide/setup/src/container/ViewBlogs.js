@@ -39,8 +39,6 @@ class ViewBlogs extends Component {
     return (
       <div className="ViewBlogs">
         <Profile />
-
-        <button onClick={() => this.fetchUsers}> Click Me </button>
         <h1> All Blogs </h1>
 
         {this.displayBlogs()}

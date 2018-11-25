@@ -1,4 +1,4 @@
-import {history} from "../routes";
+import { history } from "../routes";
 
 import { AUTHENTICATED } from '../action/thunk';
 import axios from "axios";
@@ -6,16 +6,18 @@ const URL = "http://localhost:3001";
 
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
-const valdateFields = async (values, dispatch ) => {
-    console.log("values" , values);
+const valdateFields = async (values, dispatch) => {
+    console.log("values", values);
+
     try {
-        const res = await axios.post(`${URL}/signin`, values);
+        // const res = await axios.post(`${URL}/signin`, values);
         dispatch({ type: AUTHENTICATED });
         history.push('/addblog');
+
     } catch (error) {
-        console.log("response" , error)
+        console.log("response", error)
         const errorObject = error.response.data.errors;
-        console.log("errorObject" , errorObject);
+        console.log("errorObject", errorObject);
 
         throw { ...errorObject };
     }

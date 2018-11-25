@@ -1,4 +1,4 @@
-import { AUTHENTICATED, AUTHENTICATION_ERROR } from "../action/thunk";
+import { AUTHENTICATED, AUTHENTICATION_ERROR } from "../actionTypes";
 
 let initialState = {
   errors: { email: "", password: "", author: "" }
@@ -9,6 +9,7 @@ export const errorsReducer = (state = initialState, action) => {
     case AUTHENTICATED:
       return { ...state, authenticated: true };
     case AUTHENTICATION_ERROR:
+
       const errors = { ...action.payload.errors };
     console.log("reducer" , errors);
       return {

@@ -1,4 +1,4 @@
-import { AUTHENTICATED, AUTHENTICATION_ERROR } from "../action/thunk";
+import { AUTHENTICATED, AUTHENTICATION_ERROR } from "../actionTypes";
 
 let initialState = {
   authenticated: false,

@@ -1,6 +1,7 @@
 const { getClient } = require("../db");
 const { bcryptPassword } = require("../auth/bcryptPassword");
 const { creatAuthor } = require("./create-author");
+
 const createUser = async user => {
   let { email, password, author } = user;
 
@@ -15,6 +16,7 @@ const createUser = async user => {
     const id = user.rows[0].id;
     let authorParameters = [author, id];    
     creatAuthor(authorParameters);
+    return id;
   } catch (e) {
     console.log(e);
   }

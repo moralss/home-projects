@@ -5,8 +5,12 @@ import * as actions from "../action/thunk";
 import { connect } from "react-redux";
 
 class Profile extends Component {
-  componentDidMount() {
+  componentWillMount() {
     this.props.fetchUserProfile();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    console.log("nextProps", nextProps)
   }
 
   showProfile() {
@@ -25,7 +29,7 @@ class Profile extends Component {
 
     return (
       <div className="Profile">
-        name 
+        name
         {this.showProfile()}
       </div>
     );

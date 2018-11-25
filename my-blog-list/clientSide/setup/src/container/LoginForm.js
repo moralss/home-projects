@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "../App.css";
 import { connect } from "react-redux";
 import { reduxForm, Field } from "redux-form";
-import * as thunks from "../action/thunk";
+import * as thunks from "../action/thunk/auth";
 
 class Login extends Component {
 

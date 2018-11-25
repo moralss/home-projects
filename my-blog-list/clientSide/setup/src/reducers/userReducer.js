@@ -3,7 +3,7 @@ import {
   RECIEVED_LATEST_BLOG,
   RECIEVED_PROFILE,
   RECIEVED_All_BLOG
-} from "../action/thunk";
+} from "../actionTypes";
 
 const initalState = {
   profile: [],
