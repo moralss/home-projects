@@ -26,11 +26,11 @@ class AddBlog extends Component {
 
 
   render() {
-    console.log("hello " , this.props.profile);
+    console.log("hello ", this.props.profile);
     const { handleSubmit } = this.props;
     return (
       <div className="AddBlog">
-
+        <Profile />
         <h1> Add a new blog post </h1>
         <form onSubmit={handleSubmit(this.handleSubmit)}>
           <label> enter blog </label>
@@ -51,22 +51,22 @@ function mapStateToProps(state) {
   }
 }
 
-  function mapDispatchToProps(dispatch) {
-    return {
-      createBlog: blogInfo => dispatch(thunks.createBlog(blogInfo)),
-      getLatestBlog: () => dispatch(thunks.getLatestBlog()),
-      fetchUserProfile: () => dispatch(thunks.fetchUserProfile())
-    };
-  }
+function mapDispatchToProps(dispatch) {
+  return {
+    createBlog: blogInfo => dispatch(thunks.createBlog(blogInfo)),
+    getLatestBlog: () => dispatch(thunks.getLatestBlog()),
+    fetchUserProfile: () => dispatch(thunks.fetchUserProfile())
+  };
+}
 
-  const afterSubmit = (result, dispatch) => dispatch(reset("addBlogForm"));
+const afterSubmit = (result, dispatch) => dispatch(reset("addBlogForm"));
 
-  let addBlogConfig = reduxForm({
-    form: "addBlogForm",
-    onSubmitSuccess: afterSubmit
-  })(AddBlog);
+let addBlogConfig = reduxForm({
+  form: "addBlogForm",
+  onSubmitSuccess: afterSubmit
+})(AddBlog);
 
-  export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(addBlogConfig);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(addBlogConfig);

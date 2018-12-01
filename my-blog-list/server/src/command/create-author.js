@@ -1,15 +1,21 @@
 const { getClient } = require("../db");
-const creatAuthor = async details => {
+
+const creatAuthor = async parameters => {
   const client = await getClient();
 
   try {
-    let statement = `INSERT INTO authors(name , user_id) VALUES($1 , $2)`;
-    await client.query(statement, details);
+    let statement = `INSERT INTO authors(name , user_id) VALUES($1 , $2) RETURNING id`;
+    let res = await client.query(statement, parameters);
+    const id = res.rows[0].id;
+    await client.release();
+    return id;
+
   } catch (e) {
     console.log(e);
+    await client.release();
+    return
   }
 
-  await client.release();
 };
 
 module.exports = {
