@@ -1,24 +1,13 @@
 import axios from "axios";
 import * as actions from '../../actionTypes';
 import jwtDecode from "jwt-decode";
-
-
 const URL = "http://localhost:3001";
-let userToken = localStorage.getItem("user");
-axios.defaults.headers.common["authorization"] = userToken;
 
-
-//   let user = localStorage.getItem("user");
-//   const headers = { headers: { authorization: user } };
-//   return headers;
 function setAxiosHeader() {
   let user = localStorage.getItem("user");
-  const decodedToken = jwtDecode(user);
-  console.log("decodeToken", decodedToken);
   const headers = { headers: { authorization: user } };
   return headers;
 }
-
 
 
 export const fetchUserProfile = () => {
@@ -115,8 +104,6 @@ export const updateBlog = (blogInfo, history) => {
     }
   };
 };
-
-
 
 
 export const getSingleBlog = id => { };

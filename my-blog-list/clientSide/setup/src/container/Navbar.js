@@ -3,6 +3,8 @@ import "../App.css";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import history from "../history";
+import * as actions from "../action/normal-actions";
+
 
 class Navbar extends Component {
   navbarLinks() {
@@ -13,12 +15,13 @@ class Navbar extends Component {
     }
   }
 
-  signOutUser(){
+  signOutUser() {
     localStorage.clear('user');
     history.push('/signin');
+    this.props.disableAuth();
   }
 
-  createPrivateNav() {
+  PrivateNav() {
     return (
       <ul>
         <li>
@@ -34,7 +37,7 @@ class Navbar extends Component {
     );
   }
 
-  createVisitorNav() {
+  VisitorNav() {
     return (
       <ul>
         <li>
@@ -49,9 +52,20 @@ class Navbar extends Component {
 
   render() {
     console.log("authenticated", this.props.authenticated);
-    return <div>{this.navbarLinks()}</div>;
+    const { authenticated } = this.props;
+
+
+    return <div>{authenticated ? this.PrivateNav() : this.VisitorNav()}</div>;
   }
 }
+
+
+function mapDispatchToProps(dispatch) {
+  return {
+    disableAuth: () => dispatch(actions.disableAuth())
+  };
+}
+
 
 function mapStateToProps(state) {
   return {
@@ -59,4 +73,11 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(Navbar);
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar);
+
+
+
+
+
+
+
