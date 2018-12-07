@@ -8,10 +8,10 @@ const blogModify = app => {
     let blogId = req.body.id;
     try {
       const profile = await deleteBlog(blogId);
-      res.send(201).end();
+      res.status(201).end();
     } catch (e) {
       console.log(e);
-      res.send(500).end();
+      res.status(500).end();
     }
   });
 
@@ -19,6 +19,7 @@ const blogModify = app => {
     const editBlog = Number(req.params.id);
     try {
       const blog = await editBlogPost(editBlog);
+
       console.log(editBlog);
       res.send(blog).end();
     } catch (e) {

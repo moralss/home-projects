@@ -5,20 +5,23 @@ import * as thunks from "../action/thunk";
 import { Link } from "react-router-dom";
 
 
-class Blog extends Component {
+class UserBlogs extends Component {
   componentWillMount() {
     this.props.getUserBlogs();
   }
 
-  showLatestBlog() {
+
+  deleteBlog = async blogId => {
+    await this.props.deleteBlog(blogId);
+    await this.props.getUserBlogs();
+  };
+
+  render() {
     const { latestBlog } = this.props;
-            // if (latestBlog.length === 0) {
-            //   return <div> Loading ...</div>;
 
-            // } else if (latestBlog) {
-
-
-      return (
+    return (
+      <div className="LatestBlog">
+        <h1> blog post </h1>
         <div>
           {latestBlog.map(blog => {
             return (
@@ -26,28 +29,12 @@ class Blog extends Component {
                 <button onClick={() => this.deleteBlog(blog.id)}>
                   Delete
                 </button>
-
                 <Link to={`/editblog/${blog.id}`}>edit blog </Link>
                 {blog.text}
               </div>
             );
           })}
         </div>
-      );
-    // }
-  }
-
-  deleteBlog = async blogId => {
-    await this.props.deleteBlog(blogId);
-    await this.props.getLatestBlog();
-  };
-
-  render() {
-
-    return (
-      <div className="LatestBlog">
-        <h1> blog post </h1>
-        {this.showLatestBlog()}
       </div>
     );
   }
@@ -67,4 +54,4 @@ function mapDispatchToProps(dispatch) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Blog);
+)(UserBlogs);

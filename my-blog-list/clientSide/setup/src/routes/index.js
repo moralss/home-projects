@@ -13,20 +13,21 @@ import history from "../history";
 const user = localStorage.getItem("user");
 
 if (user) {
-  store.dispatch({ type: AUTHENTICATED });
+  store.dispatch({ type: AUTHENTICATED, authenticated: true });
 }
 
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
+  
+  
   let authenticated = store.getState().auth.authenticated;
-  console.log(authenticated);
-  console.log(user);
+  console.log("auth", authenticated);
 
   return (
     <Route
       {...rest}
       render={props =>
-        authenticated ? <Route {...rest} /> : <Redirect to="/signin" />
+        authenticated === true ? <Route {...rest} /> : <Redirect to="/signin" />
       }
     />
   );
@@ -38,7 +39,7 @@ export const mainRoute = () => {
       <div className="App">
         <Navbar />
 
-        <Route
+        <PrivateRoute
           exact
           path="/addblog"
           render={props => <AddBlog {...props} />}
@@ -55,16 +56,16 @@ export const mainRoute = () => {
           path="/login"
           component={props => <LoginForm {...props} />}
         />
-        <Route
+        <PrivateRoute
           exact
           path="/editblog/:id"
-          component={props => <EditBlog {...props} />}
+          render={props => <EditBlog {...props} />}
         />
 
-        <Route
+        <PrivateRoute
           exact
           path="/viewblogs"
-          component={props => <ViewBlogs {...props} />}
+          render={props => <ViewBlogs {...props} />}
         />
       </div>
     </Router>

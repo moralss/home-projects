@@ -24,10 +24,6 @@ function setAxiosHeader() {
 export const fetchUserProfile = () => {
   return async dispatch => {
     try {
-
-
-
-
       const res = await axios.get(`${URL}/profile`, setAxiosHeader());
       dispatch({ type: actions.RECIEVED_PROFILE, payload: res.data });
     } catch (e) {
@@ -82,7 +78,7 @@ export const getAllBlogs = () => {
   return async dispatch => {
     try {
       const res = await axios.get(`${URL}/allblogs`);
-      dispatch({ type: actions.RECIEVED_All_BLOG, payload: res.data });
+      dispatch({ type: actions.RECIEVED_All_BLOG, payload: res.data }, setAxiosHeader());
     } catch (e) {
       console.log(e);
     }
@@ -93,7 +89,7 @@ export const getAllBlogs = () => {
 export const deleteBlog = blogId => {
   return async dispatch => {
     try {
-      await axios.delete(`${URL}/blog`, { data: { id: blogId } });
+      await axios.delete(`${URL}/blog`, { data: { id: blogId } }, setAxiosHeader());
       dispatch({ type: actions.DELETE_SUCCESFUL });
     } catch (e) {
       dispatch({
@@ -105,11 +101,10 @@ export const deleteBlog = blogId => {
 };
 
 export const updateBlog = (blogInfo, history) => {
+
   return async dispatch => {
-    let user = localStorage.getItem("user");
-    const headers = { headers: { authorizationc: user } };
     try {
-      await axios.put(`${URL}/editblog`, blogInfo, headers);
+      await axios.put(`${URL}/editblog`, blogInfo, setAxiosHeader());
       dispatch({ type: " BLOG_SUCCESFUL_UPDATED" });
       history.push("/addblog");
     } catch (e) {

@@ -8,18 +8,8 @@ import UserBlogs from "./UserBlogs";
 
 class AddBlog extends Component {
 
-  componentWillMount() {
-    this.fetch();
-  }
-
-  fetch = async () => {
-    await this.props.fetchUserProfile();
-
-  }
-
   handleSubmit = async data => {
     await this.props.createBlog(data);
-
     await this.props.getUserBlogs();
   };
 
@@ -43,12 +33,6 @@ class AddBlog extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    state: state,
-    profile: state.user.profile
-  }
-}
 
 function mapDispatchToProps(dispatch) {
   return {
@@ -65,6 +49,6 @@ let addBlogConfig = reduxForm({
 })(AddBlog);
 
 export default connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
 )(addBlogConfig);
