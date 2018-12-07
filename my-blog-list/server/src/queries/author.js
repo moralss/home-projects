@@ -4,7 +4,7 @@ const getAuthor = async name => {
     const client = await getClient();
     let statement = `SELECT * FROM authors WHERE  name = $1`;
     const res = await client.query(statement, [name]);
-    try {
+    try {   
         await client.release();
         return res.rows[0];
     } catch (e) {

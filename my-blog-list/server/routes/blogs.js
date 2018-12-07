@@ -1,7 +1,7 @@
 const { getProfile } = require("../src/queries/profile");
 const { jwtCheck } = require("../src/auth/jwtCheck");
 const { createBlog } = require("../src/command/blog");
-const { getLatestBlog, showAllBlogs } = require("../src/queries/blog");
+const { getAuthorBlogs, showAllBlogs } = require("../src/queries/blog");
 
 const blogRoute = app => {
   app.post("/blog", jwtCheck, async (req, res) => {
@@ -19,7 +19,7 @@ const blogRoute = app => {
     try {
       const profile = await getProfile(req.user.id);
       console.log(profile);
-      const latestBlog = await getLatestBlog(profile.id);
+      const latestBlog = await getAuthorBlogs(profile.id);
       res.json(latestBlog).end();
     } catch (e) {
       console.log(e);

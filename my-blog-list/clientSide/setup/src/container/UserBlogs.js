@@ -7,15 +7,17 @@ import { Link } from "react-router-dom";
 
 class Blog extends Component {
   componentWillMount() {
-    this.props.getLatestBlog();
+    this.props.getUserBlogs();
   }
 
   showLatestBlog() {
     const { latestBlog } = this.props;
-    // if (latestBlog.length === 0) {
-    //   return <div> Loading ...</div>;
+            // if (latestBlog.length === 0) {
+            //   return <div> Loading ...</div>;
 
-    // } else if (latestBlog) {
+            // } else if (latestBlog) {
+
+
       return (
         <div>
           {latestBlog.map(blog => {
@@ -57,7 +59,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    getLatestBlog: () => dispatch(thunks.getLatestBlog()),
+    getUserBlogs: () => dispatch(thunks.getUserBlogs()),
     deleteBlog: blogId => dispatch(thunks.deleteBlog(blogId))
   };
 }

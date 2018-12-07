@@ -8,7 +8,6 @@ const profileRoutes = app => {
   app.get("/profile", jwtDecript, async (req, res) => {
     const userId = req.user.id;
     
-    
     const userProfile = await getProfile(userId);
     res.json(userProfile).end();
 

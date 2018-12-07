@@ -10,6 +10,7 @@ const createBlog = async (blogInfo, authorId) => {
   try {
     let blog = await client.query(statement, parameters);
     const blogId = blog.rows[0].id;
+    await client.release();
     return blogId;
   } catch (e) {
     console.log(e);
@@ -17,7 +18,6 @@ const createBlog = async (blogInfo, authorId) => {
     return;
   }
 
-  await client.release();
 };
 
 const updateBlog = async (blogInfo) => {

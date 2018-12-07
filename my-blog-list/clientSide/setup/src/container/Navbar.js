@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "../App.css";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import history from "../history";
 
 class Navbar extends Component {
   navbarLinks() {
@@ -14,6 +15,7 @@ class Navbar extends Component {
 
   signOutUser(){
     localStorage.clear('user');
+    history.push('/signin');
   }
 
   createPrivateNav() {

@@ -19,14 +19,13 @@ class AddBlog extends Component {
 
   handleSubmit = async data => {
     await this.props.createBlog(data);
-    await this.props.getLatestBlog();
-    await this.props.fetchUserProfile()
+
+    await this.props.getUserBlogs();
   };
 
 
 
   render() {
-    console.log("hello ", this.props.profile);
     const { handleSubmit } = this.props;
     return (
       <div className="AddBlog">
@@ -54,8 +53,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     createBlog: blogInfo => dispatch(thunks.createBlog(blogInfo)),
-    getLatestBlog: () => dispatch(thunks.getLatestBlog()),
-    fetchUserProfile: () => dispatch(thunks.fetchUserProfile())
+    getUserBlogs: () => dispatch(thunks.getUserBlogs())
   };
 }
 

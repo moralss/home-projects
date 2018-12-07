@@ -1,22 +1,34 @@
 import axios from "axios";
 import * as actions from '../../actionTypes';
+import jwtDecode from "jwt-decode";
+
 
 const URL = "http://localhost:3001";
 let userToken = localStorage.getItem("user");
 axios.defaults.headers.common["authorization"] = userToken;
 
 
+//   let user = localStorage.getItem("user");
+//   const headers = { headers: { authorization: user } };
+//   return headers;
 function setAxiosHeader() {
   let user = localStorage.getItem("user");
-  const headers = { headers: { authorizationc: user } };
+  const decodedToken = jwtDecode(user);
+  console.log("decodeToken", decodedToken);
+  const headers = { headers: { authorization: user } };
   return headers;
-
 }
+
+
+
 export const fetchUserProfile = () => {
   return async dispatch => {
     try {
-      const res = await axios.get(`${URL}/profile`, setAxiosHeader);
-      console.log("response", res);
+
+
+
+
+      const res = await axios.get(`${URL}/profile`, setAxiosHeader());
       dispatch({ type: actions.RECIEVED_PROFILE, payload: res.data });
     } catch (e) {
       dispatch({
@@ -30,7 +42,7 @@ export const fetchUserProfile = () => {
 export const createBlog = blogInfo => {
   return async dispatch => {
     try {
-      const res = await axios.post(`${URL}/blog`, blogInfo);
+      const res = await axios.post(`${URL}/blog`, blogInfo, setAxiosHeader());
       dispatch({ type: actions.POST_SUCCESFUL });
     } catch (error) {
       dispatch({
@@ -41,10 +53,10 @@ export const createBlog = blogInfo => {
   };
 };
 
-export const getLatestBlog = () => {
+export const getUserBlogs = () => {
   return async dispatch => {
     try {
-      const res = await axios.get(`${URL}/blog`);
+      const res = await axios.get(`${URL}/blog`, setAxiosHeader());
       dispatch({ type: actions.RECIEVED_LATEST_BLOG, payload: res.data });
     } catch (e) {
       dispatch({
@@ -58,7 +70,7 @@ export const getLatestBlog = () => {
 export const getEditBlog = blogId => {
   return async dispatch => {
     try {
-      const res = await axios.get(`${URL}/editblog/${blogId}`);
+      const res = await axios.get(`${URL}/editblog/${blogId}`, setAxiosHeader());
       dispatch({ type: actions.RECIEVED_EDIT_BLOG, payload: res.data });
     } catch (e) {
       console.log(e);

@@ -23,9 +23,15 @@
 
 -- lorem
 
+DELETE FROM users where id = 2;
+DELETE FROM author where user_id = 2;
 
-INSERT INTO authors ( name  , user_id) 
+DELETE FROM users as JOIN authors on user_id = users.id;
+select *  from authors inner join users on user_id = users.id;  
 
+
+
+INSERT INTO authors ( "name"  , user_id) 
 INSERT INTO blogs ( text , author_id)
 VALUES ( 'boreme ,,dfdlfkd k bkls fd kfkjbjlj dfdsf' ,  1 ); 
 

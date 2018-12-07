@@ -1,6 +1,6 @@
 const { getClient } = require("../db");
 
-const getLatestBlog = async authorId => {
+const getAuthorBlogs = async authorId => {
   const client = await getClient();
   let statement = `SELECT * FROM blogs WHERE  author_id = $1`;
   const res = await client.query(statement, [authorId]);
@@ -63,7 +63,7 @@ const showAllBlogs = async () => {
 
 
 module.exports = {
-  getLatestBlog,
+  getAuthorBlogs,
   deleteBlog,
   editBlogPost,
   showAllBlogs

@@ -6,12 +6,10 @@ const clearTable = async () => {
         await client.query(`delete from blogs`);
         await client.query(`delete from authors`);
         await client.query(`delete from users`);
-
         client.release()
     } catch (e) {
         console.log(e);
     }
-
 }
 
 module.exports = {

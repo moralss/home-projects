@@ -1,6 +1,5 @@
 const fakeUser = {
     email: "jsjabf@gmail.com",
-    author: "fafsmbefdf says",
     password: "fsrafdsl"
 };
 

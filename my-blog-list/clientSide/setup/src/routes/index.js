@@ -1,21 +1,20 @@
 import React from "react";
 import Navbar from "../container/Navbar";
-import createBrowserHistory from 'history/createBrowserHistory';
 import store from "../config/store";
 import AddBlog from "../container/AddBlog";
 import ViewBlogs from "../container/ViewBlogs";
 import FormRegister from "../container/FormRegister";
 import { Router, Route, Redirect } from "react-router-dom";
-import { AUTHENTICATED, fetchUserProfile } from "../action/thunk";
+import { AUTHENTICATED } from "../actionTypes";
 import LoginForm from "../container/LoginForm";
 import EditBlog from "../container/EditBlog";
+import history from "../history";
 
 const user = localStorage.getItem("user");
 
-// if (user) {
-//   store.dispatch({ type: AUTHENTICATED });
-// }
-export const history = createBrowserHistory();
+if (user) {
+  store.dispatch({ type: AUTHENTICATED });
+}
 
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
@@ -39,7 +38,7 @@ export const mainRoute = () => {
       <div className="App">
         <Navbar />
 
-        <PrivateRoute
+        <Route
           exact
           path="/addblog"
           render={props => <AddBlog {...props} />}

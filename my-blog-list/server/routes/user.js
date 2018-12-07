@@ -1,26 +1,37 @@
-const { createUser } = require("../src/command/create-user");
-
-const passport = require("passport");
+const { createUserAndAuthor } = require("../src/command/user");
+const bcrypt = require("bcryptjs");
+// const passport = require("passport");
 const { getUser } = require("../src/queries/user");
 const { createToken } = require("../src/auth/createToken");
 const { validateRegisterUser } = require("../src/validations/register");
-let middeware = passport.authenticate("local");
+// let middeware = passport.authenticate("local");
 
 
 const UserRoutes = app => {
-  app.post("/login", middeware, async (req, res) => {
-    console.log("login", req.body);
-
-    let { email } = req.body;
+  app.post("/login", async (req, res) => {
+    let { email, password } = req.body;
+    const user = await getUser(email);
+    if (!user) {
+      return res.status(404).json({ email: "user not found" });
+    }
 
     try {
-      const user = await getUser(email);
+      const isMatch = await bcrypt.compare(password, user.hashed_password);
+      if (!isMatch) {
+        return res.status(400).json({ password: "Password is incorrect" });
+      }
+
       let token = createToken(user.id);
-      res.send({ token }).end();
+      console.log(token);
+
+      return res.status(201).json({ token });
+
     } catch (e) {
-      console.log(e)
-      res.send(500).end();
+      console.log(e);
+      return res.status(500).json(e);
     }
+
+
   });
 
 
@@ -28,16 +39,15 @@ const UserRoutes = app => {
     const userDetails = req.body;
     console.log(userDetails);
     const { errors, isValid } = await validateRegisterUser(userDetails);
-    console.log("isValid :", isValid);
 
     if (!isValid) {
       return res.status(400).json({ errors }).end();
     }
 
     try {
-      await createUser(userDetails);
+      await createUserAndAuthor(userDetails);
       let user = await getUser(userDetails.email);
-      let token = createToken(user.id);
+      let token = createToken(user.id, userDetails);
       return res.send({ token }).end();
     } catch (e) {
       console.log(e);
