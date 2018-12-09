@@ -4,6 +4,7 @@ import { reduxForm, Field } from "redux-form";
 import { connect } from "react-redux";
 import * as thunks from "../action/thunk/auth";
 import renderField from "../components/Input";
+import { callCheck } from "../routes/routes";
 
 class FormRegister extends Component {
   constructor() {
@@ -11,10 +12,17 @@ class FormRegister extends Component {
 
   }
 
+
+  componentDidMount() {
+    callCheck();
+  }
+
+  
+
+
   handleSubmit = async data => {
     await this.props.registerUser(data);
   };
-
 
 
   render() {

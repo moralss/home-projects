@@ -2,6 +2,7 @@ const { getProfile } = require("../src/queries/profile");
 const { jwtCheck } = require("../src/auth/jwtCheck");
 const { createBlog } = require("../src/command/blog");
 const { getAuthorBlogs, showAllBlogs } = require("../src/queries/blog");
+const _ = require('lodash');
 
 const blogRoute = app => {
   app.post("/blog", jwtCheck, async (req, res) => {
@@ -30,7 +31,8 @@ const blogRoute = app => {
   app.get("/allblogs", async (req, res) => {
     try {
       const allBlogs = await showAllBlogs();
-      res.json(allBlogs).end();
+      const blogs = _.uniqBy(allBlogs, 'name');
+      res.json(blogs).end();
     } catch (e) {
       console.log(e);
       res.send(500).end();

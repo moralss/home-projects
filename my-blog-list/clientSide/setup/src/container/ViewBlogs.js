@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import Profile from "./Profile";
 import Navbar from "./Navbar";
 import * as thunks from "../action/thunk";
+import { Link } from "react-router-dom";
 
 class ViewBlogs extends Component {
   componentDidMount() {
@@ -22,6 +23,9 @@ class ViewBlogs extends Component {
                 <h1> Author : {blog.name}</h1>
                 <p>  text : {blog.text} </p>
                 <span> updated time : {blog.updated_at} </span>
+                <li>
+                  <Link to={`/authorblogs/${blog.id}`} >View Profile </Link>
+                </li>
               </div>
             );
           })}
@@ -40,9 +44,7 @@ class ViewBlogs extends Component {
       <div className="ViewBlogs">
         <Profile />
         <h1> All Blogs </h1>
-
         {this.displayBlogs()}
-        <button> Read more </button>
       </div>
     );
   }

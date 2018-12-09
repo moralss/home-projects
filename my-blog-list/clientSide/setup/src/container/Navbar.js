@@ -15,11 +15,14 @@ class Navbar extends Component {
     }
   }
 
+
   signOutUser() {
     localStorage.clear('user');
     history.push('/signin');
     this.props.disableAuth();
   }
+
+
 
   PrivateNav() {
     return (

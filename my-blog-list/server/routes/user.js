@@ -21,7 +21,7 @@ const UserRoutes = app => {
         return res.status(400).json({ password: "Password is incorrect" });
       }
 
-      let token = createToken(user.id);
+      let token = createToken(user.id , "user");
       console.log(token);
 
       return res.status(201).json({ token });
@@ -47,7 +47,7 @@ const UserRoutes = app => {
     try {
       await createUserAndAuthor(userDetails);
       let user = await getUser(userDetails.email);
-      let token = createToken(user.id, userDetails);
+      let token = createToken(user.id , "user");
       return res.send({ token }).end();
     } catch (e) {
       console.log(e);

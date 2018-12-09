@@ -63,6 +63,7 @@ export const getEditBlog = blogId => {
   };
 };
 
+
 export const getAllBlogs = () => {
   return async dispatch => {
     try {
@@ -101,6 +102,22 @@ export const updateBlog = (blogInfo, history) => {
         type: "UPDATE_ERROR",
         payload: " password"
       });
+    }
+  };
+};
+
+
+export const getBlogsForAuthor = (authorId) => {
+  console.log("authorId" , authorId);
+  return async dispatch => {
+    try {
+      const res = await axios.get(`${URL}/userinfo/${authorId}`, setAxiosHeader());
+      dispatch({
+        type: actions.RECIEVED_BLOGS_FOR_USER,
+        payload: res.data
+      })
+    } catch (e) {
+      console.log(e);
     }
   };
 };

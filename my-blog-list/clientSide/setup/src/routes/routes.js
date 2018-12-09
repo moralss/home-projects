@@ -9,19 +9,26 @@ import { AUTHENTICATED } from "../actionTypes";
 import LoginForm from "../container/LoginForm";
 import EditBlog from "../container/EditBlog";
 import history from "../history";
+import AuthorBlogs from "../container/authorBlogs";
+
+import jwtDecode from "jwt-decode";
+
 
 const user = localStorage.getItem("user");
 
 if (user) {
-  store.dispatch({ type: AUTHENTICATED, authenticated: true });
+  store.dispatch({ type: AUTHENTICATED, payload: true });
 }
 
 
+export const callCheck = async () => {
+  // const check = await checkUser();
+  // return check
+}
+
 const PrivateRoute = ({ component: Component, ...rest }) => {
-  
-  
   let authenticated = store.getState().auth.authenticated;
-  console.log("auth", authenticated);
+
 
   return (
     <Route
@@ -51,11 +58,19 @@ export const mainRoute = () => {
           component={props => <FormRegister {...props} />}
         />
 
+          <Route
+          exact
+          path="/authorblogs/:id"
+          component={props => <AuthorBlogs {...props} />}
+        />
+
+
         <Route
           exact
           path="/login"
           component={props => <LoginForm {...props} />}
         />
+        
         <PrivateRoute
           exact
           path="/editblog/:id"

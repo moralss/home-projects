@@ -45,11 +45,12 @@ const editBlogPost = async blogId => {
 const showAllBlogs = async () => {
   const client = await getClient();
   let statement = `
-  select authors.name , blogs.text , blogs.updated_at  from
-   authors inner join blogs on author_id = authors.id;  
-  
+  select  authors.id , authors.name , blogs.text , blogs.updated_at  from
+  authors inner join blogs on blogs.author_id = authors.id
+  ORDER BY blogs.updated_at  
+  ;  
   `;
-
+  
   const res = await client.query(statement);
   try {
     await client.release();
