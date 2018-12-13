@@ -2,8 +2,7 @@
 body{
     display: grid;
     grid-template-rows:80vh min-content 40vw repeat(3 , min-content);
-    grid-template-columns:  [sidebar-start] 8rem [sidebar-end full-start] 1fr 
-    repeat(8 ,  minmax(min-content , 14rem)) [center-end] 1fr  [full-end];
+    grid-template-columns: 8rem  1fr repeat(6 ,  minmax(min-content , 14rem))  6rem ;
     
     // grid-template-rows: repeat(4 , 1fr);
 }
