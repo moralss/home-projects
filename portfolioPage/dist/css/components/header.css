@@ -1,0 +1,19 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  font-family: 'Times New Roman', Times, serif; }
+
+.header {
+  background-color: blueviolet;
+  grid-column: 1/8;
+  grid-row: 1/3; }
+  .header__h1 {
+    color: #01102c;
+    font-size: 3rem;
+    font-weight: 200;
+    letter-spacing: 0.5rem;
+    word-spacing: 0.5rem; }
+  .header__paragraph {
+    color: #01102c;
+    font-weight: 150;
+    font-size: 1rem; }
