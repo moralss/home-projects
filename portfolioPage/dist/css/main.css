@@ -1,0 +1,38 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  font-family: 'Times New Roman', Times, serif; }
+
+body {
+  display: grid;
+  grid-template-rows: 80vh min-content 40vw repeat(3, min-content);
+  grid-template-columns: [sidebar-start] 8rem [sidebar-end full-start] 1fr repeat(8, minmax(min-content, 14rem)) [center-end] 1fr [full-end]; }
+
+.nav {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-rows: repeat(1, 1fr);
+  justify-items: self-end;
+  background-color: blue; }
+
+* {
+  margin: 0px;
+  padding: 0px; }
+
+.header_icon {
+  width: 400px;
+  height: 200px;
+  color: blue; }
+
+.header__h1 {
+  color: #01102c;
+  font-size: 3rem;
+  font-weight: 200;
+  letter-spacing: 0.5rem;
+  word-spacing: 0.5rem; }
+
+.paragraph {
+  color: #01102c;
+  font-family: serif;
+  font-weight: 150;
+  font-size: 1rem; }

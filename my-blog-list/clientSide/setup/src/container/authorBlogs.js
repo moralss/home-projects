@@ -15,7 +15,6 @@ class AuthorBlogs extends Component {
 
         const authorId = this.props.match.params.id;
         console.log("this.props.match", authorId);
-
         await this.props.getBlogsForAuthor(authorId);
 
     }
@@ -23,7 +22,6 @@ class AuthorBlogs extends Component {
 
 
     render() {
-        console.log("porps", this.props.authorBlogs);
         return (
             <div className="AuthorBlogs">
                 <Profile />

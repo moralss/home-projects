@@ -1,0 +1,17 @@
+@import './mixins.scss';
+
+
+@mixin giveStyling($some-number) {
+    color:green;
+    word-spacing: 9px;
+    letter-spacing: 9px;
+    font-size:$some-number;
+    text-shadow: 2px 0px 0px black;   
+   }
+ 
+ 
+ @mixin createGrid($some-number) {
+     display:grid;
+     grid-template-columns: repeat($some-number , 1fr);
+     text-align:center;
+ }

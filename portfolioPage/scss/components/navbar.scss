@@ -1,0 +1,16 @@
+
+.nav{
+    display: grid;
+    grid-gap:20px;
+    grid-template-rows: repeat(1 , 1fr);
+    justify-items: self-end;
+    background-color:blue;    
+    
+    &__list{
+        
+    }
+    
+    &__link{
+
+    }
+}

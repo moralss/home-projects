@@ -1,0 +1,9 @@
+@import './mixins.scss';
+
+.section-services{
+    background:rgb(1, 16, 44);
+    
+    .paragraph{
+        font-size:30px;
+    }
+}
