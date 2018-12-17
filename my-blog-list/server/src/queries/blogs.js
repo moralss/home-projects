@@ -23,6 +23,7 @@ const showAllBlogs = async () => {
   ORDER BY blogs.updated_at  
   ;  
   `;
+  
   const res = await client.query(statement);
   try {
     await client.release();
