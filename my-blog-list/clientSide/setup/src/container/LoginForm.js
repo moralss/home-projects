@@ -3,8 +3,15 @@ import "../App.css";
 import { connect } from "react-redux";
 import { reduxForm, Field } from "redux-form";
 import * as thunks from "../action/thunk/auth";
+import {checkAuth} from "../utils/checkAuth";
+
 
 class Login extends Component {
+
+
+componentDidMount(){
+  checkAuth()
+}
 
   handleSubmit = async data => {
     await this.props.verifyUser(data);

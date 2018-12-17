@@ -10,9 +10,10 @@ import LoginForm from "../container/LoginForm";
 import EditBlog from "../container/EditBlog";
 import history from "../history";
 import AuthorBlogs from "../container/authorBlogs";
+import HomePage from "../components/HomePage";
+
 
 import jwtDecode from "jwt-decode";
-
 
 const user = localStorage.getItem("user");
 
@@ -52,13 +53,20 @@ export const mainRoute = () => {
           render={props => <AddBlog {...props} />}
         />
 
+
+        <Route
+          exact
+          path="/"
+          component={props => <HomePage {...props} />}
+        />
+
         <Route
           exact
           path="/signin"
           component={props => <FormRegister {...props} />}
         />
 
-          <Route
+        <Route
           exact
           path="/authorblogs/:id"
           component={props => <AuthorBlogs {...props} />}
@@ -70,7 +78,7 @@ export const mainRoute = () => {
           path="/login"
           component={props => <LoginForm {...props} />}
         />
-        
+
         <PrivateRoute
           exact
           path="/editblog/:id"

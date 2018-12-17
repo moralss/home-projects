@@ -5,6 +5,8 @@ import { connect } from "react-redux";
 import * as thunks from "../action/thunk/auth";
 import renderField from "../components/Input";
 import { callCheck } from "../routes/routes";
+import {checkAuth} from "../utils/checkAuth";
+
 
 class FormRegister extends Component {
   constructor() {
@@ -15,6 +17,7 @@ class FormRegister extends Component {
 
   componentDidMount() {
     callCheck();
+    checkAuth()
   }
 
   

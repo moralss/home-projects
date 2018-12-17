@@ -22,8 +22,6 @@ class Profile extends Component {
   }
 
   render() {
-    console.log("profile", this.props.profile);
-
     return (
       <div className="Profile">
         name
