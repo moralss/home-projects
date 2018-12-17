@@ -1,0 +1,22 @@
+
+
+
+.navbar{
+    grid-row: 1 /-1;    
+    // background-color:blue;    
+
+    .nav{
+        display: grid;
+        grid-gap:20px;
+        grid-template-rows: repeat(1 , 1fr);
+        &__list{
+            
+        }
+        
+        &__link{
+    
+        }
+    }
+}
+
+

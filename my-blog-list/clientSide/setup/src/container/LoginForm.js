@@ -2,12 +2,12 @@ import React, { Component } from "react";
 import "../App.css";
 import { connect } from "react-redux";
 import { reduxForm, Field } from "redux-form";
-import * as thunks from "../action/thunk";
+import * as thunks from "../action/thunk/auth";
 
 class Login extends Component {
 
   handleSubmit = async data => {
-    await this.props.loginInAction(data, this.props.history);
+    await this.props.verifyUser(data);
   };
 
   render() {
@@ -31,8 +31,8 @@ class Login extends Component {
 
 function mapDispatchToProps(dispatch) {
   return {
-    loginInAction: (data, history) =>
-      dispatch(thunks.loginInAction(data, history))
+    verifyUser: (data) =>
+      dispatch(thunks.verifyUser(data))
   };
 }
 

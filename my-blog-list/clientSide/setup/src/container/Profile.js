@@ -5,27 +5,27 @@ import * as actions from "../action/thunk";
 import { connect } from "react-redux";
 
 class Profile extends Component {
-  componentDidMount() {
+
+  componentWillMount() {
     this.props.fetchUserProfile();
   }
 
+
   showProfile() {
     const { profile } = this.props;
-
     if (profile.length === 0) {
       return <div> Loading </div>;
     } else {
-      return <span> {profile[0].name} </span>;
+      return <span> {profile.name} </span>;
     }
   }
 
   render() {
-    // const { profile } = this.props;
     console.log("profile", this.props.profile);
 
     return (
       <div className="Profile">
-        name 
+        name
         {this.showProfile()}
       </div>
     );

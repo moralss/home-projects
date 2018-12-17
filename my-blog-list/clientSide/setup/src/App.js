@@ -1,14 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
-import { AUTHENTICATED } from "./action/thunk";
-import store from "./config/store";
-import { mainRoute } from "./routes";
+import { mainRoute } from "./routes/routes";
 
-const user = localStorage.getItem("user");
-
-if (user) {
-  store.dispatch({ type: AUTHENTICATED });
-}
 
 class App extends Component {
 

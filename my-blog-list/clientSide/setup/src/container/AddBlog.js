@@ -7,10 +7,13 @@ import { reset, reduxForm, Field } from "redux-form";
 import UserBlogs from "./UserBlogs";
 
 class AddBlog extends Component {
+
   handleSubmit = async data => {
     await this.props.createBlog(data);
-    await this.props.getLatestBlog();
+    await this.props.getUserBlogs();
   };
+
+
 
   render() {
     const { handleSubmit } = this.props;
@@ -30,14 +33,11 @@ class AddBlog extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return { state: state };
-}
 
 function mapDispatchToProps(dispatch) {
   return {
     createBlog: blogInfo => dispatch(thunks.createBlog(blogInfo)),
-    getLatestBlog: () => dispatch(thunks.getLatestBlog())
+    getUserBlogs: () => dispatch(thunks.getUserBlogs())
   };
 }
 
@@ -49,6 +49,6 @@ let addBlogConfig = reduxForm({
 })(AddBlog);
 
 export default connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
 )(addBlogConfig);

@@ -5,7 +5,7 @@ const passport = require("passport");
 const blog = require("./routes/blogs");
 const user = require("./routes/user");
 const blogModify = require("./routes/blogmodify");
-
+const userInfo = require("./routes/user-info");
 
 require("./src/auth/passport")(passport);
 const profile = require("./routes/profile");
@@ -22,17 +22,18 @@ app.use(bodyParser.json());
 app.use(passport.initialize());
 app.use(passport.session());
 
+userInfo.userInfoRoute(app);
 profile.profileRoutes(app);
 blog.blogRoute(app);
 user.UserRoutes(app);
 blogModify.blogModify(app);
 
 
-app.get("/",  (req, res) => {
+app.get("/", (req, res) => {
   res.send(req.user).end();
 });
 
 let port = 3001;
-app.listen(port, function() {
+app.listen(port, function () {
   console.log(`serving running on ${port}`);
 });

@@ -1,0 +1,31 @@
+.navbar{
+    grid-column: 0/-1;
+    grid-row:1/-1;
+
+    background-color:$-color-blue-primary;
+    .nav{
+        display: grid;
+        grid-gap:2rem;
+        grid-template-rows: repeat(1 , 1fr);
+        
+        &__list{
+            justify-self: start;
+            grid-gap:5rem;
+            font-size:1.5rem;
+            list-style: none;
+            margin-left:2rem;
+        }
+
+        &__list:nth-child(1){
+            margin-top:3rem
+        }
+        
+        
+        &__link{
+            color:white;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+    }
+
+}

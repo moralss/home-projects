@@ -1,0 +1,36 @@
+
+// @import './global.scss';
+// @import './layout/mainGrid.scss';
+// @import './components/navbar.scss';
+
+
+// @import './section-services';
+
+
+*{
+    margin:0px;
+    padding: 0px;
+}
+
+
+.header_icon{
+    width:400px;
+    height: 200px;
+    color:blue;
+}
+
+.header__h1{
+    color:$--blue-dark;
+    font-size:3rem;
+    font-weight: $--h1-weight;
+    letter-spacing: 0.5rem;
+    word-spacing: 0.5rem;
+}
+
+.paragraph{
+    color:rgb(1, 16, 44);
+    font-family: serif;
+    font-weight: 150;
+    font-size:1rem;    
+}
+

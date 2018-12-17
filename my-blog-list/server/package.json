@@ -4,7 +4,7 @@
   "description": "building a fullstack app ",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha",
     "start": "nodemon app.js"
   },
   "author": "Moral",
@@ -13,9 +13,11 @@
     "bcrypt": "^3.0.2",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
+    "chai": "^4.2.0",
     "cors": "^2.8.4",
+    "dotenv": "^6.1.0",
     "express": "^4.16.3",
-    "express-validator": "^5.3.0",
+    "jwt-decode": "^2.2.0",
     "jwt-simple": "^0.5.3",
     "lodash": "^4.17.11",
     "mongoose": "^5.3.2",
@@ -27,5 +29,8 @@
     "pg-hstore": "^2.3.2",
     "postgresql": "0.0.1",
     "sequelize": "^4.38.0"
+  },
+  "devDependencies": {
+    "mocha": "^5.2.0"
   }
 }
