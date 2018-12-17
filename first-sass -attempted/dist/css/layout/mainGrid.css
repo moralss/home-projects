@@ -1,0 +1,4 @@
+body {
+  display: grid;
+  grid-template-rows: 80vh min-content 40vw repeat(3, min-content);
+  grid-template-columns: [center-end] 8rem [sidebar-end full-start] 1fr repeat(8, minmax(min-content, 14rem)) [sidebar-start] 1fr [full-end]; }

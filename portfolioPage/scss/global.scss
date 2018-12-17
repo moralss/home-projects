@@ -3,11 +3,37 @@
 
 
 
+.header__medium{
+    margin:1rem;
+    padding:0.5rem;
+}
+
 *{
     margin:0px;
     padding: 0px;
     font-family:'Times New Roman', Times, serif;
 }
 
-$--h1-weight : 200;
-$--blue-dark: rgb(1, 16, 44);
+html{
+    background-color:rgba(241, 241, 241, 0.979);
+}
+
+.paragraph{
+    font-size:1.5rem;
+}
+
+
+.header__main{
+    margin-bottom:1rem;
+    font-size:3.5rem;
+    font-weight: 200;
+}
+
+
+$-color-blue-primary: rgb(42, 42, 143);
+$-color-white:white;
+$-h1-weight : 200;
+$-color-blue-dark: rgb(1, 16, 44);
+
+
+

@@ -1,8 +1,8 @@
 .navbar{
-    grid-column: 8/-1;
+    grid-column: 0/-1;
     grid-row:1/-1;
 
-    background-color:rgb(42, 42, 143);
+    background-color:$-color-blue-primary;
     .nav{
         display: grid;
         grid-gap:2rem;
