@@ -7,14 +7,18 @@ import * as thunks from "../action/thunk";
 import { Link } from "react-router-dom";
 
 class ViewBlogs extends Component {
+  
   componentDidMount() {
     this.getAllBlogs();
   }
 
+
+
   displayBlogs() {
     if (this.props.allBlogs.length === 0) {
       return <div> loading... </div>;
-    } else {
+    }
+     else {
       return (
         <div style={{ fontSize: 10, margin: 0 }}>
           {this.props.allBlogs.map(blog => {

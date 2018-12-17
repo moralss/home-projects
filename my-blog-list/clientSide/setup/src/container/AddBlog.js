@@ -8,6 +8,12 @@ import UserBlogs from "./UserBlogs";
 
 class AddBlog extends Component {
 
+
+  componentWillMount(){
+    
+  }
+
+
   handleSubmit = async data => {
     await this.props.createBlog(data);
     await this.props.getUserBlogs();

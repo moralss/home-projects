@@ -5,7 +5,8 @@ import * as thunks from "../action/thunk";
 import Profile from "./Profile";
 
 class AuthorBlogs extends Component {
-    componentDidMount() {
+
+    componentWillMount() {
         this.getAuthorBlogs();
 
     }
@@ -16,15 +17,22 @@ class AuthorBlogs extends Component {
         const authorId = this.props.match.params.id;
         console.log("this.props.match", authorId);
         await this.props.getBlogsForAuthor(authorId);
-
     }
 
+    displayAuthor() {
+        const authorName = this.props.authorBlogs.map(blog => {
+            return blog.name
+        })[0];
+
+        return authorName;
+    }
 
 
     render() {
         return (
             <div className="AuthorBlogs">
-                <Profile />
+                author name {this.displayAuthor()}
+
                 {this.props.authorBlogs.map(blog => {
                     return (
                         <div>
