@@ -1,6 +1,6 @@
 const _ = require('lodash');
 const { getUser } = require("../queries/user");
-const { getAuthor } = require("../queries/author");
+const { getAuthorName} = require("../queries/author");
 // email, password, author
 
 
@@ -13,7 +13,7 @@ const validateRegisterUser = async (data) => {
         errors.email = "email is invalid";
     }
 
-    author = await getAuthor(data.author);
+    author = await getAuthorName(data.author);
     const user = await getUser(data.email);
 
     if (data.author === undefined) {

@@ -11,6 +11,7 @@ class Profile extends Component {
   }
 
 
+
   showProfile() {
     const { profile } = this.props;
     if (profile.length === 0) {

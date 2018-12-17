@@ -28,19 +28,6 @@ const getUserById = async (id) => {
 };
 
 
-// const getUsers = async () => {
-//   const client = await getClient();
-//   let statement = `SELECT id , hashed_password , name from users `;
-//   const res = await client.query(statement, [email]);
-//   try {
-//     await client.release();
-//     return res.rows;
-
-//   } catch (e) {
-//     await cliuserent.release();
-//     return 
-//   }
-// };
 
 module.exports = {
   getUser, 

@@ -1,6 +1,6 @@
 const { jwtCheck } = require("../src/auth/jwtCheck");
 const _ = require('lodash');
-const { getAuthorBlogs, showAllBlogs } = require("../src/queries/blog");
+const { showAllBlogs } = require("../src/queries/blogs");
 
 const userInfoRoute = app => {
 
@@ -9,12 +9,13 @@ const userInfoRoute = app => {
 
         try {
             const allBlogs = await showAllBlogs();
-            const authorsBlogs = allBlogs.filter(element => { return element.id == authorid });
+            const authorsBlogs =
+                allBlogs.filter(element => { return element.author_id == authorid });
             res.json(authorsBlogs);
 
         } catch (e) {
             console.log(e);
-            res.status(500).json({error :"server errror"})
+            res.status(500).json({ error: "server errror" })
         }
 
     });

@@ -16,12 +16,9 @@ export const userReducer = (state = initalState, action) => {
   switch (action.type) {
     case RECIEVED_PROFILE:
       return { ...state, profile: { ...action.payload } };
-
     case RECIEVED_EDIT_BLOG:
-      console.log("payload", action.payload);
       const payload = action.payload[0];
       return { ...state, editBlog: { text: payload.text, id: payload.id } };
-
     case RECIEVED_LATEST_BLOG:
       return { ...state, latestBlog: [...action.payload] };
     case RECIEVED_All_BLOG:

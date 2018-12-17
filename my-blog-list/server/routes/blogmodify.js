@@ -1,13 +1,13 @@
 const { jwtCheck } = require("../src/auth/jwtCheck");
 const { updateBlog } = require("../src/command/blog");
-const { editBlogPost, deleteBlog } = require("../src/queries/blog");
+const { editBlogPost, deleteBlog } = require("../src/queries/modify-blog");
 
 const blogModify = app => {
 
   app.delete("/blog", async (req, res) => {
     let blogId = req.body.id;
     try {
-      const profile = await deleteBlog(blogId);
+      await deleteBlog(blogId);
       res.status(201).end();
     } catch (e) {
       console.log(e);

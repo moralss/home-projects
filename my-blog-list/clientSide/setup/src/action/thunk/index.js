@@ -24,6 +24,21 @@ export const fetchUserProfile = () => {
   };
 };
 
+export const addLike = blogId => {
+  return async dispatch => {
+    try {
+      const res = await axios.post(`${URL}/likes`, blogId, setAxiosHeader());
+      dispatch({ type: "actions.POST_SUCCESFUL "});
+    } catch (error) {
+      dispatch({
+        type: "actions.AUTHENTICATION_ERROR",
+        payload: error
+      });
+    }
+  };
+};
+
+
 export const createBlog = blogInfo => {
   return async dispatch => {
     try {
@@ -107,8 +122,9 @@ export const updateBlog = (blogInfo, history) => {
 };
 
 
+
 export const getBlogsForAuthor = (authorId) => {
-  console.log("authorId" , authorId);
+  console.log("authorId", authorId);
   return async dispatch => {
     try {
       const res = await axios.get(`${URL}/userinfo/${authorId}`, setAxiosHeader());

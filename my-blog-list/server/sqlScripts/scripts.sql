@@ -35,11 +35,9 @@ INSERT INTO authors ( "name"  , user_id)
 INSERT INTO blogs ( text , author_id)
 VALUES ( 'boreme ,,dfdlfkd k bkls fd kfkjbjlj dfdsf' ,  1 ); 
 
-INSERT INTO users ( name , hashed_password ) 
-
+INSERT INTO users ( name , hashed_password) 
 select authors.name , blogs.text , blogs.updated_at  from
  authors inner join blogs on author_id = authors.id;  
-
 
 CREATE TABLE IF NOT EXISTS users(
     id serial PRIMARY KEY,
@@ -66,4 +64,20 @@ CREATE TABLE IF NOT EXISTS blogs (
     created_at timestamp NOT NULL DEFAULT NOW() NOT NULL,
     updated_at timestamp NOT NULL DEFAULT NOW() NOT NULL
 );
+
+
+CREATE TABLE IF NOT EXISTS profiles (
+    id serial PRIMARY KEY,
+    likes int,
+    author_id INT REFERENCES authors(id) NOT NULL,
+    blog_id INT REFERENCES blogs(id) NOT NULL,
+    created_at timestamp NOT NULL DEFAULT NOW() NOT NULL,
+    updated_at timestamp NOT NULL DEFAULT NOW() NOT NULL
+);
+
+
+
+
+
+
 
