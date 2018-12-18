@@ -12,20 +12,14 @@ class Profile extends Component {
 
 
 
-  showProfile() {
-    const { profile } = this.props;
-    if (profile.length === 0) {
-      return <div> Loading </div>;
-    } else {
-      return <span> {profile.name} </span>;
-    }
-  }
 
   render() {
+    const { profile } = this.props;
+
     return (
       <div className="Profile">
         name
-        {this.showProfile()}
+        <span> {profile.name} </span>
       </div>
     );
   }

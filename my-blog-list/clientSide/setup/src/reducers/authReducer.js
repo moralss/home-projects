@@ -1,4 +1,4 @@
-import { AUTHENTICATED, AUTHENTICATION_ERROR } from "../actionTypes";
+import * as actions from "../actionTypes";
 
 let initialState = {
   authenticated: false,
@@ -7,13 +7,12 @@ let initialState = {
 
 export const authReducer = (state = initialState, action) => {
   switch (action.type) {
-    case AUTHENTICATED:
-    console.log("action" , action.payload)
+    case actions.AUTHENTICATED:
       return { ...state, authenticated: action.payload };
-    case AUTHENTICATION_ERROR:
+    case actions.AUTHENTICATION_ERROR:
       const errors = { ...action.payload.error };
-      
-      return { ...state, errors:  {...errors}  };
+
+      return { ...state, errors: { ...errors } };
 
     default:
       return state;

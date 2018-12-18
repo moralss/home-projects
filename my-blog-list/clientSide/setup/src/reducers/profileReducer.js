@@ -1,15 +1,17 @@
-import {
-    RECIEVED_BLOGS_FOR_USER
-} from "../actionTypes";
+import * as actions from "../actionTypes";
+
 
 const initalState = {
-    likes: 0,
+    authorsBlogs: [],
+    like: 0
 };
 
 export const profileReducer = (state = initalState, action) => {
     switch (action.type) {
-        case RECIEVED_BLOGS_FOR_USER:
+        case actions.RECIEVED_BLOGS_FOR_USER:
             return { ...state, authorsBlogs: [...action.payload] };
+        case actions.STORE_IF_LIKED:
+            return { ...state, like: action.payload };
         default:
             return state;
     }

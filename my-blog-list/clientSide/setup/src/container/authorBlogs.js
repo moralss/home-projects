@@ -3,6 +3,7 @@ import "../App.css";
 import { connect } from "react-redux";
 import * as thunks from "../action/thunk";
 import Profile from "./Profile";
+import { userInfo } from "os";
 
 class AuthorBlogs extends Component {
     constructor() {
@@ -18,13 +19,18 @@ class AuthorBlogs extends Component {
 
     componentWillMount() {
         this.getAuthorBlogs();
+        this.getInteraction();
+    }
 
+
+    getInteraction = async () => {
+        const authorId = this.props.authorId;
+        await this.props.getIfLiked(2);
     }
 
 
     getAuthorBlogs = async () => {
         const authorId = this.props.match.params.id;
-        console.log("this.props.match", authorId);
         await this.props.getBlogsForAuthor(authorId);
     }
 
@@ -33,7 +39,6 @@ class AuthorBlogs extends Component {
         console.log("before", blogId, this.state.status);
         this.setState({ blogId: blogId, status: true });
         console.log("after", blogId, this.state.status);
-
     }
 
 
@@ -48,7 +53,12 @@ class AuthorBlogs extends Component {
     }
 
     increaseLike(blogId) {
+        this.getInteraction();
         this.props.addLike({ blogId });
+    }
+
+    decreaseLike(blogId) {
+        console.log("decrease")
     }
 
     displayAuthor() {
@@ -61,6 +71,8 @@ class AuthorBlogs extends Component {
 
 
     render() {
+        const { like } = this.props;
+
         return (
             <div className="AuthorBlogs">
                 author name {this.displayAuthor()}
@@ -68,11 +80,20 @@ class AuthorBlogs extends Component {
                 {this.props.authorBlogs.map(blog => {
                     return (
                         <div>
+                            <Profile />
                             <p>  text : {blog.text} </p>
                             <span> updated time : {blog.updated_at} </span>
-                            <button onClick={() => this.increaseLike(blog.id)}>  Like </button>
-                            <button onClick={() => this.showCommitBox(blog.id)}>  Commit </button>
+                            {like === 0 ?
+                                <button onClick={() => this.increaseLike(blog.id)}>
+                                    like
+                            </button>
+                                :
+                                <button onClick={() => this.decreaseLike(blog.id)}>
+                                    unlike
+                            </button>
+                            }
 
+                            <button onClick={() => this.showCommitBox(blog.id)}>  Commit </button>
                             {!blog.id == this.state.blogId && this.state.status ?
                                 this.addCommit() : null}
 
@@ -89,7 +110,9 @@ class AuthorBlogs extends Component {
 
 function mapStateToProps(state) {
     return {
-        authorBlogs: state.authorAllBlogs.authorsBlogs
+        authorBlogs: state.profile.authorsBlogs,
+        like: state.profile.like,
+        authorId: state.user.profile.id
     };
 }
 
@@ -97,8 +120,7 @@ function mapDispatchToProps(dispatch) {
     return {
         getBlogsForAuthor: (authorId) => dispatch(thunks.getBlogsForAuthor(authorId)),
         addLike: (blogId) => dispatch(thunks.addLike(blogId)),
-        
-        
+        getIfLiked: (authorId) => dispatch(thunks.getIfLiked(authorId)),
     };
 }
 

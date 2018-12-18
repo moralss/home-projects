@@ -3,7 +3,6 @@ import "../App.css";
 import { connect } from "react-redux";
 import * as thunks from "../action/thunk";
 import { reduxForm, Field } from "redux-form";
-import store from "../config/store";
 
 class EditBlog extends Component {
 
@@ -13,7 +12,7 @@ class EditBlog extends Component {
     console.log(blogId);
     const blogInfo = { id: blogId, text: data.text };   
     console.log("blogInfo" , blogInfo);
-    this.props.updateBlog(blogInfo , this.props.history);
+    this.props.updateBlog(blogInfo);
   }
 
 
@@ -55,7 +54,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    updateBlog: (blogInfo , history) => dispatch(thunks.updateBlog(blogInfo , history)),
+    updateBlog: (blogInfo) => dispatch(thunks.updateBlog(blogInfo)),
     getEditBlog: blogId => dispatch(thunks.getEditBlog(blogId))
   };
 }

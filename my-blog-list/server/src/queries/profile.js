@@ -1,6 +1,5 @@
 const { getClient } = require("../db");
 
-
 const getTotalLikes = async (blogId) => {
     const client = await getClient();
     let statement = `
@@ -16,19 +15,16 @@ const getTotalLikes = async (blogId) => {
         console.log(e);
         return;
     }
-
-
 };
 
-
-
-const checkLiked = async (author_id) => {
+const checkLiked = async (authorId) => {
     const client = await getClient();
     let statement = `
     select * from profiles where  author_id = $1;  
   `;
 
-    const res = await client.query(statement, [author_id]);
+    const res = await client.query(statement, [Number(authorId)]);
+
     try {
         await client.release();
         return res.rows;

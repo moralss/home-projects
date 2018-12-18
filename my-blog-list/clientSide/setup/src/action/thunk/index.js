@@ -1,13 +1,13 @@
 import axios from "axios";
 import * as actions from '../../actionTypes';
-import jwtDecode from "jwt-decode";
+import { setAxiosHeader } from "../../utils/setAxiosHeader";
+import history from "../../history";
+
 const URL = "http://localhost:3001";
 
-function setAxiosHeader() {
-  let user = localStorage.getItem("user");
-  const headers = { headers: { authorization: user } };
-  return headers;
-}
+
+
+
 
 
 export const fetchUserProfile = () => {
@@ -27,8 +27,9 @@ export const fetchUserProfile = () => {
 export const addLike = blogId => {
   return async dispatch => {
     try {
-      const res = await axios.post(`${URL}/likes`, blogId, setAxiosHeader());
-      dispatch({ type: "actions.POST_SUCCESFUL "});
+      const res = await axios.post(`${URL}/like`, blogId, setAxiosHeader());
+      dispatch({ type: "actions.POST_SUCCESFUL " });
+      dispatch({ type: actions.STORE_IF_LIKED, payload: 1 });
     } catch (error) {
       dispatch({
         type: "actions.AUTHENTICATION_ERROR",
@@ -105,8 +106,9 @@ export const deleteBlog = blogId => {
   };
 };
 
-export const updateBlog = (blogInfo, history) => {
 
+
+export const updateBlog = (blogInfo) => {
   return async dispatch => {
     try {
       await axios.put(`${URL}/editblog`, blogInfo, setAxiosHeader());
@@ -138,6 +140,23 @@ export const getBlogsForAuthor = (authorId) => {
   };
 };
 
+
+
+export const getIfLiked = (authorId) => {
+  return async dispatch => {
+    try {
+      let res = await axios.get(`${URL}/like`, setAxiosHeader());
+      console.log("response", res.data.liked);
+      dispatch({ type: actions.STORE_IF_LIKED, payload: res.data.liked });
+    } catch (e) {
+      console.log(e);
+      dispatch({
+        type: "UPDATE_ERROR",
+        payload: " password"
+      });
+    }
+  };
+};
 
 export const getSingleBlog = id => { };
 

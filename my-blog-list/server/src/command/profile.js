@@ -17,12 +17,12 @@ const likeBlog = async (userId, blogId) => {
 };
 
 
-const dislikeBlog = async (userId, blogId) => {
+const dislikeBlog = async (authorId, blogId) => {
   const client = await getClient();
-  let statement = `INSERT INTO profiles(author_id ,  blog_id , likes) VALUES($1 , $2 , $3)
-      RETURNING id `;
+  let statement = `UPDATE profiles  SET likes = $1
+     WHERE author_id = $2 AND WHERE blog_id = $3   RETURNING id  `;
 
-  const res = await client.query(statement, [Number(userId), Number(blogId), 1]);
+  const res = await client.query(statement, [0, Number(authorId), Number(blogId)]);
   try {
     await client.release();
     return res.rows;
@@ -32,8 +32,6 @@ const dislikeBlog = async (userId, blogId) => {
     return;
   }
 };
-
-
 
 
 module.exports = {
