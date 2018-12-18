@@ -24,7 +24,7 @@ const profileRoutes = app => {
 
       return res.json({ liked: 0 }).end();
     } catch (e) {
-      console.log("ERRO ", e);
+      console.log(e);
       res.json(e).end();
     }
   });
@@ -33,20 +33,15 @@ const profileRoutes = app => {
     let { id } = req.user;
     let { blogId } = req.body;
     try {
-
       const author = await getAuthorByUserId(id);
       const isLiked = await checkLiked(author.id);
-
+      
       if (isLiked.length !== 0) {
-        console.log("relike");
-
         await updateAuthorLike(1, author.id, blogId);
         return res.status(203).end();
       } else {
-
         await likeBlog(id, blogId);
         return res.status(201).end();
-
       }
 
     } catch (e) {
@@ -60,7 +55,7 @@ const profileRoutes = app => {
     const author = await getAuthorByUserId(req.user.id);
 
     try {
-      await updateAuthorLike(0 , author.id, blogId);
+      await updateAuthorLike(0, author.id, blogId);
       return res.status(203).end();
     } catch (e) {
       console.log("ERRO ", e);

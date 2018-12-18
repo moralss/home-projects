@@ -24,8 +24,7 @@ class AuthorBlogs extends Component {
 
 
     getInteraction = async () => {
-        const authorId = this.props.authorId;
-        await this.props.getIfLiked(2);
+        await this.props.getIfLiked();
     }
 
 
@@ -58,7 +57,6 @@ class AuthorBlogs extends Component {
     }
 
     decreaseLike(blogId) {
-        console.log("decrease")
         this.props.dislikeBlog({ blogId });
     }
 
@@ -70,20 +68,25 @@ class AuthorBlogs extends Component {
         return authorName;
     }
 
+    getTotalLikes = async (blogId) => {
+        console.log("total", blogId);
+        this.props.getTotalLikes(blogId);
+    }
 
     render() {
-        const { like } = this.props;
-
+        const { like, likes } = this.props;
         return (
             <div className="AuthorBlogs">
                 author name {this.displayAuthor()}
 
                 {this.props.authorBlogs.map(blog => {
+                    this.getTotalLikes(blog.id)
                     return (
                         <div>
                             <Profile />
                             <p>  text : {blog.text} </p>
                             <span> updated time : {blog.updated_at} </span>
+                            <h3> likes : {likes}  </h3>
 
                             {like === 0 ?
                                 <button onClick={() => this.increaseLike(blog.id)}>
@@ -94,17 +97,12 @@ class AuthorBlogs extends Component {
                                     unlike
                             </button>
                             }
-
                             <button onClick={() => this.showCommitBox(blog.id)}>  Commit </button>
                             {!blog.id == this.state.blogId && this.state.status ?
                                 this.addCommit() : null}
-
-                            {/* {this.state.status ? this.addCommit() : null} */}
-
                         </div>
                     );
                 })}
-
             </div>
         );
     }
@@ -114,7 +112,8 @@ function mapStateToProps(state) {
     return {
         authorBlogs: state.profile.authorsBlogs,
         like: state.profile.like,
-        authorId: state.user.profile.id
+        authorId: state.user.profile.id,
+        likes: state.profile.likes
     };
 }
 
@@ -124,6 +123,7 @@ function mapDispatchToProps(dispatch) {
         dislikeBlog: (blogId) => dispatch(thunks.dislikeBlog(blogId)),
         addLike: (blogId) => dispatch(thunks.addLike(blogId)),
         getIfLiked: () => dispatch(thunks.getIfLiked()),
+        getTotalLikes: (blogId) => dispatch(thunks.getTotalLikes(blogId)),
     };
 }
 

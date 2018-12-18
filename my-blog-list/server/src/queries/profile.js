@@ -3,10 +3,10 @@ const { getClient } = require("../db");
 const getTotalLikes = async (blogId) => {
     const client = await getClient();
     let statement = `
-    select sum(blog_id) from profiles where blog_id = $1;  
+    select sum(likes) from profiles where blog_id = $1;  
   `;
 
-    const res = await client.query(statement, [blogId]);
+    const res = await client.query(statement, [Number(blogId)]);
     try {
         await client.release();
         return res.rows;
@@ -34,8 +34,6 @@ const checkLiked = async (authorId) => {
         return;
     }
 };
-
-
 
 
 module.exports = {
