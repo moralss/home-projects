@@ -1,6 +1,7 @@
 const passport = require("passport");
 const { getAuthorByUserId } = require("../src/queries/author");
-const { likeBlog } = require("../src/command/profile")
+const { likeBlog, dislikeBlog } = require("../src/command/profile")
+
 
 const jwtDecript = passport.authenticate("jwt", { session: false });
 
@@ -10,6 +11,23 @@ const profileRoutes = app => {
     const userProfile = await getAuthorByUserId(userId);
     res.json(userProfile).end();
 
+  });
+
+
+
+  app.get("/likes", jwtDecript, async (req, res) => {
+    const { id } = req.user;
+    
+    const isLiked = await checkLiked();
+    res.status(201).end();
+    try {
+
+
+      // await likeBlog(id, blogId);
+    } catch (e) {
+      console.log("ERRO ", e);
+      res.status(500).end();
+    }
   });
 
 
@@ -24,8 +42,23 @@ const profileRoutes = app => {
       console.log("ERRO ", e);
       res.status(500).end();
     }
-
   });
+
+
+  // app.put("/likes", jwtDecript, async (req, res) => {
+  //   let { blogId, authorId } = req.body;
+
+  //   try {
+  //     await dislikeBlog(authorId, blogId);
+  //     res.status(201).end();
+  //   } catch (e) {
+  //     console.log("ERRO ", e);
+  //     res.status(500).end();
+  //   }
+  // });
+
+
+
 };
 
 module.exports = { profileRoutes };
