@@ -11,6 +11,7 @@ export const profileReducer = (state = initalState, action) => {
         case actions.RECIEVED_BLOGS_FOR_USER:
             return { ...state, authorsBlogs: [...action.payload] };
         case actions.STORE_IF_LIKED:
+        
             return { ...state, like: action.payload };
         default:
             return state;

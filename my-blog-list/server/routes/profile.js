@@ -1,7 +1,7 @@
 const passport = require("passport");
 const { getAuthorByUserId } = require("../src/queries/author");
 const { checkLiked } = require("../src/queries/profile")
-const { likeBlog, dislikeBlog } = require("../src/command/profile")
+const { likeBlog, updateAuthorLike } = require("../src/command/profile")
 
 
 const jwtDecript = passport.authenticate("jwt", { session: false });
@@ -30,58 +30,43 @@ const profileRoutes = app => {
   });
 
   app.post("/like", jwtDecript, async (req, res) => {
-    const { id } = req.user;
+    let { id } = req.user;
     let { blogId } = req.body;
-
     try {
-      await likeBlog(id, blogId);
-      res.status(201).end();
+
+      const author = await getAuthorByUserId(id);
+      const isLiked = await checkLiked(author.id);
+
+      if (isLiked.length !== 0) {
+        console.log("relike");
+
+        await updateAuthorLike(1, author.id, blogId);
+        return res.status(203).end();
+      } else {
+
+        await likeBlog(id, blogId);
+        return res.status(201).end();
+
+      }
+
     } catch (e) {
-      console.log("ERRO ", e);
-      res.status(500).end();
+      console.log(e);
     }
+
   });
 
   app.put("/like", jwtDecript, async (req, res) => {
+    const { blogId } = req.body;
     const author = await getAuthorByUserId(req.user.id);
 
     try {
-      await dislikeBlog(author.id, blogId);
-      res.status(201).end();
+      await updateAuthorLike(0 , author.id, blogId);
+      return res.status(203).end();
     } catch (e) {
       console.log("ERRO ", e);
-      res.status(500).end();
+      return res.status(500).end();
     }
   })
-
-
-  app.post("/like", jwtDecript, async (req, res) => {
-    const { id } = req.user;
-    let { blogId } = req.body;
-
-    try {
-      await likeBlog(id, blogId);
-      res.status(201).end();
-    } catch (e) {
-      console.log("ERRO ", e);
-      res.status(500).end();
-    }
-  });
-
-
-  // app.put("/likes", jwtDecript, async (req, res) => {
-  //   let { blogId, authorId } = req.body;
-
-  //   try {
-  //     await dislikeBlog(authorId, blogId);
-  //     res.status(201).end();
-  //   } catch (e) {
-  //     console.log("ERRO ", e);
-  //     res.status(500).end();
-  //   }
-  // });
-
-
 
 };
 

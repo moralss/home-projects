@@ -141,8 +141,23 @@ export const getBlogsForAuthor = (authorId) => {
 };
 
 
+export const dislikeBlog = (blogId) => {
+  return async dispatch => {
+    try {
+      let res = await axios.put(`${URL}/like`, blogId, setAxiosHeader());
+      dispatch({ type: actions.STORE_IF_LIKED, payload: 0 });
+    } catch (e) {
+      console.log(e);
+      dispatch({
+        type: "UPDATE_ERROR",
+        payload: " password"
+      });
+    }
+  };
+};
 
-export const getIfLiked = (authorId) => {
+
+export const getIfLiked = () => {
   return async dispatch => {
     try {
       let res = await axios.get(`${URL}/like`, setAxiosHeader());

@@ -59,6 +59,7 @@ class AuthorBlogs extends Component {
 
     decreaseLike(blogId) {
         console.log("decrease")
+        this.props.dislikeBlog({ blogId });
     }
 
     displayAuthor() {
@@ -83,6 +84,7 @@ class AuthorBlogs extends Component {
                             <Profile />
                             <p>  text : {blog.text} </p>
                             <span> updated time : {blog.updated_at} </span>
+
                             {like === 0 ?
                                 <button onClick={() => this.increaseLike(blog.id)}>
                                     like
@@ -119,8 +121,9 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return {
         getBlogsForAuthor: (authorId) => dispatch(thunks.getBlogsForAuthor(authorId)),
+        dislikeBlog: (blogId) => dispatch(thunks.dislikeBlog(blogId)),
         addLike: (blogId) => dispatch(thunks.addLike(blogId)),
-        getIfLiked: (authorId) => dispatch(thunks.getIfLiked(authorId)),
+        getIfLiked: () => dispatch(thunks.getIfLiked()),
     };
 }
 
