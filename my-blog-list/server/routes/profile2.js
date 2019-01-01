@@ -11,6 +11,10 @@ const profile2Routes = app => {
 
         try {
             const totalLikes = await getTotalLikes(blogId);
+            if (totalLikes[0].sum == null) {
+                return res.json({ sum: 0 }).end();
+            }
+
             return res.json(totalLikes[0]).end();
         } catch (e) {
             console.log(e);

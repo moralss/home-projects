@@ -5,8 +5,9 @@ const passport = require("passport");
 const blog = require("./routes/blogs");
 const user = require("./routes/user");
 const blogModify = require("./routes/blogmodify");
-const userInfo = require("./routes/user-info");
+const authorInfo = require("./routes/author-info");
 const profile2 = require("./routes/profile2");
+
 
 require("./src/auth/passport")(passport);
 const profile = require("./routes/profile");
@@ -24,10 +25,10 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 profile2.profile2Routes(app);
-userInfo.userInfoRoute(app);
 profile.profileRoutes(app);
 blog.blogRoute(app);
 user.UserRoutes(app);
+authorInfo.authorInfoRoute(app);
 blogModify.blogModify(app);
 
 

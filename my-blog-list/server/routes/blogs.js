@@ -1,7 +1,7 @@
 const { getAuthorByUserId } = require("../src/queries/author");
 const { jwtCheck } = require("../src/auth/jwtCheck");
 const { createBlog } = require("../src/command/blog");
-const { getAuthorBlogs, showAllBlogs } = require("../src/queries/blogs");
+const { getAuthorBlogs, showAllBlogs ,getBlogsForAuthor } = require("../src/queries/blogs");
 const _ = require('lodash');
 
 const blogRoute = app => {
@@ -33,6 +33,7 @@ const blogRoute = app => {
     try {
       const allBlogs = await showAllBlogs();
       const blogs = _.uniqBy(allBlogs, 'name');
+
       res.json(blogs).end();
     } catch (e) {
       console.log(e);

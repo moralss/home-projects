@@ -129,9 +129,9 @@ export const getBlogsForAuthor = (authorId) => {
   console.log("authorId", authorId);
   return async dispatch => {
     try {
-      const res = await axios.get(`${URL}/userinfo/${authorId}`, setAxiosHeader());
+      const res = await axios.get(`${URL}/authorinfo/${authorId}`, setAxiosHeader());
       dispatch({
-        type: actions.RECIEVED_BLOGS_FOR_USER,
+        type: actions.RECIEVED_BLOGS_FOR_AUTHOR,
         payload: res.data
       })
     } catch (e) {

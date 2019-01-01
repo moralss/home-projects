@@ -23,7 +23,7 @@ const showAllBlogs = async () => {
   ORDER BY blogs.updated_at  
   ;  
   `;
-  
+
   const res = await client.query(statement);
   try {
     await client.release();
@@ -36,8 +36,33 @@ const showAllBlogs = async () => {
 };
 
 
+const getBlogsForAuthor = async () => {
+  const client = await getClient();
+
+  let statement = `
+  select  blogs.author_id , blogs.id , authors.name , blogs.text , blogs.updated_at  from
+  authors inner join blogs on blogs.author_id = authors.id
+  ORDER BY blogs.updated_at 
+  
+  ; `
+
+  const res = await client.query(statement);
+  try {
+    await client.release();
+    return res.rows;
+  } catch (e) {
+    await client.release();
+    console.log(e);
+    return;
+  }
+};
+
 
 module.exports = {
   getAuthorBlogs,
-  showAllBlogs
+  showAllBlogs,
+  getBlogsForAuthor
 };
+
+
+

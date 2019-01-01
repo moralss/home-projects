@@ -3,7 +3,10 @@ import "../App.css";
 import { connect } from "react-redux";
 import * as thunks from "../action/thunk";
 import Profile from "./Profile";
+import ShowTotalLikes from './ShowTotalLikes';
 import { userInfo } from "os";
+
+
 
 class AuthorBlogs extends Component {
     constructor() {
@@ -12,7 +15,6 @@ class AuthorBlogs extends Component {
         this.state = {
             status: false,
             blogId: 0
-
         }
     }
 
@@ -75,19 +77,20 @@ class AuthorBlogs extends Component {
 
     render() {
         const { like, likes } = this.props;
+        // {this.getTotalLikes(blog.id)}
+
         return (
             <div className="AuthorBlogs">
                 author name {this.displayAuthor()}
+                <Profile />
 
                 {this.props.authorBlogs.map(blog => {
-                    this.getTotalLikes(blog.id)
                     return (
                         <div>
-                            <Profile />
                             <p>  text : {blog.text} </p>
                             <span> updated time : {blog.updated_at} </span>
                             <h3> likes : {likes}  </h3>
-
+                            {<ShowTotalLikes blogId={blog.id} />}
                             {like === 0 ?
                                 <button onClick={() => this.increaseLike(blog.id)}>
                                     like
@@ -97,6 +100,7 @@ class AuthorBlogs extends Component {
                                     unlike
                             </button>
                             }
+
                             <button onClick={() => this.showCommitBox(blog.id)}>  Commit </button>
                             {!blog.id == this.state.blogId && this.state.status ?
                                 this.addCommit() : null}
