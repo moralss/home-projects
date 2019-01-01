@@ -18,7 +18,7 @@ const profileRoutes = app => {
     const author = await getAuthorByUserId(req.user.id);
     try {
       const isLiked = await checkLiked(author.id);
-      console.log("isLiked" , isLiked);
+      console.log("isLiked", isLiked);
 
       if (isLiked.length > 0) {
         return res.json({ liked: isLiked[0].likes }).end();
@@ -37,7 +37,7 @@ const profileRoutes = app => {
     try {
       const author = await getAuthorByUserId(id);
       const isLiked = await checkLiked(author.id);
-      
+
       if (isLiked.length !== 0) {
         await updateAuthorLike(1, author.id, blogId);
         return res.status(203).end();
