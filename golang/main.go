@@ -16,6 +16,10 @@ func main() {
 	log.Fatal(http.ListenAndServe(":3000" , r));
 }
 
+
+
+
+
 func HomeHandler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type" , "application/json")
 	json.NewEncoder(w).Encode("hello world");	
