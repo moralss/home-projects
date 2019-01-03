@@ -1,0 +1,33 @@
+
+
+
+.contact__section{
+    display: grid;
+    grid-template-columns: repeat(3 , 1fr);
+    background-color:rgb(96, 109, 117);
+    height:20vh;
+    margin-top:3rem;
+    margin-bottom:1rem;
+    padding:2rem;
+    color:white;
+
+    .header__main{
+        text-align: center;
+        grid-column: 1/4;
+    }
+
+
+    li{
+        font-size:2rem;
+    }
+    // margin-bottom: 10px;
+}
+
+
+.footer{
+    text-align: center;
+    background-color:white;
+    height:4vh;
+}
+
+

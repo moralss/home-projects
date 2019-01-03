@@ -1,5 +1,5 @@
 .header__medium {
-  margin: 1rem;
+  margin: 0.5rem;
   padding: 0.5rem; }
 
 * {
@@ -18,34 +18,43 @@ html {
   font-size: 3.5rem;
   font-weight: 200; }
 
-body {
-  display: grid;
-  grid-template-rows: 80vh min-content 40vw 40vw repeat(5, 3rem) repeat(3, min-content) 1fr 1fr 1fr;
-  grid-template-columns: repeat(3, 1fr) 3rem 3rem; }
-
 .navbar {
-  grid-column: 0/-1;
-  grid-row: 1/-1;
-  background-color: #2a2a8f; }
+  position: fixed;
+  width: 100%;
+  background-color: #2a2a8f;
+  height: 8vh; }
   .navbar .nav {
     display: grid;
     grid-gap: 2rem;
-    grid-template-rows: repeat(1, 1fr); }
+    grid-template-columns: 4fr repeat(4, 120px);
+    justify-content: center;
+    align-content: center; }
     .navbar .nav__list {
-      justify-self: start;
       grid-gap: 5rem;
-      font-size: 1.5rem;
+      margin: 1rem;
+      align-items: center;
+      font-size: 1rem;
       list-style: none;
-      margin-left: 2rem; }
+      margin-left: 2rem;
+      width: 100%;
+      height: 100%; }
     .navbar .nav__list:nth-child(1) {
-      margin-top: 3rem; }
+      font-size: 2rem;
+      align-items: center;
+      justify-self: start; }
     .navbar .nav__link {
       color: white;
       text-decoration: none;
-      text-transform: uppercase; }
+      text-transform: uppercase;
+      transition: color;
+      transition-duration: 2s; }
+
+.animate:hover {
+  color: #1100ff;
+  font-size: 1.5rem; }
 
 .header__medium {
-  margin: 1rem;
+  margin: 0.5rem;
   padding: 0.5rem; }
 
 * {
@@ -64,25 +73,29 @@ html {
   font-size: 3.5rem;
   font-weight: 200; }
 
+.left__spacing {
+  margin: 2rem; }
+
 .header {
-  background-image: linear-gradient(to right bottom, rgba(9, 15, 17, 0.8), rgba(9, 15, 107, 0.6)), url("../../imgs/IMG_1080.JPG");
-  grid-column: 1/8;
-  grid-row: 1/3;
+  display: grid;
+  background-image: linear-gradient(to right bottom, rgba(9, 15, 17, 0.8), rgba(9, 15, 107, 0.8)), url("../../imgs/IMG_1080.JPG");
   background-size: cover;
-  background-position: top; }
+  background-position: top;
+  height: 80vh; }
   .header__h1 {
     color: white;
-    font-size: 3rem;
+    font-size: 2rem;
     font-weight: 200;
     letter-spacing: 0.5rem;
-    word-spacing: 0.5rem; }
+    word-spacing: 0.5rem;
+    align-self: end; }
   .header__paragraph {
     color: white;
     font-weight: 150;
-    font-size: 1rem; }
+    font-size: 1.5rem; }
 
 .header__medium {
-  margin: 1rem;
+  margin: 0.5rem;
   padding: 0.5rem; }
 
 * {
@@ -102,22 +115,22 @@ html {
   font-weight: 200; }
 
 .projects {
-  grid-column: 2/8;
-  grid-row: 3/4;
   display: grid;
   grid-gap: 1rem;
-  grid-template-columns: repeat(2, minmax(1rem, 20rem));
+  grid-template-columns: repeat(3, minmax(1rem, 20rem));
   justify-items: center;
   justify-content: center;
   align-items: center; }
 
 .project__description {
   display: grid;
-  grid-column: 1/3;
+  grid-column: 1/4;
   margin-top: 3rem;
   justify-self: center;
   text-align: center;
   margin-bottom: 3rem; }
+  .project__description .header__main {
+    grid-column: 1/4; }
 
 .project {
   display: grid;
@@ -125,21 +138,29 @@ html {
   align-items: center;
   box-shadow: 1px 1px 1px 1px #7c7b7c;
   background-color: white;
-  padding: 0.3rem 0.3rem;
-  border-radius: 1rem; }
+  padding: 0.1rem 0.1rem;
+  border-radius: 0.3rem; }
   .project__img {
-    width: 180px;
-    height: 150px;
+    width: 11vw;
+    height: 15vh;
     border-radius: 0.5rem; }
+
+.btn:hover {
+  background-color: rgba(207, 0, 0, 0.582); }
 
 .btn {
   display: inline-block;
+  transition-property: background;
+  transition-duration: 1s;
   color: white;
-  padding: 0.8rem;
+  padding: 0.5rem;
   text-decoration: none;
-  margin: 1rem;
+  margin: 0.8rem;
   background-color: #2a2a8f;
-  width: 11vw;
+  width: 10vw;
+  font-size: 10px;
+  letter-spacing: 0.1rem;
+  word-spacing: 0.1rem;
   border-radius: 0.5rem;
   text-transform: uppercase; }
 
@@ -149,3 +170,23 @@ html {
   grid-row: 8/-4;
   text-align: center;
   justify-content: center; }
+
+.contact__section {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  background-color: #606d75;
+  height: 20vh;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  padding: 2rem;
+  color: white; }
+  .contact__section .header__main {
+    text-align: center;
+    grid-column: 1/4; }
+  .contact__section li {
+    font-size: 2rem; }
+
+.footer {
+  text-align: center;
+  background-color: white;
+  height: 4vh; }
