@@ -1,9 +1,7 @@
 const passport = require("passport");
 const { getTotalLikes } = require("../src/queries/profile")
 
-
 const jwtDecript = passport.authenticate("jwt", { session: false });
-
 const profile2Routes = app => {
 
     app.get("/likes/:blogId", jwtDecript, async (req, res) => {
@@ -11,7 +9,6 @@ const profile2Routes = app => {
 
         try {
             const totalLikes = await getTotalLikes(blogId);
-            
             if (totalLikes[0].sum == null) {
                 return res.json({ sum: 0 }).end();
             }

@@ -13,6 +13,32 @@ const deleteBlog = async blogId => {
   }
 };
 
+const deleteProfile = async blogId => {
+  const client = await getClient();
+  let statement = `DELETE FROM profiles WHERE  blog_id = $1`;
+  const res = await client.query(statement, [blogId]);
+  try {
+    await client.release();
+    return;
+  } catch (e) {
+    await client.release();
+    return;
+  }
+};
+
+
+const deleteComments = async blogId => {
+  const client = await getClient();
+  let statement = `DELETE FROM comments WHERE  blog_id = $1`;
+  const res = await client.query(statement, [blogId]);
+  try {
+    await client.release();
+    return;
+  } catch (e) {
+    await client.release();
+    return;
+  }
+};
 
 const editBlogPost = async blogId => {
   const client = await getClient();
@@ -32,6 +58,8 @@ const editBlogPost = async blogId => {
 
 module.exports = {
   deleteBlog,
-  editBlogPost
+  editBlogPost,
+  deleteProfile,
+  deleteComments
 };
 

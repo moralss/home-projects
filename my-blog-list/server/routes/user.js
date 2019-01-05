@@ -1,10 +1,8 @@
 const { createUserAndAuthor } = require("../src/command/user");
 const bcrypt = require("bcryptjs");
-// const passport = require("passport");
 const { getUser } = require("../src/queries/user");
 const { createToken } = require("../src/auth/createToken");
 const { validateRegisterUser } = require("../src/validations/register");
-// let middeware = passport.authenticate("local");
 
 
 const UserRoutes = app => {

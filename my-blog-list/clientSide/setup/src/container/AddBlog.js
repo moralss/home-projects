@@ -20,7 +20,6 @@ class AddBlog extends Component {
   };
 
 
-
   render() {
     const { handleSubmit } = this.props;
     return (

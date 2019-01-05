@@ -19,6 +19,11 @@ class UserBlogs extends Component {
   render() {
     const { latestBlog } = this.props;
 
+
+    // totalComments: 1,
+    // totalLikes: 1 
+
+
     return (
       <div className="LatestBlog">
         <h1> blog post </h1>
@@ -29,8 +34,18 @@ class UserBlogs extends Component {
                 <button onClick={() => this.deleteBlog(blog.id)}>
                   Delete
                 </button>
-                <Link to={`/editblog/${blog.id}`}>edit blog </Link>
-                {blog.text}
+                <div>
+                  <Link to={`/editblog/${blog.id}`}>edit blog </Link>
+                  <Link to={`/comments/${blog.id}`}>
+                    add Commit </Link>
+                  <Link to={`/viewcomments/${blog.id}`}>
+                    view Commits </Link>
+                </div>
+
+                <li> text : {blog.text}</li>
+                <li> total Comments : {blog.totalComments}</li>
+                <li> total Likes : {blog.totalLikes}</li>
+
               </div>
             );
           })}
