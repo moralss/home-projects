@@ -17,10 +17,9 @@ const blogModify = app => {
 
   app.get("/editblog/:id", jwtCheck, async (req, res) => {
     const editBlog = Number(req.params.id);
+
     try {
       const blog = await editBlogPost(editBlog);
-
-      console.log(editBlog);
       res.send(blog).end();
     } catch (e) {
       console.log(e);

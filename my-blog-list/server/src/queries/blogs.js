@@ -4,8 +4,6 @@ const { getClient } = require("../db");
 
 
 const getAuthorBlogs = async authorId => {
-
-  
   const client = await getClient();
   let statement = `SELECT * FROM blogs WHERE  author_id = $1`;
   const res = await client.query(statement, [authorId]);
@@ -42,13 +40,10 @@ const showAllBlogs = async () => {
 
 const getBlogsForAuthor = async (authorId) => {
   const client = await getClient();
-
   let statement = `
   select  blogs.author_id , blogs.id , authors.name , blogs.text ,
-   blogs.updated_at  from
-  authors inner join blogs on blogs.author_id = authors.id  where authors.id 
-  = $1;
-  
+   blogs.updated_at  from authors inner 
+   join blogs on blogs.author_id = authors.id  where authors.id = $1;
   ; `
 
   const parameters = [authorId]

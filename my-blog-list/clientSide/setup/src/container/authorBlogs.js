@@ -55,7 +55,7 @@ class AuthorBlogs extends Component {
                         <div>
                             <p>  text : {blog.text} </p>
                             <span> updated time : {blog.updated_at} </span>
-                            <h3> likes : {blog.total}  </h3>
+                            <h3> likes : {blog.totalLikes}  </h3>
                             <button onClick={() => this.increaseLike(blog.id)}>  like </button>
                             <Link to={`/comments/${blog.id}`}>
                                 add Commit </Link>

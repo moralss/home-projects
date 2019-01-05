@@ -6,8 +6,7 @@ const getTotalLikes = async (blogId) => {
     select sum(likes) from profiles where blog_id = $1;  
   `;
 
-    const res = await client.query(statement, [Number(blogId)]);
-
+    const res = await client.query(statement, [blogId]);
     try {
         await client.release();
         return res.rows;
@@ -38,8 +37,8 @@ const checkIfLiked = async (blogId, authorId) => {
     select * from profiles where  author_id = $1 and blog_id = $2;  
   `;
 
-    console.log("check if liked" , [Number(authorId) , blogId]);
-    const res = await client.query(statement, [ blogId , Number(authorId)]);
+    console.log("check if liked", [Number(authorId), blogId]);
+    const res = await client.query(statement, [blogId, Number(authorId)]);
 
     try {
         await client.release();

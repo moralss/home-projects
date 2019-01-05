@@ -22,8 +22,6 @@ const UserRoutes = app => {
       }
 
       let token = createToken(user.id , "user");
-      console.log(token);
-
       return res.status(201).json({ token });
 
     } catch (e) {
@@ -37,7 +35,6 @@ const UserRoutes = app => {
 
   app.post("/signin", async (req, res) => {
     const userDetails = req.body;
-    console.log(userDetails);
     const { errors, isValid } = await validateRegisterUser(userDetails);
 
     if (!isValid) {
@@ -54,9 +51,6 @@ const UserRoutes = app => {
       return res.send(401).end();
     }
   });
-
-  // let secret = "dbnnf45d";
-  // const jsonWebToken = jwt.decode(token, secret);
 
 };
 

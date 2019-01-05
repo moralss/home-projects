@@ -29,7 +29,7 @@ const getTotalComments = async (blogId) => {
     SELECT COUNT(blog_id) FROM comments where blog_id = $1;  
   `;
 
-    const res = await client.query(statement, [Number(blogId)]);
+    const res = await client.query(statement, [blogId]);
 
     try {
         await client.release();

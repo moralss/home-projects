@@ -9,7 +9,7 @@ const authorInfoRoute = app => {
 
         try {
             let blogsForAuthor = await returnBlogInfo(authorid);
-            res.json(blogsForAuthor);
+            res.json(blogsForAuthor).end();
 
         } catch (e) {
             console.log(e);

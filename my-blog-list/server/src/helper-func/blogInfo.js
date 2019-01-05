@@ -2,28 +2,21 @@ const { getBlogsForAuthor } = require("../queries/blogs");
 const { getTotalLikes } = require("../queries/profile");
 const { getTotalComments } = require("../queries/comments");
 
-
-
-
-
 const returnBlogInfo = async (authorId) => {
     let blogInfo = {};
     let blogsFor = [];
 
     const blogsForAuthor = await getBlogsForAuthor(authorId);
-    console.log("helper function ", blogsForAuthor);
 
     for (blog of blogsForAuthor) {
+        const blogIdInt = Number(blog.id);
         blogInfo.id = blog.id;
         blogInfo.name = blog.name;
         blogInfo.user_id = blog.author_id;
         blogInfo.text = blog.text;
         blogInfo.updated_at = blog.updated_at;
-
-        const id = blog.id;
-        let total = await getTotalLikes(id);
-        let totalComments = await getTotalComments(id);
-        console.log("totalComments totalComments totalComments" , totalComments);
+        let totalLikes = await getTotalLikes(blogIdInt);
+        let totalComments = await getTotalComments(blogIdInt);
         let commentsTotal = Number(totalComments[0].count);
 
         if (commentsTotal === null) {
@@ -35,8 +28,7 @@ const returnBlogInfo = async (authorId) => {
 
         }
 
-
-        blogInfo.total = Number(total[0].sum);
+        blogInfo.totalLikes = Number(totalLikes[0].sum);
         blogsFor.push(blogInfo);
         blogInfo = {}
     }
