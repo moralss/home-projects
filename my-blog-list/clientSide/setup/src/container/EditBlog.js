@@ -9,9 +9,7 @@ class EditBlog extends Component {
 
   handleSubmit = (data)=> {
     const blogId = this.props.id;
-    console.log(blogId);
     const blogInfo = { id: blogId, text: data.text };   
-    console.log("blogInfo" , blogInfo);
     this.props.updateBlog(blogInfo);
   }
 

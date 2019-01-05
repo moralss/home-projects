@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import "../App.css";
 import { connect } from "react-redux";
 import Profile from "./Profile";
-import Navbar from "./Navbar";
 import * as thunks from "../action/thunk";
 import { Link } from "react-router-dom";
 

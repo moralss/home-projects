@@ -10,11 +10,6 @@ import { Link } from "react-router-dom";
 class AuthorBlogs extends Component {
     constructor() {
         super()
-
-        this.state = {
-            status: false,
-            blogId: 0
-        }
     }
 
 
@@ -39,15 +34,13 @@ class AuthorBlogs extends Component {
 
     decreaseLike = async (blogId) => {
         this.props.dislikeBlog({ blogId });
-        const authorId = this.props.match.params.id;
-        await this.props.getBlogsForAuthor(authorId);
+        this.getAuthorBlogs()
     }
 
 
     increaseLike = async (blogId) => {
         await this.props.addLike({ blogId });
-        const authorId = this.props.match.params.id;
-        await this.props.getBlogsForAuthor(authorId);
+        this.getAuthorBlogs();
     }
 
 
@@ -64,7 +57,6 @@ class AuthorBlogs extends Component {
                             <span> updated time : {blog.updated_at} </span>
                             <h3> likes : {blog.total}  </h3>
                             <button onClick={() => this.increaseLike(blog.id)}>  like </button>
-                            {() => this.getTotalLikes(blog.id)}
                             <Link to={`/comments/${blog.id}`}>
                                 add Commit </Link>
                             <Link to={`/viewcomments/${blog.id}`}>
@@ -80,10 +72,7 @@ class AuthorBlogs extends Component {
 
 function mapStateToProps(state) {
     return {
-        authorBlogs: state.profile.authorsBlogs,
-        like: state.profile.like,
-        authorId: state.user.profile.id,
-        likes: state.profile.likes
+        authorBlogs: state.profile.authorsBlogs
     };
 }
 
@@ -92,8 +81,6 @@ function mapDispatchToProps(dispatch) {
         getBlogsForAuthor: (authorId) => dispatch(thunks.getBlogsForAuthor(authorId)),
         dislikeBlog: (blogId) => dispatch(thunks.dislikeBlog(blogId)),
         addLike: (blogId) => dispatch(thunks.addLike(blogId)),
-        getIfLiked: () => dispatch(thunks.getIfLiked()),
-        getTotalLikes: (blogId) => dispatch(thunks.getTotalLikes(blogId)),
     };
 }
 

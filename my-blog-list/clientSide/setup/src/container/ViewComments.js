@@ -14,7 +14,6 @@ class ViewComments extends Component {
     }
 
 
-
     getComments = async () => {
         const blogId = this.props.match.params.blogid;
         await this.props.getAllComments(blogId);
@@ -23,11 +22,8 @@ class ViewComments extends Component {
 
 
     render() {
-        console.log("all comments", this.props.allComments);
-
         return (
             <div className="Commits">
-
                 {this.props.allComments.map(comment => {
                     return (
                         <div>
@@ -37,7 +33,6 @@ class ViewComments extends Component {
                         </div>
                     );
                 })}
-
             </div>
         );
     }
