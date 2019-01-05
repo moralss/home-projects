@@ -1,11 +1,11 @@
 import * as actions from "../actionTypes";
 
-
 const initalState = {
     authorsBlogs: [],
     like: 0,
     likes: 0
 };
+
 
 export const profileReducer = (state = initalState, action) => {
     switch (action.type) {

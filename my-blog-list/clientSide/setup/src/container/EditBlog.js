@@ -28,7 +28,7 @@ class EditBlog extends Component {
   }
 
   render() {
-    const { handleSubmit, text } = this.props;
+    const { handleSubmit } = this.props;
 
     return (
       <div className="LatestBlog">

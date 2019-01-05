@@ -4,6 +4,7 @@ import { authReducer } from "./authReducer";
 import { userReducer } from "./userReducer";
 import { errorsReducer } from './errorsReducer';
 import {profileReducer} from "./profileReducer";
+import {commentsReducer} from "./commentsReducer";
 
 
 let rootReducer = combineReducers({
@@ -11,7 +12,8 @@ let rootReducer = combineReducers({
   auth: authReducer,
   user: userReducer,
   errors: errorsReducer,
-  profile: profileReducer
+  profile: profileReducer,
+  comments : commentsReducer
 });
 
 export default rootReducer;

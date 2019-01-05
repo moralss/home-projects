@@ -15,19 +15,7 @@ const profileRoutes = app => {
 
   });
 
-  app.get("/like", jwtDecript, async (req, res) => {
-    const author = await getAuthorByUserId(req.user.id);
-    try {
-      const isLiked = await checkLiked(author.id);
-      if (isLiked.length > 0) {
-        return res.json({ liked: isLiked[0].likes }).end();
-      }
-      return res.json({ liked: 0 }).end();
-    } catch (e) {
-      console.log(e);
-      res.json(e).end();
-    }
-  });
+  
 
   app.post("/like", jwtDecript, async (req, res) => {
     let { id } = req.user;
@@ -43,7 +31,8 @@ const profileRoutes = app => {
         } catch (e) {
           console.log(e);
         }
-        return res.status(203).end();
+
+        return res.status(200).end();
       } else {
         return res.status(201).end();
       }
@@ -59,8 +48,10 @@ const profileRoutes = app => {
     const author = await getAuthorByUserId(req.user.id);
 
     try {
-      await updateAuthorLike(0, author.id, blogId);
-      return res.status(203).end();
+        await updateAuthorLike(0, author.id, blogId);
+        await likeBlog(author.id, blogId);
+        return res.status(200).end();
+
     } catch (e) {
       console.log("ERRO ", e);
       return res.status(500).end();

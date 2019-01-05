@@ -11,6 +11,8 @@ import EditBlog from "../container/EditBlog";
 import history from "../history";
 import AuthorBlogs from "../container/authorBlogs";
 import HomePage from "../components/HomePage";
+import AddComments from "../container/AddComments";
+import ViewComments from "../container/ViewComments";
 
 
 import jwtDecode from "jwt-decode";
@@ -79,11 +81,28 @@ export const mainRoute = () => {
           component={props => <LoginForm {...props} />}
         />
 
+
+
         <PrivateRoute
           exact
           path="/editblog/:id"
           render={props => <EditBlog {...props} />}
         />
+
+        <PrivateRoute
+          exact
+          path="/comments/:blogid"
+          render={props => <AddComments {...props} />}
+        />
+
+
+        <PrivateRoute
+          exact
+          path="/viewcomments/:blogid"
+          render={props => <ViewComments {...props} />}
+        />
+
+
 
         <PrivateRoute
           exact

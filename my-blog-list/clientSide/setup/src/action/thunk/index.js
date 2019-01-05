@@ -127,11 +127,12 @@ export const getBlogsForAuthor = (authorId) => {
 };
 
 
+
 export const getTotalLikes = (blogId) => {
   return async dispatch => {
     try {
       const res = await axios.get(`${URL}/likes/${blogId}`, setAxiosHeader());
-      console.log("res" , res.data.sum);
+      console.log("res", res.data.sum);
       dispatch({
         type: actions.RECIEVED_TOTAL_LIKES,
         payload: res.data.sum
@@ -174,6 +175,7 @@ export const addLike = blogId => {
   };
 };
 
+
 export const getIfLiked = () => {
   return async dispatch => {
     try {
@@ -190,7 +192,46 @@ export const getIfLiked = () => {
   };
 };
 
+
+
+
+export const addComment = data => {
+
+  return async dispatch => {
+    try {
+      const res = await axios.post(`${URL}/comments/${data.id}`, { data }, setAxiosHeader());
+      dispatch({ type: actions.RECIEVED_COMMENTS, payload: res.data });
+    } catch (error) {
+      dispatch({
+        type: "comments error",
+        payload: error
+      });
+    }
+  };
+};
+
+
+export const getAllComments = (blogId) => {
+  return async dispatch => {
+    try {
+      let res = await axios.get(`${URL}/comments/${blogId}`, setAxiosHeader());
+      dispatch({
+        type: actions.RECIEVED_COMMENTS,
+        payload: res.data
+      });
+    } catch (e) {
+      console.log(e);
+      dispatch({
+        type: "comments error",
+        payload: " password"
+      });
+    }
+  };
+};
+
+
 export const getSingleBlog = id => { };
+
 
 
 

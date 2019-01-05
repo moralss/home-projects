@@ -77,6 +77,15 @@ CREATE TABLE IF NOT EXISTS profiles (
 
 
 
+CREATE TABLE IF NOT EXISTS comments(
+    id serial PRIMARY KEY,
+    author_id INT REFERENCES authors(id) NOT NULL,
+    blog_id INT REFERENCES blogs(id) NOT NULL,
+    comment varchar(255) NOT NULL,
+    created_at timestamp NOT NULL DEFAULT NOW() NOT NULL,
+    updated_at timestamp NOT NULL DEFAULT NOW() NOT NULL
+);
+
 
 
 

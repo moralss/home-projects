@@ -33,7 +33,7 @@ const blogRoute = app => {
     try {
       const allBlogs = await showAllBlogs();
       const blogs = _.uniqBy(allBlogs, 'name');
-
+      console.log(blogs);
       res.json(blogs).end();
     } catch (e) {
       console.log(e);
