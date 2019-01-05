@@ -7,6 +7,7 @@ const getTotalLikes = async (blogId) => {
   `;
 
     const res = await client.query(statement, [Number(blogId)]);
+
     try {
         await client.release();
         return res.rows;
@@ -19,11 +20,26 @@ const getTotalLikes = async (blogId) => {
 
 const checkLiked = async (authorId) => {
     const client = await getClient();
+    let statement = `select * from profiles where  author_id = $1; `;
+    const res = await client.query(statement, [Number(authorId)]);
+    try {
+        await client.release();
+        return res.rows;
+    } catch (e) {
+        await client.release();
+        console.log(e);
+        return;
+    }
+};
+
+const checkIfLiked = async (blogId, authorId) => {
+    const client = await getClient();
     let statement = `
-    select * from profiles where  author_id = $1;  
+    select * from profiles where  author_id = $1 and blog_id = $2;  
   `;
 
-    const res = await client.query(statement, [Number(authorId)]);
+    console.log("check if liked" , [Number(authorId) , blogId]);
+    const res = await client.query(statement, [ blogId , Number(authorId)]);
 
     try {
         await client.release();
@@ -38,5 +54,6 @@ const checkLiked = async (authorId) => {
 
 module.exports = {
     getTotalLikes,
-    checkLiked
+    checkLiked,
+    checkIfLiked
 };

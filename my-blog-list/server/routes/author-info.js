@@ -1,6 +1,6 @@
 const { jwtCheck } = require("../src/auth/jwtCheck");
 const _ = require('lodash');
-const { getBlogsForAuthor } = require("../src/queries/blogs");
+const { returnBlogInfo } = require("../src/helper-func/blogInfo");
 
 const authorInfoRoute = app => {
 
@@ -8,7 +8,7 @@ const authorInfoRoute = app => {
         const authorid = req.params.authorid;
 
         try {
-            const blogsForAuthor = await getBlogsForAuthor(authorid);
+            let blogsForAuthor = await returnBlogInfo(authorid);
             res.json(blogsForAuthor);
 
         } catch (e) {

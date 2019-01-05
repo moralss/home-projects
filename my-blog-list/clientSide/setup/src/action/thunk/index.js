@@ -24,20 +24,6 @@ export const fetchUserProfile = () => {
   };
 };
 
-export const addLike = blogId => {
-  return async dispatch => {
-    try {
-      const res = await axios.post(`${URL}/like`, blogId, setAxiosHeader());
-      dispatch({ type: "actions.POST_SUCCESFUL " });
-      dispatch({ type: actions.STORE_IF_LIKED, payload: 1 });
-    } catch (error) {
-      dispatch({
-        type: "actions.AUTHENTICATION_ERROR",
-        payload: error
-      });
-    }
-  };
-};
 
 
 export const createBlog = blogInfo => {
@@ -172,6 +158,21 @@ export const dislikeBlog = (blogId) => {
   };
 };
 
+
+export const addLike = blogId => {
+  return async dispatch => {
+    try {
+      const res = await axios.post(`${URL}/like`, blogId, setAxiosHeader());
+      dispatch({ type: "actions.POST_SUCCESFUL " });
+      dispatch({ type: actions.STORE_IF_LIKED, payload: 1 });
+    } catch (error) {
+      dispatch({
+        type: "actions.AUTHENTICATION_ERROR",
+        payload: error
+      });
+    }
+  };
+};
 
 export const getIfLiked = () => {
   return async dispatch => {

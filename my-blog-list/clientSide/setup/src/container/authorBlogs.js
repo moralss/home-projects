@@ -53,14 +53,13 @@ class AuthorBlogs extends Component {
 
     }
 
-    increaseLike(blogId) {
-        this.getInteraction();
-        this.props.addLike({ blogId });
+
+    decreaseLike = async (blogId) => {
+        this.props.dislikeBlog({ blogId });
+        const authorId = this.props.match.params.id;
+        await this.props.getBlogsForAuthor(authorId);
     }
 
-    decreaseLike(blogId) {
-        this.props.dislikeBlog({ blogId });
-    }
 
     displayAuthor() {
         const authorName = this.props.authorBlogs.map(blog => {
@@ -70,14 +69,18 @@ class AuthorBlogs extends Component {
         return authorName;
     }
 
-    getTotalLikes = async (blogId) => {
-        console.log("total", blogId);
-        this.props.getTotalLikes(blogId);
+
+    increaseLike = async (blogId) => {
+        await this.props.addLike({ blogId });
+        const authorId = this.props.match.params.id;
+        await this.props.getBlogsForAuthor(authorId);
     }
+
+
 
     render() {
         const { like, likes } = this.props;
-        // {this.getTotalLikes(blog.id)}
+
 
         return (
             <div className="AuthorBlogs">
@@ -87,26 +90,22 @@ class AuthorBlogs extends Component {
                 {this.props.authorBlogs.map(blog => {
                     return (
                         <div>
+                            {() => this.getTotalLikes(blog.id)}
                             <p>  text : {blog.text} </p>
                             <span> updated time : {blog.updated_at} </span>
-                            <h3> likes : {likes}  </h3>
-                            {<ShowTotalLikes blogId={blog.id} />}
-                            {like === 0 ?
-                                <button onClick={() => this.increaseLike(blog.id)}>
-                                    like
-                            </button>
-                                :
-                                <button onClick={() => this.decreaseLike(blog.id)}>
-                                    unlike
-                            </button>
-                            }
+                            <h3> likes : {blog.total}  </h3>
+                            <button onClick={() => this.increaseLike(blog.id)}>  like </button>
+                            <button onClick={() => this.decreaseLike(blog.id)}>  unlike </button>
 
-                            <button onClick={() => this.showCommitBox(blog.id)}>  Commit </button>
+                            {/* <button onClick={() => this.showCommitBox(blog.id)}>  Commit </button> */}
+
                             {!blog.id == this.state.blogId && this.state.status ?
                                 this.addCommit() : null}
+
                         </div>
                     );
                 })}
+
             </div>
         );
     }
