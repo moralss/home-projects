@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import history from "../history";
 import * as actions from "../action/normal-actions";
+import { Nav , Button1 } from '../styles/styles';
+import Profile from "./Profile";
 
 
 class Navbar extends Component {
@@ -26,17 +28,24 @@ class Navbar extends Component {
 
   PrivateNav() {
     return (
-      <ul>
+      <Nav>
         <li>
-          <button onClick={() => this.signOutUser()}>sign out </button>
+          <Profile />
         </li>
         <li>
-          <Link to="/viewblogs">view blogs </Link>
+          <a href="#">
+            <Link to="/viewblogs">view blogs </Link>
+          </a>
+
         </li>
         <li>
-          <Link to="/addblog">add blogs </Link>
+          <a href="#">
+            <Link to="/addblog">add blogs </Link>
+          </a>
         </li>
-      </ul>
+
+        <Button1 onClick={() => this.signOutUser()}>sign out </Button1>
+      </Nav>
     );
   }
 

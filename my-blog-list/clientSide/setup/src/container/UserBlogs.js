@@ -3,6 +3,13 @@ import "../App.css";
 import { connect } from "react-redux";
 import * as thunks from "../action/thunk";
 import { Link } from "react-router-dom";
+import {
+  ViewContainer, ViewTotalContainer,
+  LinksContainer,
+  ListWrapper, Text,
+  Button , 
+  HeaderLarge
+} from "../styles/styles";
 
 
 class UserBlogs extends Component {
@@ -26,30 +33,38 @@ class UserBlogs extends Component {
 
     return (
       <div className="LatestBlog">
-        <h1> blog post </h1>
-        <div>
+        <HeaderLarge> blog post </HeaderLarge>
+        <ListWrapper>
           {latestBlog.map(blog => {
             return (
-              <div>
-                <button onClick={() => this.deleteBlog(blog.id)}>
+              <ViewContainer>
+                <Text>  {blog.text}</Text>
+                <ViewTotalContainer>
+                  <p> total Comments : {blog.totalComments}</p>
+                  <p> total Likes : {blog.totalLikes}</p>
+                </ViewTotalContainer>
+                <LinksContainer>
+                  <a href="#">
+                    <Link to={`/editblog/${blog.id}`}>
+                      edit blog </Link>
+                  </a>
+                  <a href="#">
+                    <Link to={`/comments/${blog.id}`}>
+                      add Commit </Link>
+                  </a>
+                  <a href="#">
+                    <Link to={`/viewcomments/${blog.id}`}>
+                      view Commits </Link>
+                  </a>
+                </LinksContainer>
+                <Button onClick={() => this.deleteBlog(blog.id)}>
                   Delete
-                </button>
-                <div>
-                  <Link to={`/editblog/${blog.id}`}>edit blog </Link>
-                  <Link to={`/comments/${blog.id}`}>
-                    add Commit </Link>
-                  <Link to={`/viewcomments/${blog.id}`}>
-                    view Commits </Link>
-                </div>
+                </Button>
 
-                <li> text : {blog.text}</li>
-                <li> total Comments : {blog.totalComments}</li>
-                <li> total Likes : {blog.totalLikes}</li>
-
-              </div>
+              </ViewContainer>
             );
           })}
-        </div>
+        </ListWrapper>
       </div>
     );
   }

@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "../container/Navbar";
 import store from "../config/store";
-import AddBlog from "../container/AddBlog";
+import UserMenu from "../container/UserMenu";
 import ViewBlogs from "../container/ViewBlogs";
 import FormRegister from "../container/FormRegister";
 import { Router, Route, Redirect } from "react-router-dom";
@@ -52,7 +52,7 @@ export const mainRoute = () => {
         <PrivateRoute
           exact
           path="/addblog"
-          render={props => <AddBlog {...props} />}
+          render={props => <UserMenu {...props} />}
         />
 
 

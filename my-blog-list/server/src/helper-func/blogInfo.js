@@ -3,7 +3,6 @@ const { getTotalLikes } = require("../queries/profile");
 const { getTotalComments } = require("../queries/comments");
 
 
-
 const returnBlogInfo = async (authorId) => {
     let blogInfo = {};
     let blogsFor = [];

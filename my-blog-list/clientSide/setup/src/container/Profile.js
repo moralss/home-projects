@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "../App.css";
 import * as actions from "../action/thunk";
-
+import { ProfileContainer } from '../styles/styles';
 import { connect } from "react-redux";
 
 class Profile extends Component {
@@ -17,10 +17,11 @@ class Profile extends Component {
     const { profile } = this.props;
 
     return (
-      <div className="Profile">
-        name
+      <ProfileContainer>
+        <h3> USERNAME
         <span> {profile.name} </span>
-      </div>
+        </h3>
+      </ProfileContainer>
     );
   }
 }

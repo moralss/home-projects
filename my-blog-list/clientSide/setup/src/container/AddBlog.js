@@ -2,15 +2,17 @@ import React, { Component } from "react";
 // import "./App.css";
 import { connect } from "react-redux";
 import * as thunks from "../action/thunk";
-import Profile from "./Profile";
 import { reset, reduxForm, Field } from "redux-form";
+import { FormSide ,AddBlogContainer, HeaderLarge } from "../styles/styles";
 import UserBlogs from "./UserBlogs";
+import TextArea from '../components/TextArea';
+
 
 class AddBlog extends Component {
 
 
-  componentWillMount(){
-    
+  componentWillMount() {
+
   }
 
 
@@ -23,17 +25,17 @@ class AddBlog extends Component {
   render() {
     const { handleSubmit } = this.props;
     return (
-      <div className="AddBlog">
-        <Profile />
-        <h1> Add a new blog post </h1>
-        <form onSubmit={handleSubmit(this.handleSubmit)}>
+      <AddBlogContainer>
+        <HeaderLarge> Add a new blog post </HeaderLarge>
+        <FormSide onSubmit={handleSubmit(this.handleSubmit)}>
           <label> enter blog </label>
-          <Field type="text" name="text" component="input" />
+          <Field type="text" name="text" component={TextArea} />
           <button> Submit </button>
-        </form>
+        </FormSide>
+
         <UserBlogs />
 
-      </div>
+      </AddBlogContainer>
     );
   }
 }
