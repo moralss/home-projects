@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "../App.css";
 import { connect } from "react-redux";
-import Profile from "./Profile";
+import { ViewBlogsContainer , Paragraph , HeaderLarge , ViewBlogsWrapper} from "../styles/styles";
 import * as thunks from "../action/thunk";
 import { Link } from "react-router-dom";
 
@@ -17,23 +17,25 @@ class ViewBlogs extends Component {
   }
 
   render() {
+    
 
     return (
-      <div style={{ fontSize: 10, margin: 0 }}>
-        <Profile />
+      <ViewBlogsContainer>
+        <HeaderLarge> All latest Blogs </HeaderLarge>
+
         {this.props.allBlogs.map(blog => {
           return (
-            <div>
-              <h1> Author : {blog.name}</h1>
-              <p>  text : {blog.text} </p>
+            <ViewBlogsWrapper >
+              <h1>  {blog.name}</h1>
+              <Paragraph>  text : {blog.text} </Paragraph>
               <span> updated time : {blog.updated_at} </span>
               <li>
                 <Link to={`/authorblogs/${blog.author_id}`} >View Profile </Link>
               </li>
-            </div>
+            </ViewBlogsWrapper>
           );
         })}
-      </div>
+      </ViewBlogsContainer>
     );
 
   }

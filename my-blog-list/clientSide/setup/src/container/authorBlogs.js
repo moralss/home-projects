@@ -2,10 +2,11 @@ import React, { Component } from "react";
 import "../App.css";
 import { connect } from "react-redux";
 import * as thunks from "../action/thunk";
-import Profile from "./Profile";
 import { Link } from "react-router-dom";
+import { AuthorBlogsContainer, HeaderLarge, ViewContainer, ViewTotalContainer, LinksContainer } from "../styles/styles";
 
 
+// 
 
 class AuthorBlogs extends Component {
     constructor() {
@@ -33,8 +34,8 @@ class AuthorBlogs extends Component {
     }
 
     decreaseLike = async (blogId) => {
-        this.props.dislikeBlog({ blogId });
         this.getAuthorBlogs()
+        this.props.dislikeBlog({ blogId });
     }
 
 
@@ -47,24 +48,39 @@ class AuthorBlogs extends Component {
 
     render() {
         return (
-            <div className="AuthorBlogs">
-                author name {this.displayAuthor()}
-                <Profile />
-                {this.props.authorBlogs.map(blog => {
-                    return (
-                        <div>
-                            <p>  text : {blog.text} </p>
-                            <span> updated time : {blog.updated_at} </span>
-                            <h3> likes : {blog.totalLikes}  </h3>
-                            <button onClick={() => this.increaseLike(blog.id)}>  like </button>
-                            <Link to={`/comments/${blog.id}`}>
-                                add Commit </Link>
-                            <Link to={`/viewcomments/${blog.id}`}>
-                                view Commits </Link>
-                            <h3> total comments : {blog.totalComments}  </h3>
-                        </div>
-                    );
-                })}
+            <div>
+                <AuthorBlogsContainer className="AuthorBlogs">
+
+                    <HeaderLarge> author {this.displayAuthor()}
+                    </HeaderLarge>
+                    {this.props.authorBlogs.map(blog => {
+                        return (
+                            <ViewContainer style={{paddingBottom:"1rem"
+                            , paddingTop : "1rem"
+                            }}>
+                                <p>  text : {blog.text} </p>
+                                <span> updated time : {blog.updated_at} </span>
+                                <ViewTotalContainer>
+                                    <p> likes : {blog.totalLikes}  </p>
+                                    <p> total comments : {blog.totalComments}  </p>
+                                </ViewTotalContainer>
+                                <LinksContainer>
+                                    <button onClick={() => this.increaseLike(blog.id)}>  like </button>
+
+                                    <a href="#">
+                                        <Link to={`/comments/${blog.id}`}>
+                                        add Commit </Link>
+                                    </a>
+
+                                    <a href="#">
+                                        <Link to={`/viewcomments/${blog.id}`}>
+                                            view Commits </Link>
+                                    </a>
+                                </LinksContainer>
+                            </ViewContainer>
+                        );
+                    })}
+                </AuthorBlogsContainer>
             </div>
         );
     }

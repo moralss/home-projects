@@ -27,6 +27,7 @@ export const GlobalStyle = createGlobalStyle`
 `;
 
 
+
 export const HeaderLarge = styled.h1`
   font-size:2.5rem;
   font-weight:200;
@@ -34,6 +35,7 @@ export const HeaderLarge = styled.h1`
   color: rgb(177,106,106);
   margin-bottom:2rem;
 `
+
 
 export const ProfileContainer = styled.div`
 text-transform:uppercase;
@@ -150,7 +152,7 @@ export const TextArea = styled.textarea`
 `
 
 export const ContainerMenu = styled.div
-`
+    `
 display:grid;
 grid-gap:20px;
 box-shadow:3px 0px 3px 3px black;
@@ -169,6 +171,128 @@ background-color: rgb(216, 207, 207);
 
 
 
+/////////////////////////////////////////////////////////////////////
+// authorblogs
+
+// ViewTotalContainer
+
+// export const ViewBlogsContainer = styled.div`
+// display:grid;
+// grid-template-columns:1fr 1fr 1fr;
+// // grid-gap:1rem;
+// justify-content:center;
+// margin:3rem;
+// background-color: rgb(216, 207, 207);
+// padding-top:2rem;
+// padding-bottom:2rem;
+
+// margin-left:6rem;
+// margin-right:6rem;
+
+// h1{
+//     grid-column-end:4;
+//     grid-column-start:1;
+// }
+// `
+
+// export const ListWrapper = styled.div`
+//     display:grid;
+//     grid-gap:2rem;
+//     margin:2rem;
+
+// `
+
+
+
+
+export const AuthorBlogsContainer = styled.div`
+display:grid;
+grid-gap:2rem;
+justify-content:center;
+
+ margin:3rem;
+ background-color: rgb(216, 207, 207);
+ padding-top:2rem;
+ padding-bottom:2rem;
+
+ margin-left:6rem;
+ margin-right:6rem;
+`
+
+
+
+
+/////////////////////////////////////////////////////////////////////
+// view blogs
+
+
+
+
+export const Paragraph = styled.p`
+    // background-color:blue;
+`
+
+
+
+
+export const ViewBlogsWrapper = styled.div`
+//  display:grid;
+ grid-template-columns:    repeat(1 , 1fr);
+justify-self:start;
+background-color:white;
+padding-left:4rem;
+padding-right:4rem;
+padding:1rem;
+margin:1rem;
+text-align:left;
+
+
+
+h1{
+    font-size:1.4rem;
+    margin:1rem;
+    // margin:1rem;
+}
+
+
+p{
+ 
+    padding:1rem;
+}
+
+span{
+    margin:1rem;
+}
+
+li{
+    margin-top:2rem;
+}
+
+`
+
+
+
+export const ViewBlogsContainer = styled.div`
+display:grid;
+grid-template-columns:1fr 1fr 1fr;
+// grid-gap:1rem;
+justify-content:center;
+margin:3rem;
+background-color: rgb(216, 207, 207);
+padding-top:2rem;
+padding-bottom:2rem;
+
+margin-left:6rem;
+margin-right:6rem;
+
+h1{
+    grid-column-end:4;
+    grid-column-start:1;
+}
+`
+
+///////////////////////////////////////////////////////
+
 export const Nav = styled.div`
 background-color: rgb(216, 207, 207);
 display:grid;
@@ -186,14 +310,16 @@ li:nth-child(1){
     padding-left:1rem;
 }
 
+
 li{
     justify-self:center;
     align-self:center;
     list-style:none;
-
 }
 
+
 a{
+    color:black;
     text-decoration:none;
 }
 
@@ -207,6 +333,8 @@ button{
 
 
 `
+/////////////////////////////////////////////////////////
+
 
 
 export const Container = styled.ul`

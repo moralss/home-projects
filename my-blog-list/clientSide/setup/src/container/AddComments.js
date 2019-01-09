@@ -2,9 +2,11 @@ import React, { Component } from "react";
 import "../App.css";
 import { connect } from "react-redux";
 import * as thunks from "../action/thunk";
-import Profile from "./Profile";
 import { reduxForm, Field } from "redux-form";
 import history from '../history';
+import { FormSide, AddBlogContainer, HeaderLarge } from "../styles/styles";
+import TextArea from '../components/TextArea';
+
 
 class AddComments extends Component {
     constructor() {
@@ -25,13 +27,14 @@ class AddComments extends Component {
 
         return (
             <div className="Commits">
-                <Profile />
-                <form onSubmit={handleSubmit(this.handleSubmit)}>
-                    <Field type="text" name="text" value="name" component="input" />
-                    <input type="submit" />
-
-                </form>
-
+                <AddBlogContainer style={{paddingBottom:"0.1rem"}}>
+                    <HeaderLarge> Commit </HeaderLarge>
+                    <FormSide onSubmit={handleSubmit(this.handleSubmit)}>
+                        <label> enter commit </label>
+                        <Field type="text" name="text" component={TextArea} />
+                        <button> Submit </button>
+                    </FormSide>
+                </AddBlogContainer>
             </div>
         );
     }
