@@ -132,7 +132,6 @@ export const getTotalLikes = (blogId) => {
   return async dispatch => {
     try {
       const res = await axios.get(`${URL}/likes/${blogId}`, setAxiosHeader());
-      console.log("res", res.data.sum);
       dispatch({
         type: actions.RECIEVED_TOTAL_LIKES,
         payload: res.data.sum
@@ -142,6 +141,24 @@ export const getTotalLikes = (blogId) => {
     }
   };
 };
+
+
+export const getAuthorBlog = (blogId) => {
+  return async dispatch => {
+    try {
+      const res = await axios.get(`${URL}/singleblog/${blogId}`, setAxiosHeader());
+      dispatch({
+        type: actions.RECIEVED_SINGLE_BLOG,
+        payload: res.data
+      })
+
+
+    } catch (e) {
+      console.log(e);
+    }
+  };
+};
+
 
 
 export const dislikeBlog = (blogId) => {

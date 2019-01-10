@@ -6,24 +6,31 @@ import * as thunks from "../action/thunk";
 class ViewComments extends Component {
     constructor() {
         super()
-
     }
+
 
     componentWillMount() {
         this.getComments();
     }
 
 
+
     getComments = async () => {
         const blogId = this.props.match.params.blogid;
         await this.props.getAllComments(blogId);
+        await this.props.getAuthorBlog(blogId);
     }
 
 
 
     render() {
+        console.log(this.props.singlblog);
+
+
         return (
             <div className="Commits">
+
+            {this.props.singlblog.text};
                 {this.props.allComments.map(comment => {
                     return (
                         <div>
@@ -41,6 +48,7 @@ class ViewComments extends Component {
 function mapStateToProps(state) {
     return {
         allComments: state.comments.allCommentsForblog,
+        singlblog: state.blog.authorSingleBlog
     };
 }
 
@@ -49,7 +57,8 @@ function mapDispatchToProps(dispatch) {
         addComment: (blogId) => dispatch(thunks.addComment(blogId))
         , getAllComments: (blogId) =>
             dispatch(thunks.getAllComments(blogId)),
-
+        getAuthorBlog: (blogId) =>
+            dispatch(thunks.getAuthorBlog(blogId))
     };
 }
 

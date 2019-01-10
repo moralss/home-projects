@@ -18,6 +18,22 @@ const getAuthorBlogs = async authorId => {
 };
 
 
+const getAuthorBlog = async blogId => {
+  const client = await getClient();
+  let statement = `SELECT * FROM blogs WHERE  id = $1`;
+  const res = await client.query(statement, [blogId]);
+  try {
+    await client.release();
+    return res.rows;
+  } catch (e) {
+    await client.release();
+    return;
+  }
+};
+
+
+
+
 const showAllBlogs = async () => {
   const client = await getClient();
   let statement = `
@@ -62,7 +78,8 @@ const getBlogsForAuthor = async (authorId) => {
 module.exports = {
   getAuthorBlogs,
   showAllBlogs,
-  getBlogsForAuthor
+  getBlogsForAuthor,
+  getAuthorBlog
 };
 
 

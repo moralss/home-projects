@@ -1,7 +1,7 @@
 const { getAuthorByUserId } = require("../src/queries/author");
 const { jwtCheck } = require("../src/auth/jwtCheck");
 const { createBlog } = require("../src/command/blog");
-const { getAuthorBlogs, showAllBlogs } = require("../src/queries/blogs");
+const { getAuthorBlog, showAllBlogs } = require("../src/queries/blogs");
 const _ = require('lodash');
 const { returnUserBlogInfo } = require("../src/helper-func/userBlogInfo");
 
@@ -18,16 +18,17 @@ const blogRoute = app => {
     }
   });
 
-  app.get("/blog", jwtCheck, async (req, res) => {
+  app.get("/singleblog/:blogid", jwtCheck, async (req, res) => {
+    const blogId = req.params.blogid;
+
+    console.log(blogId);
+
+    const authorBlog = await getAuthorBlog(Number(blogId));
+    console.log(authorBlog[0]);
     try {
-      const authorInfo = await getAuthorByUserId(req.user.id);
-      // const blogs = await getAuthorBlogs(authorInfo.id);
-      // console.log("blog")
 
 
-      let blogsForUser = await returnUserBlogInfo(authorInfo.id);
-      console.log("blogsForUser", blogsForUser);
-      return res.json(blogsForUser).end();
+      return res.json(authorBlog[0]).end();
 
     } catch (e) {
       console.log(e);
@@ -47,6 +48,19 @@ const blogRoute = app => {
       res.send(500).end();
     }
   });
+
+
+  app.get("/allblogs", async (req, res) => {
+    try {
+      const allBlogs = await showAllBlogs();
+
+    } catch (e) {
+      console.log(e);
+      res.send(500).end();
+    }
+  });
+
+
 };
 
 module.exports = { blogRoute };
