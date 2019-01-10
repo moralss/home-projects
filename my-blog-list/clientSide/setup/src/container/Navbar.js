@@ -4,17 +4,26 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import history from "../history";
 import * as actions from "../action/normal-actions";
+import * as thunks from "../action/thunk";
 import { Nav , Button1 } from '../styles/styles';
 import Profile from "./Profile";
 
 
 class Navbar extends Component {
+  
+  // componentWillMount() {
+  //   this.props.fetchUserProfile();
+  // }
+
+  
+  
   navbarLinks() {
     if (!this.props.authenticated) {
       return this.createVisitorNav();
     } else {
       return this.createPrivateNav();
     }
+    
   }
 
 
@@ -73,7 +82,8 @@ class Navbar extends Component {
 
 function mapDispatchToProps(dispatch) {
   return {
-    disableAuth: () => dispatch(actions.disableAuth())
+    disableAuth: () => dispatch(actions.disableAuth()),
+    fetchUserProfile: () => dispatch(thunks.fetchUserProfile())
   };
 }
 

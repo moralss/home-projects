@@ -8,7 +8,7 @@ let initialState = {
 export const authReducer = (state = initialState, action) => {
   switch (action.type) {
     case actions.AUTHENTICATED:
-      return { ...state, authenticated: action.payload };
+      return { ...state, authenticated: action.payload.auth };
     case actions.AUTHENTICATION_ERROR:
       const errors = { ...action.payload.error };
 

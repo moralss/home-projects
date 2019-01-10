@@ -18,17 +18,11 @@ const blogRoute = app => {
     }
   });
 
-  app.get("/singleblog/:blogid", jwtCheck, async (req, res) => {
-    const blogId = req.params.blogid;
-
-    console.log(blogId);
-
-    const authorBlog = await getAuthorBlog(Number(blogId));
-    console.log(authorBlog[0]);
+  app.get("/blog", jwtCheck, async (req, res) => {
     try {
-
-
-      return res.json(authorBlog[0]).end();
+      const authorInfo = await getAuthorByUserId(req.user.id);
+      let blogsForUser = await returnUserBlogInfo(authorInfo.id);
+      return res.json(blogsForUser).end();
 
     } catch (e) {
       console.log(e);
@@ -50,17 +44,16 @@ const blogRoute = app => {
   });
 
 
-  app.get("/allblogs", async (req, res) => {
+  app.get("/singleblog/:blogid", jwtCheck, async (req, res) => {
+    const blogId = req.params.blogid;
+    const authorBlog = await getAuthorBlog(Number(blogId));
     try {
-      const allBlogs = await showAllBlogs();
-
+      return res.json(authorBlog[0]).end();
     } catch (e) {
       console.log(e);
       res.send(500).end();
     }
   });
-
-
 };
 
 module.exports = { blogRoute };

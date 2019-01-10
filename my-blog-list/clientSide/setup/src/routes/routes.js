@@ -20,7 +20,7 @@ import jwtDecode from "jwt-decode";
 const user = localStorage.getItem("user");
 
 if (user) {
-  store.dispatch({ type: AUTHENTICATED, payload: true });
+  store.dispatch({ type: AUTHENTICATED, payload: { auth: true } });
 }
 
 
@@ -74,9 +74,7 @@ export const mainRoute = () => {
           component={props => <AuthorBlogs {...props} />}
         />
 
-
         <Route
-          exact
           path="/login"
           component={props => <LoginForm {...props} />}
         />

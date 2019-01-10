@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import "../App.css";
 import { connect } from "react-redux";
 import * as thunks from "../action/thunk";
+import { ViewCommentsContainer , ViewCommentsWrapper } from "../styles/styles";
+
 
 class ViewComments extends Component {
     constructor() {
@@ -28,19 +30,18 @@ class ViewComments extends Component {
 
 
         return (
-            <div className="Commits">
-
-            {this.props.singlblog.text};
+            <ViewCommentsContainer>
+                <p> {this.props.singlblog.text}  </p>
                 {this.props.allComments.map(comment => {
                     return (
-                        <div>
+                        <ViewCommentsWrapper style={{padding:"2.5rem"}}>
                             <li>  name : {comment.name} </li>
                             <li>  comment : {comment.comment} </li>
                             <li>  created at : {comment.created_at} </li>
-                        </div>
+                        </ViewCommentsWrapper>
                     );
                 })}
-            </div>
+            </ViewCommentsContainer>
         );
     }
 }

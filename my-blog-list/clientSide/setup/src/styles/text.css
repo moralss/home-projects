@@ -6,5 +6,6 @@
     background: rgb(177, 106, 106);
         font-family: sans-serif;
     text-transform: uppercase;
-    grid-template-columns:  
- }
+    list-style: none;
+    font-family: 'Times New Roman';
+}

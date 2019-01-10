@@ -3,6 +3,7 @@ const bcrypt = require("bcryptjs");
 const { getUser } = require("../src/queries/user");
 const { createToken } = require("../src/auth/createToken");
 const { validateRegisterUser } = require("../src/validations/register");
+const { getAuthorByUserId } = require("../src/queries/author");
 
 
 const UserRoutes = app => {
@@ -15,12 +16,16 @@ const UserRoutes = app => {
 
     try {
       const isMatch = await bcrypt.compare(password, user.hashed_password);
+
       if (!isMatch) {
         return res.status(400).json({ password: "Password is incorrect" });
       }
 
       let token = createToken(user.id , "user");
-      return res.status(201).json({ token });
+
+      const userProfile = await getAuthorByUserId(user.id);
+
+      return res.status(201).json({ token , ...userProfile  });
 
     } catch (e) {
       console.log(e);

@@ -5,14 +5,12 @@ export const GlobalStyle = createGlobalStyle`
   * {
     margin: 0;
     padding:0;
-    font-family:sans-serif;    
 
 }
 
   html{
     background-color:rgb(83, 81, 81);
-    font-family:sans-serif;
-    
+    font-family: 'Times New Roman';    
 }
 
 
@@ -138,6 +136,43 @@ export const LinksContainer = styled.div`
 `
 
 
+
+export const ViewCommentsContainer = styled.div`
+    display:grid;
+    justify-content:center;
+    grid-gap:2rem;
+    padding:2rem;
+    background-color: rgb(216, 207, 207);
+    text-align:left;
+
+    margin-left:6rem;
+    margin-right:6rem;
+    margin-top:2rem;
+
+    p{
+        padding:1rem;
+        font-size:1.5rem;
+        // font-weight:400;
+        font-family: 'Times New Roman';
+
+    }
+
+    li{
+        list-style: none;
+
+    }
+`
+
+
+export const ViewCommentsWrapper = styled.div`
+    display:grid;
+    grid-gap:2rem;
+    background-color: rgb(250, 248, 248);
+    box-shadow:3px 0px 3px 3px grey;
+`
+
+
+
 export const ViewContainer = styled.div`
     display:grid;
     grid-gap:2rem;
@@ -155,17 +190,20 @@ export const ContainerMenu = styled.div
     `
 display:grid;
 grid-gap:20px;
-box-shadow:3px 0px 3px 3px black;
 
 `
 
 export const AddBlogContainer = styled.div`
-// height:40rem;
-margin:1rem;
-margin-left:6rem;
-margin-right:6rem;
-padding-top:2.5rem;
-background-color: rgb(216, 207, 207);
+    margin:3rem;
+    margin-left:6rem;
+    margin-right:6rem;
+
+
+    padding-top:2rem;
+    padding-bottom:2rem;
+
+
+    background-color: rgb(216, 207, 207);
 `
 
 
@@ -175,32 +213,6 @@ background-color: rgb(216, 207, 207);
 // authorblogs
 
 // ViewTotalContainer
-
-// export const ViewBlogsContainer = styled.div`
-// display:grid;
-// grid-template-columns:1fr 1fr 1fr;
-// // grid-gap:1rem;
-// justify-content:center;
-// margin:3rem;
-// background-color: rgb(216, 207, 207);
-// padding-top:2rem;
-// padding-bottom:2rem;
-
-// margin-left:6rem;
-// margin-right:6rem;
-
-// h1{
-//     grid-column-end:4;
-//     grid-column-start:1;
-// }
-// `
-
-// export const ListWrapper = styled.div`
-//     display:grid;
-//     grid-gap:2rem;
-//     margin:2rem;
-
-// `
 
 
 

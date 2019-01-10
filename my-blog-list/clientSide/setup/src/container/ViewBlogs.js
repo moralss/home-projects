@@ -20,7 +20,7 @@ class ViewBlogs extends Component {
     
 
     return (
-      <ViewBlogsContainer>
+      <ViewBlogsContainer class="gery">
         <HeaderLarge> All latest Blogs </HeaderLarge>
 
         {this.props.allBlogs.map(blog => {
