@@ -79,8 +79,6 @@ export const mainRoute = () => {
           component={props => <LoginForm {...props} />}
         />
 
-
-
         <PrivateRoute
           exact
           path="/editblog/:id"

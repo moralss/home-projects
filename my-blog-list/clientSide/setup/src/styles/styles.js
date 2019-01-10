@@ -9,6 +9,7 @@ export const GlobalStyle = createGlobalStyle`
 }
 
   html{
+    line-height:1.3rem;
     background-color:rgb(83, 81, 81);
     font-family: 'Times New Roman';    
 }
@@ -21,7 +22,17 @@ export const GlobalStyle = createGlobalStyle`
       text-transform: uppercase; 
       font-size:0.7rem;
       border-radius:0.3rem;
+      transition: all;
+      transition-duration: 1s;
+    //   transition-delay: 0.5;  
   }
+
+  button:hover{
+    background:silver;
+    border:1px solid rgb(216,207,207);
+    color:black;
+    ;
+}
 `;
 
 
@@ -33,7 +44,32 @@ export const HeaderLarge = styled.h1`
   color: rgb(177,106,106);
   margin-bottom:2rem;
 `
+export const ButtonLink = styled.button`
+        padding:2rem;
+        font-size:1.2rem;
+// //   font-weight:200;
+// //   font-family: serif;
+// //   color: rgb(177,106,106);
+// //   margin-bottom:2rem
 
+//     color:rgba(29, 85, 46, 0.76);
+//     text-decoration:none;
+//     font-size:2rem;
+//     background-color:transpace;
+//     background:transparent;
+//     font-weight:200;
+       text-align:center;
+
+
+//     a:button{
+//         cursor: pointer;
+//         color:red;
+//     }
+    
+    
+
+;
+`
 
 export const ProfileContainer = styled.div`
 text-transform:uppercase;
@@ -104,6 +140,10 @@ export const Text = styled.p`
     margin-top:1rem;
     margin-left:0.5rem;
     margin-right:0.5rem;
+    // padding:1rem;
+    font-weight:200;
+    letter-spacing:0.1rem;
+
 `
 
 export const Button = styled.button`
@@ -132,6 +172,10 @@ export const LinksContainer = styled.div`
     a{
         display:flex;
         justify-content:center;
+        color:rgba(29, 85, 46, 0.76);
+        text-decoration:none;
+        font-size:1.3rem;
+        
     }    
 `
 
@@ -144,31 +188,37 @@ export const ViewCommentsContainer = styled.div`
     padding:2rem;
     background-color: rgb(216, 207, 207);
     text-align:left;
-
     margin-left:6rem;
     margin-right:6rem;
     margin-top:2rem;
 
+    // p{
+    //     padding:1rem;
+    //     font-size:1.5rem;
+   
+    // }
+
     p{
-        padding:1rem;
-        font-size:1.5rem;
-        // font-weight:400;
-        font-family: 'Times New Roman';
-
-    }
-
-    li{
         list-style: none;
-
+        padding:1rem;
+        font-size:1rem;
+        font-weight:200;
+        font-family: 'Times New Roman';
+        width:20rem;
     }
 `
 
 
 export const ViewCommentsWrapper = styled.div`
     display:grid;
-    grid-gap:2rem;
+    // grid-gap:2rem;
     background-color: rgb(250, 248, 248);
     box-shadow:3px 0px 3px 3px grey;
+    p{
+        padding: 1rem;
+        font-weight: 200;
+        letter-spacing: 0.1rem;
+    }
 `
 
 
@@ -182,8 +232,10 @@ export const ViewContainer = styled.div`
 
 export const TextArea = styled.textarea`
     width:15rem;
-    height:4rem;
+    height:5rem;
+    line-height:1rem;
     margin-right:6rem;
+    
 `
 
 export const ContainerMenu = styled.div
@@ -245,31 +297,36 @@ export const Paragraph = styled.p`
 `
 
 
+export const SmallHeader = styled.h1` 
+    font-size:1.7rem;
+    margin:1rem;
+    // margin:1rem;
+    font-family: 'Times New Roman';
+    font-weight:200;
+    letter-spacing:0.3rem;
+    color:rgb(177,106,106);
+}
+
+`;
 
 
 export const ViewBlogsWrapper = styled.div`
-//  display:grid;
- grid-template-columns:    repeat(1 , 1fr);
-justify-self:start;
-background-color:white;
-padding-left:4rem;
-padding-right:4rem;
-padding:1rem;
-margin:1rem;
-text-align:left;
-
-
-
-h1{
-    font-size:1.4rem;
+    //  display:grid;
+    grid-template-columns:    repeat(1 , 1fr);
+    justify-self:start;
+    background-color:white;
+    padding-left:4rem;
+    padding-right:4rem;
+    padding:1rem;
     margin:1rem;
-    // margin:1rem;
-}
-
+    text-align:left;
+    box-shadow:3px 0px 3px 3px grey;
 
 p{
- 
     padding:1rem;
+    font-weight:200;
+    letter-spacing:0.1rem;
+
 }
 
 span{
@@ -278,7 +335,16 @@ span{
 
 li{
     margin-top:2rem;
+    list-style:none;
 }
+
+a{
+    color:rgba(29, 85, 46, 0.76);
+    text-decoration:none;
+    font-size:1.3rem;
+
+}
+
 
 `
 
@@ -305,7 +371,7 @@ h1{
 
 ///////////////////////////////////////////////////////
 
-export const Nav = styled.div`
+export const PrivatNavContainer = styled.div`
 background-color: rgb(216, 207, 207);
 display:grid;
 grid-template-columns: 1fr 8rem 6rem 6rem;
@@ -332,7 +398,16 @@ li{
 
 a{
     color:black;
+    transition: all;
+    transition-duration: 0.3s;
     text-decoration:none;
+}
+
+a:hover{
+    font-size:1.2rem;
+    color:rgb(177,106,106)
+
+
 }
 
 

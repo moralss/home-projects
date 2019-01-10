@@ -3,13 +3,16 @@ import "../App.css";
 import { connect } from "react-redux";
 import * as thunks from "../action/thunk";
 import { reduxForm, Field } from "redux-form";
+import TextArea from '../components/TextArea';
+import { FormSide, AddBlogContainer, HeaderLarge } from "../styles/styles";
+
 
 class EditBlog extends Component {
 
 
-  handleSubmit = (data)=> {
+  handleSubmit = (data) => {
     const blogId = this.props.id;
-    const blogInfo = { id: blogId, text: data.text };   
+    const blogInfo = { id: blogId, text: data.text };
     this.props.updateBlog(blogInfo);
   }
 
@@ -30,12 +33,16 @@ class EditBlog extends Component {
 
     return (
       <div className="LatestBlog">
-        <h1> edit Form </h1>
-        <form onSubmit={handleSubmit(this.handleSubmit)}>
-          <label> enter blog </label>
-          <Field type="text" name="text" value="name" component="input" />
-          <input type="submit" />
-        </form>
+        <AddBlogContainer style={{ paddingBottom: "0.1rem" }}>
+          <HeaderLarge>edit Form  </HeaderLarge>
+          <form onSubmit={handleSubmit(this.handleSubmit)}>
+            <FormSide onSubmit={handleSubmit(this.handleSubmit)}>
+              <label> enter blog </label>
+              <Field type="text" name="text" component={TextArea} />
+              <button> Submit </button>
+            </FormSide>
+          </form>
+        </AddBlogContainer>
       </div>
     );
   }

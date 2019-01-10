@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import "../App.css";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link , NavLink} from "react-router-dom";
 import history from "../history";
 import * as actions from "../action/normal-actions";
 import * as thunks from "../action/thunk";
-import { Nav , Button1 } from '../styles/styles';
+import { PrivatNavContainer , Button1 } from '../styles/styles';
 import Profile from "./Profile";
 
 
@@ -37,24 +37,24 @@ class Navbar extends Component {
 
   PrivateNav() {
     return (
-      <Nav>
+      <PrivatNavContainer>
         <li>
-          <Profile />
+          <Profile/>
         </li>
         <li>
           <a href="#">
-            <Link to="/viewblogs">view blogs </Link>
+            <NavLink to="/viewblogs">view blogs </NavLink>
           </a>
 
         </li>
         <li>
           <a href="#">
-            <Link to="/addblog">add blogs </Link>
+            <NavLink to="/addblog">add blogs </NavLink>
           </a>
         </li>
 
         <Button1 onClick={() => this.signOutUser()}>sign out </Button1>
-      </Nav>
+      </PrivatNavContainer>
     );
   }
 

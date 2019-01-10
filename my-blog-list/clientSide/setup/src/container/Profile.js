@@ -8,13 +8,13 @@ class Profile extends Component {
 
   componentWillMount() {
     this.props.fetchUserProfile();
+    
   }
-
-
 
 
   render() {
     const { profile } = this.props;
+    
 
     return (
       <ProfileContainer>

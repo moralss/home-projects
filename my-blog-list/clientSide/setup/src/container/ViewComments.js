@@ -2,7 +2,11 @@ import React, { Component } from "react";
 import "../App.css";
 import { connect } from "react-redux";
 import * as thunks from "../action/thunk";
-import { ViewCommentsContainer , ViewCommentsWrapper } from "../styles/styles";
+import {
+    ViewCommentsContainer,
+    ViewCommentsWrapper, ButtonLink, SmallHeader
+} from "../styles/styles";
+import history from '../history/index';
 
 
 class ViewComments extends Component {
@@ -24,23 +28,32 @@ class ViewComments extends Component {
     }
 
 
+    addComment() {
+        const blogId = this.props.match.params.blogid;
+        history.push(`/comments/${blogId}`)
+    }
 
     render() {
         console.log(this.props.singlblog);
 
-
         return (
             <ViewCommentsContainer>
-                <p> {this.props.singlblog.text}  </p>
+                <p style={{ fontSize: "1.6rem ", width: "100%" }}> {this.props.singlblog.text}  </p>
                 {this.props.allComments.map(comment => {
                     return (
-                        <ViewCommentsWrapper style={{padding:"2.5rem"}}>
-                            <li>  name : {comment.name} </li>
-                            <li>  comment : {comment.comment} </li>
-                            <li>  created at : {comment.created_at} </li>
+                        <ViewCommentsWrapper style={{ padding: "2.5rem" }}>
+                            <SmallHeader>   {comment.name} </SmallHeader>
+                            <p>   {comment.comment} </p>
+                            <p>   {comment.created_at} </p>
                         </ViewCommentsWrapper>
                     );
                 })}
+
+                {/* <Link> */}
+                <div style={{ display: "grid", justifyContent: "center" }} >
+                    <ButtonLink onClick={() => this.addComment()}> add comment   </ButtonLink>
+                </div>
+
             </ViewCommentsContainer>
         );
     }

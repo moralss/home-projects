@@ -55,8 +55,11 @@ class AuthorBlogs extends Component {
                     </HeaderLarge>
                     {this.props.authorBlogs.map(blog => {
                         return (
-                            <ViewContainer style={{paddingBottom:"1rem"
-                            , paddingTop : "1rem"
+                            <ViewContainer style={{
+                                padding: "2rem",
+                                 marginLeft: "2rem",
+                                 marginRight: "2rem"
+
                             }}>
                                 <p>  text : {blog.text} </p>
                                 <span> updated time : {blog.updated_at} </span>
@@ -69,7 +72,7 @@ class AuthorBlogs extends Component {
 
                                     <a href="#">
                                         <Link to={`/comments/${blog.id}`}>
-                                        add Commit </Link>
+                                            add Commit </Link>
                                     </a>
 
                                     <a href="#">
