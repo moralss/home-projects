@@ -8,7 +8,7 @@ export const registerUser = (credentials) => {
   return async dispatch => {
     try {
       const res = await axios.post(`${URL}/signin`, credentials);
-      dispatch({ type: actions.AUTHENTICATED, payload: { auth: true } });
+      dispatch({ type: actions.AUTHENTICATED, payload: { auth: true, userProfile: res.data } });
       localStorage.setItem("user", res.data.token);
       history.push("/addblog");
 
@@ -32,7 +32,7 @@ export function verifyUser(credentials) {
     } catch (error) {
       dispatch({
         type: actions.AUTHENTICATION_ERROR,
-        payload: "Invalid email or password"
+        payload: error.response.data
       });
     }
   };

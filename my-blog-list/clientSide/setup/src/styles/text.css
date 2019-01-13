@@ -9,4 +9,14 @@
     list-style: none;
     font-family: 'Times New Roman';
     color:rgba(29, 85, 46, 0.76);
+    transition: all;
+    transition-duration: 1s;
+    transition-delay: 0.5;
+    background:transparent;    
+}
+
+button:hover{
+    background:silver;
+    border:2px solid black;
+    cursor: pointer;
 }

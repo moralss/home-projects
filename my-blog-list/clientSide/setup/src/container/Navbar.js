@@ -1,29 +1,29 @@
 import React, { Component } from "react";
 import "../App.css";
 import { connect } from "react-redux";
-import { Link , NavLink} from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import history from "../history";
 import * as actions from "../action/normal-actions";
 import * as thunks from "../action/thunk";
-import { PrivatNavContainer , Button1 } from '../styles/styles';
+import { PrivatNavContainer, Button1, PublicNavContainer } from '../styles/styles';
 import Profile from "./Profile";
 
 
 class Navbar extends Component {
-  
+
   // componentWillMount() {
   //   this.props.fetchUserProfile();
   // }
 
-  
-  
+
+
   navbarLinks() {
     if (!this.props.authenticated) {
       return this.createVisitorNav();
     } else {
       return this.createPrivateNav();
     }
-    
+
   }
 
 
@@ -39,7 +39,7 @@ class Navbar extends Component {
     return (
       <PrivatNavContainer>
         <li>
-          <Profile/>
+          <Profile />
         </li>
         <li>
           <a href="#">
@@ -60,14 +60,18 @@ class Navbar extends Component {
 
   VisitorNav() {
     return (
-      <ul>
+      <PublicNavContainer>
         <li>
-          <Link to="/signin">sign in</Link>
+          <a href="#">
+            <Link to="/signin">sign in</Link>
+          </a>
         </li>
         <li>
-          <Link to="/login">login in </Link>
+          <a>
+            <Link to="/login">login in </Link>
+          </a>
         </li>
-      </ul>
+      </PublicNavContainer>
     );
   }
 

@@ -22,10 +22,9 @@ const UserRoutes = app => {
       }
 
       let token = createToken(user.id , "user");
-
       const userProfile = await getAuthorByUserId(user.id);
-
       return res.status(201).json({ token , ...userProfile  });
+
 
     } catch (e) {
       console.log(e);
@@ -41,14 +40,16 @@ const UserRoutes = app => {
     const { errors, isValid } = await validateRegisterUser(userDetails);
 
     if (!isValid) {
-      return res.status(400).json({ errors }).end();
+      return res.status(400).json( errors ).end();
     }
 
     try {
       await createUserAndAuthor(userDetails);
       let user = await getUser(userDetails.email);
+      const userProfile = await getAuthorByUserId(user.id);
       let token = createToken(user.id , "user");
-      return res.send({ token }).end();
+      return res.status(201).json({ token , ...userProfile  });
+  
     } catch (e) {
       console.log(e);
       return res.send(401).end();

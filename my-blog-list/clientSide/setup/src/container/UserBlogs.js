@@ -7,7 +7,7 @@ import {
   ViewContainer, ViewTotalContainer,
   LinksContainer,
   ListWrapper, Text,
-  Button , 
+  Button,
   HeaderLarge
 } from "../styles/styles";
 
@@ -15,6 +15,7 @@ import {
 class UserBlogs extends Component {
   componentWillMount() {
     this.props.getUserBlogs();
+
   }
 
 

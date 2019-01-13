@@ -3,15 +3,15 @@ import "../App.css";
 import { connect } from "react-redux";
 import { reduxForm, Field } from "redux-form";
 import * as thunks from "../action/thunk/auth";
-import {checkAuth} from "../utils/checkAuth";
-
+import { checkAuth } from "../utils/checkAuth";
+import { Form, FormWrapper, SubmitButton, HeaderLarge } from "../styles/styles";
+import renderField from "../components/Input";
 
 class Login extends Component {
 
-
-componentDidMount(){
-  checkAuth()
-}
+  componentDidMount() {
+    checkAuth()
+  }
 
   handleSubmit = async data => {
     await this.props.verifyUser(data);
@@ -19,22 +19,29 @@ componentDidMount(){
 
   render() {
     const { handleSubmit } = this.props;
+    let { email, password } = this.props.errors;
 
     return (
-      <div className="Form">
-        <form onSubmit={handleSubmit(this.handleSubmit)}>
-          <label> email </label>
-          <Field type="text" name="email" component="input" />
+      <FormWrapper className="Form">
 
-          <label> password </label>
-          <Field type="password" name="password" component="input" />
-
-          <input type="submit" />
-        </form>
-      </div>
+        <HeaderLarge> Login</HeaderLarge>
+        <Form onSubmit={handleSubmit(this.handleSubmit)}>
+          <Field type="text" label="email" name="email" component={renderField} />
+          <span style={{ color: "red" }}> {email}</span>
+          <Field type="password" label="password" name="password" component={renderField} />
+          <span style={{ color: "red" }}> {password}</span>
+          <SubmitButton type="submit" />
+        </Form>
+      </FormWrapper>
     );
   }
 }
+
+
+function mapStateToProps(state) {
+  return { errors: state.errors.errors }
+}
+
 
 function mapDispatchToProps(dispatch) {
   return {
@@ -49,6 +56,6 @@ let loginConfig = reduxForm({
 })(Login);
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(loginConfig);

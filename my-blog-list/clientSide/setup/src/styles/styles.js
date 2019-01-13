@@ -36,6 +36,83 @@ export const GlobalStyle = createGlobalStyle`
 `;
 
 
+////////////////////////////////////////////////////////////////////////////////
+
+export const FormWrapper = styled.div`
+    margin:3rem;
+    background-color: rgb(216, 207, 207);
+    padding-top:2rem;
+    padding-bottom:2rem;
+    margin-left:6rem;
+    margin-right:6rem;
+
+}
+
+`;
+ 
+export const SubmitButton = styled.input`
+    // margin-top:2rem;
+    // padding-top2rem;
+     font-family:3rem;
+     justify-self:center;
+     font-family: Verdana, Geneva, Tahoma, sans-serif;
+     font-weight:200;
+     font-size:1.8rem;
+
+     background-color: rgb(64,192,107);
+    color: white;
+    border: none;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    border-radius: 0.3rem;
+    width:8rem;
+ `
+
+
+export const Form = styled.form`
+    margin-top:2rem;
+    padding-top2rem;
+    display:grid;
+    // grid-gap:1rem;
+    justify-content:center;
+    text-align:left;
+
+    label{
+        // padding:20rem;
+     font-family: Verdana, Geneva, Tahoma, sans-serif;
+     font-weight:200;
+     font-size:1.2rem;
+    }
+    
+    input{
+        margin-top:1rem
+        margin-bottom:1rem        
+        height:2rem;
+    //  font-size:1.5rem;
+ }
+
+  button{
+      background-color:rgb(64, 192, 107);
+      color:white;
+      border:none;
+      text-transform: uppercase; 
+      font-size:0.7rem;
+      border-radius:0.3rem;
+      transition: all;
+      transition-duration: 1s;  
+  }
+
+  button:hover{
+    background:silver;
+    border:1px solid rgb(216,207,207);
+    color:black;
+    ;
+}
+
+`;
+
+
+
 
 export const HeaderLarge = styled.h1`
   font-size:2.5rem;
@@ -179,7 +256,7 @@ export const LinksContainer = styled.div`
     }    
 `
 
-
+/////////////////////////////////////////////////////////////////////
 
 export const ViewCommentsContainer = styled.div`
     display:grid;
@@ -221,7 +298,7 @@ export const ViewCommentsWrapper = styled.div`
     }
 `
 
-
+/////////////////////////////////////////////////////////
 
 export const ViewContainer = styled.div`
     display:grid;
@@ -370,6 +447,10 @@ h1{
 `
 
 ///////////////////////////////////////////////////////
+// NAV  
+
+
+
 
 export const PrivatNavContainer = styled.div`
 background-color: rgb(216, 207, 207);
@@ -406,20 +487,72 @@ a{
 a:hover{
     font-size:1.2rem;
     color:rgb(177,106,106)
-
-
 }
-
-
 
 button{
     justify-self:center;
 }
+`
 
 
+export const PublicNavContainer = styled.div`
+
+height:1.8rem;
+
+background-color: rgb(216, 207, 207);
+justify-content:center;
+align-content:center;
+text-transform:uppercase;
+display:grid;
+grid-template-columns: 1fr 1fr 1fr 1fr  1fr 1fr;
+margin-left:6rem;
+margin-right:6rem;
+padding-top:1rem;
+margin-top:3rem;
+padding-bottom:1rem;
+
+li:nth-child(1){
+    position:absolute;
+    top:65px;
+    right:110px;
+
+
+}
+
+
+li:nth-child(2){
+    position:absolute;
+    top:65px;
+    right:210px;
+    
+}
+
+
+li{
+    font-size:1.2rem;
+    justify-self:center;
+    align-self:center;
+    list-style:none;
+}
+
+
+a{
+    color:black;
+    justify-self:center;
+    align-self:center;
+    transition: all;
+    transition-duration: 0.3s;
+    text-decoration:none;
+}
+a:hover{
+
+    font-size:1.4rem;
+    color:rgb(177,106,106)
+}
 
 
 `
+
 /////////////////////////////////////////////////////////
 
 

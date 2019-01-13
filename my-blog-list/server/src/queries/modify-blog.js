@@ -5,9 +5,9 @@ const deleteBlog = async blogId => {
   let statement = `DELETE FROM blogs WHERE  id = $1`;
   const res = await client.query(statement, [blogId]);
   try {
-    await client.release();
     return;
   } catch (e) {
+    await client.release();
     await client.release();
     return;
   }

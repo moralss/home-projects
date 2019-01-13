@@ -35,6 +35,11 @@ const validateRegisterUser = async (data) => {
     if (data.password === undefined) {
         errors.password = 'password is required';
     }
+
+    if (data.passwordConfirm !==  data.password ) {
+        errors.passwordConfirm = 'password does not match';
+    }
+    
     console.log(data.password);
 
 

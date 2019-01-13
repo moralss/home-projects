@@ -151,8 +151,6 @@ export const getAuthorBlog = (blogId) => {
         type: actions.RECIEVED_SINGLE_BLOG,
         payload: res.data
       })
-
-
     } catch (e) {
       console.log(e);
     }
@@ -160,7 +158,7 @@ export const getAuthorBlog = (blogId) => {
 };
 
 
-
+/////////////////////////////////////////////////////////////////////////////
 export const dislikeBlog = (blogId) => {
   return async dispatch => {
     try {
@@ -209,7 +207,7 @@ export const getIfLiked = () => {
   };
 };
 
-
+// ////////////////////////////////////////////////////////////////////////////
 
 
 export const addComment = data => {
