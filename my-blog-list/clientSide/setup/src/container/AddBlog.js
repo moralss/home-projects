@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 // import "./App.css";
+import * as normal from "../action/normal-actions";
+
 import { connect } from "react-redux";
 import * as thunks from "../action/thunk";
 import { reset, reduxForm, Field } from "redux-form";
@@ -12,6 +14,8 @@ class AddBlog extends Component {
 
 
   componentWillMount() {
+    this.props.toggleSearchBar(false)
+
 
   }
 
@@ -44,7 +48,9 @@ class AddBlog extends Component {
 function mapDispatchToProps(dispatch) {
   return {
     createBlog: blogInfo => dispatch(thunks.createBlog(blogInfo)),
-    getUserBlogs: () => dispatch(thunks.getUserBlogs())
+    getUserBlogs: () => dispatch(thunks.getUserBlogs()),
+    toggleSearchBar: (status) => dispatch(normal.toggleSearchBar(status))
+
   };
 }
 

@@ -7,13 +7,21 @@ import {
   SmallHeader
 } from "../styles/styles";
 import * as thunks from "../action/thunk";
+import * as normal from "../action/normal-actions";
 import { Link } from "react-router-dom";
+import history from '../history'
 
 class ViewBlogs extends Component {
 
-  componentDidMount() {
+  componentWillMount() {
     this.getAllBlogs();
+    this.props.toggleSearchBar(true)
   }
+
+
+  // componentWillReceiveProps(nextProps) {
+  //   console.log("navbar ...", history.location.pathname)
+  // }
 
 
   async getAllBlogs() {
@@ -38,7 +46,10 @@ class ViewBlogs extends Component {
               </li>
             </ViewBlogsWrapper>
           );
+
+          
         })}
+        {this.props.allBlogs.length === 0 ? "no blogs" : null}
       </ViewBlogsContainer>
     );
 
@@ -53,7 +64,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    getAllBlogs: () => dispatch(thunks.getAllBlogs())
+    getAllBlogs: () => dispatch(thunks.getAllBlogs()),
+    toggleSearchBar: (status) => dispatch(normal.toggleSearchBar(status))
   };
 }
 

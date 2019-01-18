@@ -18,8 +18,6 @@ export const userReducer = (state = initalState, action) => {
       return { ...state, latestBlog: [...action.payload] };
     case actions.RECIEVED_All_BLOG:
       return { ...state, allBlogs: [...action.payload] };
-    case actions.RECIEVED_All_BLOG:
-      return { ...state, allBlogs: [...action.payload] };
     case actions.AUTHENTICATED:
       return { ...state, profile: {...action.payload.userProfile }};
 

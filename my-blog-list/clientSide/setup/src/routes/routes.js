@@ -14,8 +14,10 @@ import HomePage from "../components/HomePage";
 import AddComments from "../container/AddComments";
 import ViewComments from "../container/ViewComments";
 
-
 import jwtDecode from "jwt-decode";
+
+// const historySync = syncHistoryWithStore(history, store)
+
 
 const user = localStorage.getItem("user");
 

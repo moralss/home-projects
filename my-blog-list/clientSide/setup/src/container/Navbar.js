@@ -6,15 +6,15 @@ import history from "../history";
 import * as actions from "../action/normal-actions";
 import * as thunks from "../action/thunk";
 import { PrivatNavContainer, Button1, PublicNavContainer } from '../styles/styles';
+import SearchBar from "./SearchBar";
 import Profile from "./Profile";
-
+import ViewBlogs from "./ViewBlogs";
 
 class Navbar extends Component {
 
   // componentWillMount() {
   //   this.props.fetchUserProfile();
   // }
-
 
 
   navbarLinks() {
@@ -36,25 +36,32 @@ class Navbar extends Component {
 
 
   PrivateNav() {
+
+    let { pathname } = history.location;
     return (
-      <PrivatNavContainer>
-        <li>
-          <Profile />
-        </li>
-        <li>
-          <a href="#">
-            <NavLink to="/viewblogs">view blogs </NavLink>
-          </a>
+      <div>
 
-        </li>
-        <li>
-          <a href="#">
-            <NavLink to="/addblog">add blogs </NavLink>
-          </a>
-        </li>
+        <PrivatNavContainer>
+          <li>
+            <Profile />
+          </li>
 
-        <Button1 onClick={() => this.signOutUser()}>sign out </Button1>
-      </PrivatNavContainer>
+          <li>
+            <a href="#">
+              <NavLink to="/viewblogs">view blogs </NavLink>
+            </a>
+        {this.props.isToggleSearchBar ?  <SearchBar /> :null}
+
+          </li>
+          <li>
+            <a href="#">
+              <NavLink to="/addblog">add blogs </NavLink>
+            </a>
+          </li>
+
+          <Button1 onClick={() => this.signOutUser()}>sign out </Button1>
+        </PrivatNavContainer>
+      </div>
     );
   }
 
@@ -86,15 +93,16 @@ class Navbar extends Component {
 
 function mapDispatchToProps(dispatch) {
   return {
-    disableAuth: () => dispatch(actions.disableAuth()),
     fetchUserProfile: () => dispatch(thunks.fetchUserProfile())
+
   };
 }
 
 
 function mapStateToProps(state) {
   return {
-    authenticated: state.auth.authenticated
+    authenticated: state.auth.authenticated,
+    isToggleSearchBar: state.ui.status
   };
 }
 

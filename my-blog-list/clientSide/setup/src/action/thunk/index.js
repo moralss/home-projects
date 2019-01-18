@@ -25,7 +25,6 @@ export const fetchUserProfile = () => {
 };
 
 
-
 export const createBlog = blogInfo => {
   return async dispatch => {
     try {
@@ -243,6 +242,46 @@ export const getAllComments = (blogId) => {
     }
   };
 };
+
+////////////////////////////////////////////////////////////////////////////////////
+
+// export const getSearchResults = (name) => {
+//   return async dispatch => {
+//     try {
+//       let res = await axios.get(`${URL}/search/${name}`, setAxiosHeader());
+//       dispatch({
+//         type: actions.RECIEVED_COMMENTS,
+//         payload: res.data
+//       });
+//     } catch (e) {
+//       console.log(e);
+//       dispatch({
+//         type: "comments error",
+//         payload: " password"
+//       });
+//     }
+//   };
+// };
+
+
+
+
+export const getSearchResults = (name) => {
+  return async dispatch => {
+    try {
+      let res = await axios.get(`${URL}/search/${name}`, setAxiosHeader());
+      dispatch({ type: actions.RECIEVED_All_BLOG, payload: res.data }, setAxiosHeader());
+    } catch (e) {
+      console.log(e);
+    }
+  };
+};
+
+
+
+
+
+/////////////////////////////////////////////////////////////////////////
 
 
 export const getSingleBlog = id => { };

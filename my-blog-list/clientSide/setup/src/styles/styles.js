@@ -36,6 +36,27 @@ export const GlobalStyle = createGlobalStyle`
 `;
 
 
+
+
+
+
+
+
+/////////////////////////////////////////////////////
+
+
+export const Search = styled.form`
+display:flex;
+position: absolute;    
+top:4rem;
+left:25rem;
+
+
+`
+
+
+
+
 ////////////////////////////////////////////////////////////////////////////////
 
 export const FormWrapper = styled.div`
@@ -49,7 +70,7 @@ export const FormWrapper = styled.div`
 }
 
 `;
- 
+
 export const SubmitButton = styled.input`
     // margin-top:2rem;
     // padding-top2rem;

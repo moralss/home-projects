@@ -6,6 +6,7 @@ import * as thunks from "../action/thunk/auth";
 import renderField from "../components/Input";
 import { callCheck } from "../routes/routes";
 import { checkAuth } from "../utils/checkAuth";
+
 import { Form, FormWrapper, HeaderLarge, SubmitButton } from "../styles/styles"
 
 class FormRegister extends Component {

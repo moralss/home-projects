@@ -8,6 +8,7 @@ const blogModify = require("./routes/blogmodify");
 const authorInfo = require("./routes/author-info");
 const profile2 = require("./routes/profile2");
 const comments = require("./routes/comments");
+const search = require("./routes/search");
 
 require("./src/auth/passport")(passport);
 const profile = require("./routes/profile");
@@ -24,6 +25,7 @@ app.use(bodyParser.json());
 app.use(passport.initialize());
 app.use(passport.session());
 
+search.searchRoutes(app);
 comments.commentsRoutes(app);
 profile2.profile2Routes(app);
 profile.profileRoutes(app);

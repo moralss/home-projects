@@ -1,10 +1,11 @@
-import { AUTHENTICATED } from "../actionTypes";
+import * as actions from "../actionTypes";
 
 
-export const disableAuth = () => {
-    return  {
-        type: AUTHENTICATED,
-        payload: false
+
+export const toggleSearchBar = (status) => {
+    return {
+        type: actions.TOGGLE_SEARCH_BAR,
+        payload: status
     };
-  };
-  
+};
+
