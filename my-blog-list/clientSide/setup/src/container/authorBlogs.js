@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "../App.css";
 import { connect } from "react-redux";
 import * as thunks from "../action/thunk";
+import * as normal from "../action/normal-actions"
 import { Link } from "react-router-dom";
 import { AuthorBlogsContainer, LikeButton, HeaderLarge, ViewContainer, ViewTotalContainer, LinksContainer } from "../styles/styles";
 import sprite from "../img/sprite.svg"
@@ -16,6 +17,8 @@ class AuthorBlogs extends Component {
 
     componentWillMount() {
         this.getAuthorBlogs();
+        this.props.toggleSearchBar(false)
+
     }
 
 
@@ -108,6 +111,7 @@ function mapDispatchToProps(dispatch) {
         getBlogsForAuthor: (authorId) => dispatch(thunks.getBlogsForAuthor(authorId)),
         dislikeBlog: (blogId) => dispatch(thunks.dislikeBlog(blogId)),
         addLike: (blogId) => dispatch(thunks.addLike(blogId)),
+        toggleSearchBar: (status) => dispatch(normal.toggleSearchBar(status))
     };
 }
 

@@ -6,7 +6,9 @@ import * as thunks from "../action/thunk/index";
 import renderField from "../components/Input";
 import { callCheck } from "../routes/routes";
 import { checkAuth } from "../utils/checkAuth";
-import { Search } from "../styles/styles";
+import { Search , SearchButton} from "../styles/styles";
+import sprite from "../img/sprite.svg"
+
 
 class SearchBar extends Component {
     constructor() {
@@ -24,7 +26,7 @@ class SearchBar extends Component {
 
 
     handleSubmit = async data => {
-        console.log("data" , data.name)
+        console.log("data", data.name)
         await this.props.getSearchResults(data.name);
     };
 
@@ -35,8 +37,12 @@ class SearchBar extends Component {
         return (
             <div className="Form">
                 <Search onSubmit={handleSubmit(this.handleSubmit)}>
-                    <Field type="text"  name="name" component={renderField} />
-                    <input type="submit" disabled={submitting} />
+                    <Field type="text" name="name" component={renderField} />
+                    <SearchButton type="submit" disabled={submitting} >
+                        <svg>
+                            <use xlinkHref={`${sprite}#icon-search`} />
+                        </svg>
+                    </SearchButton>
                 </Search>
             </div>
         );
@@ -45,9 +51,9 @@ class SearchBar extends Component {
 
 function mapDispatchToProps(dispatch) {
     return {
-            getSearchResults: (data) =>
+        getSearchResults: (data) =>
             dispatch(thunks.getSearchResults(data))
-        };
+    };
 }
 
 

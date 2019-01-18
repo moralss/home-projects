@@ -3,18 +3,15 @@ import "../App.css";
 import { connect } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
 import history from "../history";
-import * as actions from "../action/normal-actions";
+import * as normal from "../action/normal-actions";
 import * as thunks from "../action/thunk";
 import { PrivatNavContainer, Button1, PublicNavContainer } from '../styles/styles';
 import SearchBar from "./SearchBar";
 import Profile from "./Profile";
 import ViewBlogs from "./ViewBlogs";
 
-class Navbar extends Component {
 
-  // componentWillMount() {
-  //   this.props.fetchUserProfile();
-  // }
+class Navbar extends Component {
 
 
   navbarLinks() {
@@ -93,7 +90,8 @@ class Navbar extends Component {
 
 function mapDispatchToProps(dispatch) {
   return {
-    fetchUserProfile: () => dispatch(thunks.fetchUserProfile())
+    fetchUserProfile: () => dispatch(thunks.fetchUserProfile()),
+    disableAuth:()=> dispatch(normal.disableAuth())
 
   };
 }

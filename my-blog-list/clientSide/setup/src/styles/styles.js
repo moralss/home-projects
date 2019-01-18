@@ -45,11 +45,31 @@ export const GlobalStyle = createGlobalStyle`
 /////////////////////////////////////////////////////
 
 
+
+
+export const SearchButton = styled.button`
+    background-color:transparent;
+    height:1.5rem;
+    width:2rem;
+    margin-left:0.6rem;
+    svg{
+    height:1.5rem;
+    width:2rem;
+    
+    }
+
+`
+
 export const Search = styled.form`
 display:flex;
 position: absolute;    
 top:4rem;
-left:25rem;
+left:25rem; 
+border-radius:5px;
+input{
+    height:1.5rem;
+}
+
 
 
 `
