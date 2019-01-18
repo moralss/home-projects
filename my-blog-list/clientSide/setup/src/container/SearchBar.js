@@ -34,7 +34,6 @@ class SearchBar extends Component {
 
         return (
             <div className="Form">
-                {/* <HeaderLarge> Register Form </HeaderLarge> */}
                 <Search onSubmit={handleSubmit(this.handleSubmit)}>
                     <Field type="text"  name="name" component={renderField} />
                     <input type="submit" disabled={submitting} />

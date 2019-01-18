@@ -9,7 +9,7 @@ const renderField = ({
 }) => {
     return (
         <div>
-            <label style={{}}> {label}</label>
+            <label style={{ }}> {label}</label>
             <div>
                 <input {...input} type={type} placeholder={label} />
                 {touched && error && <span>{this.props.errors.email}</span>}

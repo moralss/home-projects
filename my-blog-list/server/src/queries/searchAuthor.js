@@ -12,6 +12,8 @@ const getSearchResults = async (name) => {
   `;
 
 
+  
+
     const res = await client.query(statement, [`%${name}%`]);
     try {
         await client.release();

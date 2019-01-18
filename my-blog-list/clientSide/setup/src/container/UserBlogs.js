@@ -8,8 +8,11 @@ import {
   LinksContainer,
   ListWrapper, Text,
   Button,
-  HeaderLarge
+  HeaderLarge,
+  SvgBubble
 } from "../styles/styles";
+import sprite from "../img/sprite.svg"
+
 
 
 class UserBlogs extends Component {
@@ -41,8 +44,14 @@ class UserBlogs extends Component {
               <ViewContainer>
                 <Text>  {blog.text}</Text>
                 <ViewTotalContainer>
-                  <p> total Comments : {blog.totalComments}</p>
-                  <p> total Likes : {blog.totalLikes}</p>
+                  <p> total likes : {blog.totalLikes}</p>
+                  <SvgBubble>
+                    <svg>
+                      <use xlinkHref={`${sprite}#icon-bubble`} />
+                    </svg>
+                  <p> {blog.totalComments}</p>
+                  </SvgBubble>
+
                 </ViewTotalContainer>
                 <LinksContainer>
                   <a href="#">

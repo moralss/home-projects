@@ -55,8 +55,6 @@ left:25rem;
 `
 
 
-
-
 ////////////////////////////////////////////////////////////////////////////////
 
 export const FormWrapper = styled.div`
@@ -276,6 +274,63 @@ export const LinksContainer = styled.div`
         
     }    
 `
+
+
+
+/////////////////////////////////////////////////////////
+//svg 
+
+
+export const LikeButton = styled.div`
+    // font-size:10px;
+    display:inline;
+    svg{
+        fill:rgb(177,106,106);
+        height:2rem;
+        width:2rem;
+
+    }
+
+    svg:hover{
+        cursor: pointer;
+        fill:red;
+    }
+        
+`
+export const SvgBubble = styled.div`
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    justify-content:center;
+    align-content:center;
+    margin-left:2rem;
+    text-algin:center;
+    svg{
+        fill:rgb(177,106,106);
+        height:1.8rem;
+        width:1.8rem;
+        background-color:white;
+        text-align:center;
+        justify-self:center;
+        align-self:center;
+    }
+
+    p{
+        // position:relative;
+        top:20px;
+        // z-index:1;
+        
+    }
+
+    svg:hover{
+        cursor: pointer;
+        fill:red;
+    }
+        
+`
+
+
+/////////////////////////////////////////////////////////
+
 
 /////////////////////////////////////////////////////////////////////
 

@@ -3,8 +3,8 @@ import "../App.css";
 import { connect } from "react-redux";
 import * as thunks from "../action/thunk";
 import { Link } from "react-router-dom";
-import { AuthorBlogsContainer, HeaderLarge, ViewContainer, ViewTotalContainer, LinksContainer } from "../styles/styles";
-
+import { AuthorBlogsContainer, LikeButton, HeaderLarge, ViewContainer, ViewTotalContainer, LinksContainer } from "../styles/styles";
+import sprite from "../img/sprite.svg"
 
 // 
 
@@ -57,8 +57,8 @@ class AuthorBlogs extends Component {
                         return (
                             <ViewContainer style={{
                                 padding: "2rem",
-                                 marginLeft: "2rem",
-                                 marginRight: "2rem"
+                                marginLeft: "2rem",
+                                marginRight: "2rem"
 
                             }}>
                                 <p>  text : {blog.text} </p>
@@ -68,7 +68,15 @@ class AuthorBlogs extends Component {
                                     <p> total comments : {blog.totalComments}  </p>
                                 </ViewTotalContainer>
                                 <LinksContainer>
-                                    <button onClick={() => this.increaseLike(blog.id)}>  like </button>
+                                    <LikeButton onClick={() =>
+
+                                        this.increaseLike(blog.id)}>
+                                        <svg>
+                                            <use xlinkHref={`${sprite}#icon-like`} />
+                                        </svg>
+
+
+                                    </LikeButton>
 
                                     <a href="#">
                                         <Link to={`/comments/${blog.id}`}>

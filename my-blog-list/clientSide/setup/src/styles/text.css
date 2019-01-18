@@ -8,11 +8,13 @@
     text-transform: uppercase;
     list-style: none;
     font-family: 'Times New Roman';
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     color:rgba(29, 85, 46, 0.76);
     transition: all;
     transition-duration: 1s;
     transition-delay: 0.5;
-    background:transparent;    
+    background:transparent;
+    position: absolute;    
 }
 
 button:hover{
