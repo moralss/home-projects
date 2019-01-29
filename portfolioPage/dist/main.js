@@ -11,6 +11,8 @@ let showMenu = false;
 menuBtn.addEventListener("click", toggleNav);
 
 
+
+
 function toggleNav() {
     if (!showMenu) {
         navList.forEach(element => {
