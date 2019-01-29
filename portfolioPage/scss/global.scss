@@ -1,38 +1,36 @@
-
 // @import './mixins.scss';
-
-
-.header__medium{
-    margin:0.5rem;
-    padding:0.5rem;
+body {
+  // background-color: lightblue;
 }
 
-*{
-    margin:0px;
-    padding: 0px;
-    font-family:'Times New Roman', Times, serif;
+.header__medium {
+  margin: 0.5rem;
+  font-size:1rem;
+  padding: 0.5rem;
 }
 
-html{
-    background-color:rgba(241, 241, 241, 0.979);
+* {
+  margin: 0px;
+  padding: 0px;
+  font-family: "Times New Roman", Times, serif;
 }
 
-.paragraph{
-    font-size:1.5rem;
+html {
+  background-color: rgba(241, 241, 241, 0.979);
 }
 
-
-.header__main{
-    margin-bottom:1rem;
-    font-size:3.5rem;
-    font-weight: 200;
+.paragraph {
+  font-size: 1.5rem;
+  text-align:center;
 }
 
+.header__main {
+  margin-bottom: 1rem;
+  font-size: 3.5rem;
+  font-weight: 200;
+}
 
 $-color-blue-primary: rgb(42, 42, 143);
-$-color-white:white;
-$-h1-weight : 200;
+$-color-white: white;
+$-h1-weight: 200;
 $-color-blue-dark: rgb(1, 16, 44);
-
-
-
