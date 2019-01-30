@@ -40,11 +40,16 @@ html {
     align-items: center;
     justify-self: start; }
   .nav__link {
+    display: block;
     color: white;
     text-decoration: none;
     text-transform: uppercase;
-    transition: color;
-    transition-duration: 2s; }
+    transition: all;
+    transition-duration: 1s; }
+  .nav__link:hover {
+    color: #727edb;
+    font-size: 1.1rem;
+    font-weight: 200; }
 
 .navbar {
   position: fixed;
@@ -83,7 +88,7 @@ html {
     position: fixed;
     z-index: 3;
     right: 35px;
-    top: 25px;
+    top: 10px;
     cursor: pointer; }
     .menu-btn .nav-btn {
       margin: 0 0 5px 0;

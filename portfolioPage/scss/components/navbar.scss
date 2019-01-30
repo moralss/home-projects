@@ -1,40 +1,42 @@
+.nav {
+  display: grid;
+  grid-gap: 2rem;
+  grid-template-columns: 4fr repeat(4, 120px);
+  justify-content: center;
+  align-content: center;
 
-  .nav {
-    display: grid;
-    grid-gap: 2rem;
-    grid-template-columns: 4fr repeat(4, 120px);
-    justify-content: center;
-    align-content: center;
-
-    &__list {
-      grid-gap: 5rem;
-      margin: 1rem;
-      align-items: center;
-      font-size: 1rem;
-      list-style: none;
-      margin-left: 2rem;
-      width: 100%;
-      height: 100%;
-    }
-
-    &__list:nth-child(1) {
-      font-size: 2rem;
-      align-items: center;
-      justify-self: start;
-    }
-
-
-    &__link {
-      color: white;
-      text-decoration: none;
-      text-transform: uppercase;
-      transition: color;
-      transition-duration: 2s;
-    }
+  &__list {
+    grid-gap: 5rem;
+    margin: 1rem;
+    align-items: center;
+    font-size: 1rem;
+    list-style: none;
+    margin-left: 2rem;
+    width: 100%;
+    height: 100%;
   }
 
+  &__list:nth-child(1) {
+    font-size: 2rem;
+    align-items: center;
+    justify-self: start;
+  }
 
+  &__link {
+    display: block;
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: all;
+    transition-duration: 1s;
+  }
 
+  &__link:hover {
+    color: rgb(114, 126, 219);
+    font-size:1.1rem;
+    font-weight: 200;
+  }
+}
 
 .navbar {
   position: fixed;
@@ -45,7 +47,6 @@
 
 @media only screen and (max-width: 900px) {
   .nav {
-  
     display: grid;
     &__list {
       grid-gap: 0rem;
@@ -63,15 +64,14 @@
     display: none;
   }
 
-  .show{
-    display:block;
+  .show {
+    display: block;
   }
 
-
-  .sidebar{
+  .sidebar {
     display: grid;
-    margin-top:2rem;
-    padding-bottom:2rem;
+    margin-top: 2rem;
+    padding-bottom: 2rem;
     grid-gap: 2rem;
     grid-template-columns: repeat(1, 120px);
     justify-content: center;
@@ -81,27 +81,22 @@
     .nav__list:nth-child(1) {
       display: none;
     }
-
   }
 
-  .menu-btn{
-    position:fixed;
-    z-index:3;
-    right:35px;
-    top:25px;
+  .menu-btn {
+    position: fixed;
+    z-index: 3;
+    right: 35px;
+    top: 10px;
     cursor: pointer;
-    
-    
-    .nav-btn{
-      margin : 0 0 5px 0;
-      background-color:white;
-      width:2rem;
+
+    .nav-btn {
+      margin: 0 0 5px 0;
+      background-color: white;
+      width: 2rem;
       height: 3px;
       text-align: center;
-      // display:none; 
-      
+      // display:none;
     }
   }
-  }
-
-
+}
