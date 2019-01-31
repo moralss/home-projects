@@ -5,7 +5,6 @@
   .projects {
     display: grid;
     grid-gap: 1rem;
-    // grid-auto-columns: 1fr;
     grid-template-columns: repeat(3, minmax(1rem, 20rem));
     justify-items: center;
     justify-content: center;
@@ -43,19 +42,14 @@
 
 .btn:hover {
   background-color: rgba(207, 0, 0, 0.582);
-  // color:red;
 }
 
 .btn {
   display: inline-block;
-  // display:flex;
-  // justify-content: center;
-  // align-content: center;
   padding-bottom: 2rem;
   transition-property: background;
   transition-duration: 1s;
   color: $-color-white;
-  // text-align:center;
   padding: 0.5rem;
   text-decoration: none;
   margin: 0.8rem;
