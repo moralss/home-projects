@@ -18,7 +18,11 @@ describe("blog_share ", function () {
         it("Should be able to save a new user to the database", async function () {
             const userIdfakeUser = await createUser(fakeUser.email, fakeUser.password);
             expect(userIdfakeUser).to.be.gt(0);
+        
+        
         });
+
+
 
         it("Should be able to save a new blog to the database ", async function () {
             const blogText = { text: "text" }
