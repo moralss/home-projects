@@ -5,7 +5,6 @@ const { getSearchResults } = require("../src/queries/searchAuthor");
 const searchRoutes = app => {
     app.get("/search/:name", async (req, res) => {
         let name = req.params.name;
-        console.log(name)
 
         try {
             const allBlogs = await getSearchResults(name)
