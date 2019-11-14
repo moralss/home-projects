@@ -42,7 +42,7 @@ app.post("/playerInfo", async function (req, res) {
 })
 
 
-app.listen(3000, function () {
+app.listen(3004, function () {
     console.log("port running 3003");
 })
 

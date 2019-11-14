@@ -1,0 +1,67 @@
+	/*
+  	Flaticon icon font: Flaticon
+  	Creation date: 19/12/2018 09:57
+  	*/
+
+@font-face {
+  font-family: "Flaticon";
+  src: url("./Flaticon.eot");
+  src: url("./Flaticon.eot?#iefix") format("embedded-opentype"),
+       url("./Flaticon.woff") format("woff"),
+       url("./Flaticon.ttf") format("truetype"),
+       url("./Flaticon.svg#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Flaticon";
+    src: url("./Flaticon.svg#Flaticon") format("svg");
+  }
+}
+
+[class^="flaticon-"]:before, [class*=" flaticon-"]:before,
+[class^="flaticon-"]:after, [class*=" flaticon-"]:after {   
+  font-family: Flaticon;
+        font-size: 20px;
+font-style: normal;
+margin-left: 20px;
+}
+
+.flaticon-001-camping:before { content: "\f100"; }
+.flaticon-002-adventurer:before { content: "\f101"; }
+.flaticon-003-airplane:before { content: "\f102"; }
+.flaticon-004-arrival:before { content: "\f103"; }
+.flaticon-005-departure:before { content: "\f104"; }
+.flaticon-006-backpack:before { content: "\f105"; }
+.flaticon-007-air-balloon:before { content: "\f106"; }
+.flaticon-008-beach:before { content: "\f107"; }
+.flaticon-009-lifebuoy:before { content: "\f108"; }
+.flaticon-010-hotel-bed:before { content: "\f109"; }
+.flaticon-011-bicycle:before { content: "\f10a"; }
+.flaticon-012-binoculars:before { content: "\f10b"; }
+.flaticon-013-kayak:before { content: "\f10c"; }
+.flaticon-014-yacht:before { content: "\f10d"; }
+.flaticon-015-hotel:before { content: "\f10e"; }
+.flaticon-016-bus:before { content: "\f10f"; }
+.flaticon-017-calendar:before { content: "\f110"; }
+.flaticon-018-photography:before { content: "\f111"; }
+.flaticon-019-taxi:before { content: "\f112"; }
+.flaticon-020-compass:before { content: "\f113"; }
+.flaticon-021-snorkel:before { content: "\f114"; }
+.flaticon-022-worlwide:before { content: "\f115"; }
+.flaticon-023-fishing:before { content: "\f116"; }
+.flaticon-024-flip-flops:before { content: "\f117"; }
+.flaticon-025-flippers:before { content: "\f118"; }
+.flaticon-026-sweater:before { content: "\f119"; }
+.flaticon-027-maps:before { content: "\f11a"; }
+.flaticon-028-luggage:before { content: "\f11b"; }
+.flaticon-029-mountain:before { content: "\f11c"; }
+.flaticon-030-passport:before { content: "\f11d"; }
+.flaticon-031-push-pin:before { content: "\f11e"; }
+.flaticon-032-postcard:before { content: "\f11f"; }
+.flaticon-033-scooter:before { content: "\f120"; }
+.flaticon-034-ticket:before { content: "\f121"; }
+.flaticon-035-train:before { content: "\f122"; }
+.flaticon-036-umbrella:before { content: "\f123"; }
