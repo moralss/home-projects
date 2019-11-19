@@ -1,29 +1,36 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Page Title</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-  </head>
-  <style>
-    .icon {
-      color: yellow;
-      font-size: 3rem;
-      fill: blue;
-    }
-  </style>
-  <body>
 
-    <svg class="icon"><use xlink:href="sprite.svg#icon-drink"></use></svg>
-    
-    <!-- 
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible"
+        content="IE=edge" />
+  <title>Page Title</title>
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1" />
+</head>
+<style>
+  .icon {
+    color: yellow;
+    font-size: 3rem;
+    fill: blue;
+  }
+</style>
+
+<body>
+
+  <svg class="icon">
+    <use xlink:href="sprite.svg#icon-drink"></use>
+  </svg>
+
+  <!-- 
       <use>
           import sprite from "../img/sprite.svg";
           <svg>
             <use xlinkHref={`${sprite}#icon-drink`} />
           </svg>
         </use> -->
-    <!-- <img class="icon" src="arrow-right.svg" alt="" /> -->
-  </body>
+  <!-- <img class="icon" src="arrow-right.svg" alt="" /> -->
+</body>
+
 </html>
