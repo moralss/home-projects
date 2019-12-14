@@ -7,6 +7,8 @@ export default new Vuex.Store({
   state: {
     listOfItems: [],
     monthlySalary: '',
+    totalSpent: 0,
+
   },
   getters: {
     budgetItems(state) {
@@ -15,14 +17,20 @@ export default new Vuex.Store({
     monthlySalary(state) {
       return state.monthlySalary;
     },
-
+    totalSalary(state) {
+      return state.totalSpent;
+    },
   },
   mutations: {
-    budget(state, data) {
+    setBudget(state, data) {
       state.listOfItems.push(data);
     },
     setSalary(state, salary) {
       state.monthlySalary = salary.monthlySalary;
+    },
+    setBudgetTotal(state, total) {
+      console.log('mutation total ', total);
+      state.totalSpent = total;
     },
   },
   actions: {
@@ -39,6 +47,11 @@ export default new Vuex.Store({
       commit,
     }, salary) {
       commit('setSalary', salary);
+    },
+    calculateTotal({
+      commit,
+    }, total) {
+      commit('setBudgetTotal', total);
     },
   },
   // enable strict mode (adds overhead!)
