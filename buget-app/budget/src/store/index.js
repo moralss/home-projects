@@ -5,53 +5,63 @@ import createPersistedState from 'vuex-persistedstate';
 Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
-    listOfItems: [],
-    monthlySalary: '',
-    totalSpent: 0,
-
+    budgetList: [],
+    salaryDetailList: [],
+    monthlySalary: {},
+    salaryLeft: 0,
   },
   getters: {
-    budgetItems(state) {
-      return state.listOfItems;
+    budgetList(state) {
+      return state.budgetList;
     },
     monthlySalary(state) {
       return state.monthlySalary;
     },
-    totalSalary(state) {
-      return state.totalSpent;
+    salaryLeft(state) {
+      return state.salaryLeft;
+    },
+    salaryDetailList(state) {
+      return state.salaryDetailList;
     },
   },
   mutations: {
     setBudget(state, data) {
-      state.listOfItems.push(data);
+      state.budgetList.push(data);
     },
-    setSalary(state, salary) {
-      state.monthlySalary = salary.monthlySalary;
+    setSalaryDetail(state, data) {
+      state.monthlySalary = data;
+      const id = state.salaryDetailList.length + 1;
+      data.id = id;
+      state.salaryDetailList.push(data);
     },
-    setBudgetTotal(state, total) {
-      console.log('mutation total ', total);
-      state.totalSpent = total;
+    setTotalSpent(state, totalSpentInfo) {
+      const list = JSON.parse(JSON.stringify(state.salaryDetailList));
+      list.forEach((element, index) => {
+        if (element.id === Number(totalSpentInfo.id)) {
+          element.total = totalSpentInfo.total;
+          state.salaryDetailList.push(element);
+          state.salaryDetailList.splice(index, 1);
+          // delete element
+        }
+      });
     },
   },
   actions: {
     addBudget({
       commit,
     }, data) {
-      commit('setBudget', {
-        label: data.label,
-        budget: data.budget,
-        date: data.date,
-      });
+      commit('setBudget',
+        data);
     },
-    addSalary({
+    addSalaryDetails({
       commit,
-    }, salary) {
-      commit('setSalary', salary);
+    }, data) {
+      commit('setSalaryDetail', data);
     },
     calculateTotal({
       commit,
-    }, total) {
-      commit('setBudgetTotal', total);
+    }, totalSpentInfo) {
+      commit('setTotalSpent', totalSpentInfo);
     },
   },
   // enable strict mode (adds overhead!)
